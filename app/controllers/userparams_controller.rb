@@ -1,6 +1,9 @@
 class UserparamsController < ApplicationController
   before_action :authenticate_user!
 
+ def index
+  
+ end
   def new
     @userparam = Userparam.new
   end
@@ -14,6 +17,7 @@ class UserparamsController < ApplicationController
   end
   
   def show
+    @userparam = Userparam.find_by(user_id: current_user.id)
   end
   
   def edit

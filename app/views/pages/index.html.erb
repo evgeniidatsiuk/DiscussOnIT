@@ -21,6 +21,7 @@
 		<p>No posts</p>
 		<%= link_to  "Create new post", new_post_path %>
 	<% else %>
+	<%= link_to  "Create new post", new_post_path %>
 
 	<% @posts.each do | post | %> 
 	<p>User <b><%= post.user.email %></b> write: <br/>
