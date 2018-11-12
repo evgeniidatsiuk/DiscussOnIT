@@ -1,23 +1,21 @@
-<div class="row">
-<div class="col">
-	<div class="row">
-		<ul class="nav">
-	  		<span class="navbar-text font-weight-bold">
-	  			<%=link_to t('all_questions'), questions_path %>
-	  		</span>
-		</ul>
-	</div>
-<%= render @questions%>
-	<div class="row">
-		<ul class="nav">
-	 		<span class="navbar-text font-weight-bold">
-	  			<%=link_to t(:all_post), posts_path%>
-	  		</span>
-		</ul>
-	</div>
-<%= render @posts%>
-</div>
-<div class="col-12 col-md-3">
-	 <%= render "layouts/sidebar"%>
-</div>
-</div>
+<% if !user_signed_in? %>
+<%= link_to "Login or register", new_user_session_path %><br>
+<% end %>
+<% if user_signed_in? %>
+<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+<% end %>
+</p>
+<% if user_signed_in? %>
+<%= link_to "New post", new_post_path %><hr>
+<% end %>
+<% if @posts == [] %>
+<p>No posts</p>
+<% else %>
+<% @posts.each do | post | %>
+<p>User <b><%= post.name %></b> write: <br/>
+<%= post.name %><br/>
+<%= post.text %><br/></p>
+<p><%= link_to "Read more", post_path(post.id) %></p>
+<hr>
+<% end %>
+<% end %>
