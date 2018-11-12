@@ -1,2 +1,8 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+User:<%= @post.user.email %><br/>
+Name <%= @post.name %><br/>
+Text: <%= @post.text %><br/>
+<% if @post.user_id == current_user.id %>
+<p><%= link_to "Edit", edit_post_path(@post.id) %><br/>
+<%= link_to "Delete", post_path(@post.id), method: :delete %><br/></p>
+<% end %>
+<%= link_to "Back", root_path%><br/>
