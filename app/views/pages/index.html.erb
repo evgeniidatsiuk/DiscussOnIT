@@ -1,0 +1,23 @@
+<div class="row">
+<div class="col">
+	<div class="row">
+		<ul class="nav">
+	  		<span class="navbar-text font-weight-bold">
+	  			<%=link_to t('all_questions'), questions_path %>
+	  		</span>
+		</ul>
+	</div>
+<%= render @questions%>
+	<div class="row">
+		<ul class="nav">
+	 		<span class="navbar-text font-weight-bold">
+	  			<%=link_to t(:all_post), posts_path%>
+	  		</span>
+		</ul>
+	</div>
+<%= render @posts%>
+</div>
+<div class="col-12 col-md-3">
+	 <%= render "layouts/sidebar"%>
+</div>
+</div>
