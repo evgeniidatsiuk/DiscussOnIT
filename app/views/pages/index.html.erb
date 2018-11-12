@@ -1,21 +1,31 @@
-<% if !user_signed_in? %>
-<%= link_to "Login or register", new_user_session_path %><br>
-<% end %>
-<% if user_signed_in? %>
-<%= link_to "Log out", destroy_user_session_path, method: :delete %>
-<% end %>
-</p>
-<% if user_signed_in? %>
-<%= link_to "New post", new_post_path %><hr>
-<% end %>
-<% if @posts == [] %>
-<p>No posts</p>
+<strong><h3>Вас вітає сайт УжНУ</h3></strong> 
+<% if user_signed_in?%>
+<% if current_user.nil?%>
+<%= link_to "Profile" , new_userparam_path%><br>
+
 <% else %>
-<% @posts.each do | post | %>
-<p>User <b><%= post.name %></b> write: <br/>
-<%= post.name %><br/>
-<%= post.text %><br/></p>
-<p><%= link_to "Read more", post_path(post.id) %></p>
-<hr>
+<%= link_to "Profile" , new_userparam_path(current_user.id)%><br>
+<%=  link_to  "Log out", destroy_user_session_path, method: :delete %><br/>
 <% end %>
+<% end %>
+<% if !user_signed_in?%>
+<%=  link_to  "Log in", new_user_session_path %><br>
+<% end %>
+
+
+
+
+<hr>
+<% if @posts == [] %>
+		<p>No posts</p>
+		<%= link_to  "Create new post", new_post_path %>
+	<% else %>
+	<%= link_to  "Create new post", new_post_path %>
+	<% @posts.each do | post | %> 
+	<p>User <b><%= post.user.email %></b> write: <br/>
+	<%= post.name %><br/>
+	<%= post.text %><br/></p>
+	<p><%= link_to "Read more", post_path(post.id) %></p> 
+	<hr>
+	<% end %>
 <% end %>

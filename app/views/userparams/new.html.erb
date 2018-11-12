@@ -1,0 +1,6 @@
+<%= form_for @userparam, url: userparams_path do |f| %>
+  Firsname: <%= f.text_field :firstname %><br />
+  Lastname: <%= f.text_field :lastname %><br />
+  Age: <%= f.text_field :age %><br />
+  <%= f.submit "Create" %>
+<% end %>
