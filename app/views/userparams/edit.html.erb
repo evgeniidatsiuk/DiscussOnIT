@@ -5,6 +5,7 @@
     <%= f.file_field :avatar, :class=>"custom-file-input", :id=>"customFile" %>
     <label class="custom-file-label" for="customFile"><%= t('chose_avatar') %></label>
   </div>
+  
 <%=render 'userparams/form', f:f%>
 
   <%=f.submit "Оновити"%>

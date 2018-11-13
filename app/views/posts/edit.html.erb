@@ -1,5 +1,5 @@
  <%= render  "layouts/navbar" %>
 <%= form_for @post, url: post_path(@post.id) do |f| %>
-   <%= render 'posts/form' f:f%>
+<%= render 'posts/form', f:f%>
    <%= f.submit "Save changes" %>
-<% end %>
+   <% end %>

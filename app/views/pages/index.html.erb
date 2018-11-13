@@ -1,13 +1,8 @@
  <%= render  "layouts/navbar" %>
 <strong><h3>Вас вітає сайт УжНУ</h3></strong> 
-
 <% if !user_signed_in?%>
 <%=  link_to  "Log in", new_user_session_path %><br>
 <% end %>
-
-
-
-
 <hr>
 	<% if user_signed_in?%>
 <% if @posts == [] %>
@@ -15,7 +10,6 @@
 		<%= link_to  "Create new post", new_post_path %>
 	<% else %>
 	<%= link_to  "Create new post", new_post_path %>
-
 	<% @posts.each do | post | %> 
 	<p>User <b><%= post.user.email %></b> write: <br/>
 	<%= post.name %><br/>
