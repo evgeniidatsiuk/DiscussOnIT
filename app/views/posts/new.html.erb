@@ -1,3 +1,4 @@
+ <%= render  "layouts/navbar" %>
 <%= form_for @post, url: {action: "create"} do |f| %>
 	<%= render 'posts/form', f:f%>
 	<%= f.submit "Create" %>
