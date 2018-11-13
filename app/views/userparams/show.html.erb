@@ -1,7 +1,7 @@
-Firstname: <%= current_user.userparam.firstname %><br />
-Lastname: <%= current_user.userparam.lastname %><br />
-Age: <%= current_user.userparam.age %><br />
-<%= link_to "edit", edit_userparam_path(current_user.id) %><br />
+Firstname: <%= @userparam.firstname %><br />
+Lastname: <%= @userparam.lastname %><br />
+Age: <%= @userparam.age %><br />
+<%= link_to "edit", edit_userparam_path(@userparam.id) %><br />
 <%= link_to "back", root_path %>
 
 
