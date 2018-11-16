@@ -1,4 +1,3 @@
- <%= render  "layouts/navbar" %>
   <%= image_tag @userparam.avatar.url %>
 <h3>Профіль користувача <b><%=@userparam.firstname%></b></h3>
 <%=form_for @userparam, url:userparam_path, method: :patch do |f|%>
