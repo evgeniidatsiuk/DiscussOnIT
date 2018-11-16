@@ -1,9 +1,17 @@
-User:<%= @post.user.email %><br/>
-Name <%= @post.name %><br/>
-Text: <%= @post.text %><br/>
+User:<%= @post.user.userparam.nickname %><%= image_tag @post.user.userparam.avatar.url %><br/>
 <% if @post.user_id == current_user.id %>
-<%= image_tag @userparam.avatar.url %>
-<p><%= link_to "Edit", edit_post_path(@post.id) %><br/>
-<%= link_to "Delete", post_path(@post.id), method: :delete %><br/></p>
+<p><%= link_to "Edit", edit_post_path(@post.id) %> / <%= link_to "Delete", post_path(@post.id), method: :delete %></p>
+<% end %><br/>
+Title: <h3><%= @post.name %></h3>
+Text: <%= @post.text %><br/>
+<%= form_for :comment, url:comments_path do |f| %>
+	<%= render 'comments/form', f:f%>
+	<%= f.hidden_field :object_type, value: @post.class.name%>
+	<%= f.hidden_field :object_id, value: @post.id%>
+	<%= f.submit "Create" %>
 <% end %>
-<%= link_to "Back", root_path%><br/>
+<% Comment.where(object: @post).each do |comment| %>
+	<%=comment.text%>
+<%end%>
+
+

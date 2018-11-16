@@ -9,6 +9,7 @@ class User < ApplicationRecord
         
     has_one :userparam      
     has_many :posts
+    has_many :comments
 
     def create_userparam
     	#cтворює юзеру його парамси .
