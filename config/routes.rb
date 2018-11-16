@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'questions/index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -10,6 +9,8 @@ Rails.application.routes.draw do
   root to: 'pages#index'
 
   resources :posts
+
+  resources :questions
 
   resources :userparams, except:[:index]
 
