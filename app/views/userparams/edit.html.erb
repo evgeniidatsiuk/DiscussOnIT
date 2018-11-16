@@ -1,13 +1,8 @@
  <%= render  "layouts/navbar" %>
+  <%= image_tag @userparam.avatar.url %>
 <h3>Профіль користувача <b><%=@userparam.firstname%></b></h3>
 <%=form_for @userparam, url:userparam_path, method: :patch do |f|%>
-  <div class="custom-file">
-    <%= f.file_field :avatar, :class=>"custom-file-input", :id=>"customFile" %>
-    <label class="custom-file-label" for="customFile"><%= t('chose_avatar') %></label>
-  </div>
-  
 <%=render 'userparams/form', f:f%>
-
   <%=f.submit "Оновити"%>
-
 <%end%>
+

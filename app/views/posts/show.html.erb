@@ -3,6 +3,7 @@ User:<%= @post.user.email %><br/>
 Name <%= @post.name %><br/>
 Text: <%= @post.text %><br/>
 <% if @post.user_id == current_user.id %>
+<%= image_tag @userparam.avatar.url %>
 <p><%= link_to "Edit", edit_post_path(@post.id) %><br/>
 <%= link_to "Delete", post_path(@post.id), method: :delete %><br/></p>
 <% end %>
