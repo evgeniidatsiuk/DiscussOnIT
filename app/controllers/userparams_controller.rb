@@ -1,9 +1,10 @@
 class UserparamsController < ApplicationController
   before_action :authenticate_user!
 
- def index
+  def index
   
- end
+  end
+
   def new
     @userparam = Userparam.new
   end
@@ -13,7 +14,6 @@ class UserparamsController < ApplicationController
     if @userparam.save
       redirect_to userparam_path(@userparam.id)
     end
-    
   end
   
   def show
@@ -29,13 +29,16 @@ class UserparamsController < ApplicationController
     if @userparam.update(profile_params)
        redirect_to userparam_path(@userparam.id)
     end
-    
   end
   
 private
 
   def profile_params
-    params.require(:userparam).permit(:user_id,:avatar, :firstname, :lastname, :age)
+    params.require(:userparam).permit(:user_id,:avatar, :nickname,:firstname, :lastname, :age)
+  end
+
+  def userparam_create
+    
   end
   
 end

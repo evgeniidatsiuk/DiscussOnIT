@@ -1,6 +1,5 @@
- <%= render  "layouts/navbar" %>
+	<%= render  "layouts/navbar" %>
 <%= form_for @userparam, url: userparams_path do |f| %>
 	<%=render 'userparams/form', f:f%>
   	<%= f.submit "Create" %>
-	  <%= link_to "back", :back %>
 <% end %>
