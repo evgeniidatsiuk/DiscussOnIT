@@ -1,4 +1,4 @@
-User:<%= @question.user.email %><br/>
+User:<%= @question.userparam.nickname %><br/>
 Name <%= @question.name %><br/>
 Text: <%= @question.text %><br/>
 <% if @question.user_id == current_user.id %>

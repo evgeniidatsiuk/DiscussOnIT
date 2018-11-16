@@ -7,12 +7,12 @@
 		<%=render @posts%>
 	<% end %>
 	<%= link_to  "Create new post", new_post_path %>
-<% end %>
-<% if user_signed_in?%>
-	<% if @questions == [] %>
+		<% if @questions == [] %>
 		<p>No questions</p>
 	<% else %>	
 		<%=render @questions%>
 	<% end %>
 	<%= link_to  "Create new question", new_question_path %>
 <% end %>
+
+

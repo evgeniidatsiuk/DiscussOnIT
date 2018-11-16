@@ -8,7 +8,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
         
     has_one :userparam      
-    has_many :posts
+	has_many :posts
+	has_many :questions
 
     def create_userparam
     	#cтворює юзеру його парамси .
