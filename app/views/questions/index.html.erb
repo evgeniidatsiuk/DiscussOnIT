@@ -1,0 +1,8 @@
+<% if user_signed_in?%>
+	<% if @questions == [] %>
+		<p>No questions</p>
+	<% else %>	
+		<%=render @questions%>
+	<% end %>
+	<%= link_to  "Create new post", new_question_path %>
+<% end %>

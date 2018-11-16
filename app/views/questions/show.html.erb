@@ -1,0 +1,9 @@
+User:<%= @question.user.email %><br/>
+Name <%= @question.name %><br/>
+Text: <%= @question.text %><br/>
+<% if @question.user_id == current_user.id %>
+<%= image_tag @userparam.avatar.url %>
+<p><%= link_to "Edit", edit_question_path(@question.id) %><br/>
+<%= link_to "Delete", question_path(@question.id), method: :delete %><br/></p>
+<% end %>
+<%= link_to "Back", root_path%><br/>
