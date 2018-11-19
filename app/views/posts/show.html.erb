@@ -8,14 +8,14 @@ Text: <%= @post.text %><br/>
 <p><%= link_to "Edit", edit_post_path(@post.id) %>
   <%= link_to "Delete", post_path(@post.id), method: :delete %></p>
 <% end %><br/>
+Коментувати
 <%= form_for :comment, url:comments_path do |f| %>
 	<%= render 'comments/form', f:f%>
-	<%= f.hidden_field :object_type, value: @post.class.name%>
-	<%= f.hidden_field :object_id, value: @post.id%>
+	<%= f.hidden_field :object, value: @post%>
 	<%= f.submit "Create" %>
 <% end %>
 <% Comment.where(object: @post).each do |comment| %>
-	<%=comment.text%>
+	<%=render 'comments/comment', comment:comment %>
 <%end%>
 
 
