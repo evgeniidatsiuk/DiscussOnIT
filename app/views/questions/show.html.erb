@@ -6,5 +6,14 @@ Text: <%= @question.text %><br/>
 
 <p><%= link_to "Edit", edit_question_path(@question.id) %><br/>
 <%= link_to "Delete", question_path(@question.id), method: :delete %><br/></p>
+<% end %><br />
+Коментувати
+<%= form_for :comment, url:comments_path do |f| %>
+	<%= render 'comments/form', f:f%>
+	<%= f.hidden_field :object_id, value: @question.id%>
+	<%= f.hidden_field :object_type, value: @question.class.name%>
+	<%= f.submit "Create" %>
 <% end %>
-<%= link_to "Back", root_path%><br/>
+<% Comment.where(object: @question).each do |comment| %>
+	<%=render 'comments/comment', comment:comment %>
+<%end%>

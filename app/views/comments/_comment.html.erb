@@ -1,4 +1,5 @@
 <p>
 <%=comment.text%><br />
-Користувач: <%=comment.user.userparam.nickname%>
+Користувач: <%=comment.user.userparam.nickname%><br />
+<%= image_tag comment.user.userparam.avatar.url(:medium) %>
 </p>
