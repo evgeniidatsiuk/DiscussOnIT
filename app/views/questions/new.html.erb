@@ -1,4 +1,4 @@
-<%= form_for @question, url: {action: "create"} do |f| %>
+<%= form_for @question, url:questions_path do |f| %>
 	<%= render 'questions/form', f:f%>
-	<%= f.submit "Create" %>
+	<%= f.submit "Створити" %>
 <% end %>

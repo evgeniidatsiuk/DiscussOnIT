@@ -1,19 +1,19 @@
 
-Автор:<%= @post.user.userparam.nickname %>
-<%= image_tag @post.user.userparam.avatar.url %><br/>
-Назва: <%= @post.name %><br/>
-Text: <%= @post.text %><br/>
+Автор: <%= @post.user.userparam.nickname %><br>
+<%= image_tag @post.user.userparam.avatar.url %><br>
+Назва: <%= @post.name %><br>
+Текст: <%= @post.text %><br>
 
 <% if @post.user_id == current_user.id %>
-<p><%= link_to "Edit", edit_post_path(@post.id) %>
-  <%= link_to "Delete", post_path(@post.id), method: :delete %></p>
+<p><%= link_to "Редагувати", edit_post_path(@post.id) %>
+  <%= link_to "Видалити", post_path(@post.id), method: :delete %></p>
 <% end %><br/>
 Коментувати
 <%= form_for :comment, url:comments_path do |f| %>
 	<%= render 'comments/form', f:f%>
 	<%= f.hidden_field :object_id, value: @post.id%>
 	<%= f.hidden_field :object_type, value: @post.class.name%>
-	<%= f.submit "Create" %>
+	<%= f.submit "Відправити" %>
 <% end %>
 <% Comment.where(object: @post).each do |comment| %>
 	<%=render 'comments/comment', comment:comment %>

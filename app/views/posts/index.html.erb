@@ -1,8 +1,9 @@
+<h2 align="center">Записи:</h2>
 <% if user_signed_in?%>
-	<% if @posts == [] %>
-		<p>No posts</p>
-	<% else %>	
-		<%=render @posts%>
-	<% end %>
-	<%= link_to  "Create new post", new_post_path %>
+	<h3><%= link_to  "Добавити новий запис", new_post_path %></h3>
+<% end %>
+<% if @posts == [] %>
+	<p>НЕ знайдено жодного запису</p>
+<% else %>	
+	<%=render @posts%>
 <% end %>

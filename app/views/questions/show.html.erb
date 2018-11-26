@@ -1,18 +1,18 @@
 <%= image_tag @question.user.userparam.avatar.url %><br />
-User:<%= @question.user.userparam.nickname %><br/>
-Name <%= @question.name %><br/>
-Text: <%= @question.text %><br/>
+Користувач:<%= @question.user.userparam.nickname %><br/>
+Назва: <%= @question.name %><br/>
+Текст: <%= @question.text %><br/>
 <% if @question.user_id == current_user.id %>
 
-<p><%= link_to "Edit", edit_question_path(@question.id) %><br/>
-<%= link_to "Delete", question_path(@question.id), method: :delete %><br/></p>
+<p><%= link_to "Редагувати", edit_question_path(@question.id) %><br/>
+<%= link_to "Видалити", question_path(@question.id), method: :delete %><br/></p>
 <% end %><br />
 Коментувати
 <%= form_for :comment, url:comments_path do |f| %>
 	<%= render 'comments/form', f:f%>
 	<%= f.hidden_field :object_id, value: @question.id%>
 	<%= f.hidden_field :object_type, value: @question.class.name%>
-	<%= f.submit "Create" %>
+	<%= f.submit "Відправити" %>
 <% end %>
 <% Comment.where(object: @question).each do |comment| %>
 	<%=render 'comments/comment', comment:comment %>

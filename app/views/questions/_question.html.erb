@@ -1,5 +1,5 @@
-	<p>User <b><%= question.user.userparam.nickname %></b> write: <br/>
-	<%= question.name %><br/>
-	<%= question.text %><br/></p>
-	<p><%= link_to "Read more", question_path(question.id) %></p> 
+	Назва: <b><%= question.name %></b><br>
+	Текст: <%= question.text %><br>
+	Автор <b><%= question.user.userparam.nickname %></b> <br>
+	<p><%= link_to "Більше", question_path(question.id) %></p> 
 	<hr>
