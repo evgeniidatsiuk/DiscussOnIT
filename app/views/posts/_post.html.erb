@@ -1,6 +1,9 @@
-
-Назва: <b><%= post.name %></b><br>
-Текст: <%= post.text %><br>
-Aвтор: <b><%= post.user.userparam.nickname %></b> <br/>
-<p><%= link_to "Більше", post_path(post.id) %></p> 
+Назва:
+<b><%= post.name %></b><br>
+Текст:
+<%= post.text %><br>
+Aвтор:
+<b><%= post.user.userparam.nickname %></b>
+<br/>
+<p><%= link_to "Більше", post_path(post.id) %></p>
 <hr>

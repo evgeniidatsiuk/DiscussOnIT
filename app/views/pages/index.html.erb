@@ -1,23 +1,22 @@
-<strong><h3>Вас вітає сайт УжНУ</h3></strong> 
+<strong>
+  <h3>Вас вітає сайт УжНУ</h3>
+</strong>
 <hr>
 <h2 align="center">Записи:</h2>
 <% if user_signed_in?%>
-	<h3><%= link_to  "Добавити новий запис", new_post_path %></h3>
+  <h3><%= link_to "Добавити новий запис", new_post_path %></h3>
 <% end %>
 <% if @posts == [] %>
-	<p>НЕ знайдено жодного запису</p>
-<% else %>	
-	<%=render @posts%>
+  <p>НЕ знайдено жодного запису</p>
+<% else %>
+  <%=render @posts%>
 <% end %>
 <h2 align="center">Питання:</h2>
 <% if user_signed_in?%>
-	<h3><%= link_to  "Задати нове питання", new_question_path %></h3>
+  <h3><%= link_to "Задати нове питання", new_question_path %></h3>
 <% end %>
 <% if @questions == [] %>
-	<p>Не знайдено жодних питань</p>
-<% else %>	
-	<%=render @questions%>
+  <p>Не знайдено жодних питань</p>
+<% else %>
+  <%=render @questions%>
 <% end %>
-	
-
-

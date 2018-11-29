@@ -1,10 +1,9 @@
 <h2 align="center">Питання:</h2>
 <% if user_signed_in?%>
-	<h3><%= link_to  "Задати нове питання", new_question_path %></h3>
+  <h3><%= link_to "Задати нове питання", new_question_path %></h3>
 <% end %>
 <% if @questions == [] %>
-	<p>Не знайдено жодних питань</p>
-<% else %>	
-	<%=render @questions%>
+  <p>Не знайдено жодних питань</p>
+<% else %>
+  <%=render @questions%>
 <% end %>
-	

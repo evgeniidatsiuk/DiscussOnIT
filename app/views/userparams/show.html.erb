@@ -1,7 +1,11 @@
-Аватар: <%= image_tag @userparam.avatar.url %>
-Нікнейм: <%= @userparam.nickname %><br />
-Ім'я: <%= @userparam.firstname %><br />
-Прізвище: <%= @userparam.lastname %><br />
-Вік: <%= @userparam.age %><br />
-<%= link_to "Редагувати", edit_userparam_path(@userparam.id) %><br />
-
+Аватар:
+<%= image_tag @userparam.avatar.url %>
+Нікнейм:
+<%= @userparam.nickname %><br/>
+Ім'я:
+<%= @userparam.firstname %><br/>
+Прізвище:
+<%= @userparam.lastname %><br/>
+Вік:
+<%= @userparam.age %><br/>
+<%= link_to "Редагувати", edit_userparam_path(@userparam.id) %><br/>

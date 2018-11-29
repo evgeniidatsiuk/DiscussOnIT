@@ -1,7 +1,8 @@
-  <%= image_tag @userparam.avatar.url %>
-<h3>Профіль користувача <b><%=@userparam.user.userparam.nickname%></b></h3>
+<%= image_tag @userparam.avatar.url %>
+<h3>Профіль користувача
+  <b><%=@userparam.user.userparam.nickname%></b>
+</h3>
 <%=form_for @userparam, url:userparam_path, method: :patch do |f|%>
 <%=render 'userparams/form', f:f%>
-  <%=f.submit "Оновити"%>
+<%=f.submit "Оновити"%>
 <%end%>
-
