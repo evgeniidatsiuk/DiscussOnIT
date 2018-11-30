@@ -4,6 +4,9 @@
 <%= post.text %><br>
 Aвтор:
 <b><%= post.user.userparam.nickname %></b>
+
+<br/>
+<%= raw Tag.new.all_tags(post).map(&:name).map{ |name| link_to name, category_path(name), class: 'font-weight-bold badge badge-secondary' }.join(' ') %>
 <br/>
 <p><%= link_to "Більше", post_path(post.id) %></p>
 <hr>
