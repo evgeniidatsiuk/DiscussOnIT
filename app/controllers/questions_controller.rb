@@ -11,8 +11,14 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    @all_tags = params[:question][:all_tags]
     @question = current_user.questions.build(question_params)
-    redirect_to root_path if @question.save
+    if @question.save
+      Tag.all_tags(@question, @all_tags)
+      redirect_to question_path(@question.id)
+    else
+      render 'new'
+    end
   end
 
   def show

@@ -4,5 +4,5 @@ class PagesController < ApplicationController
   def index
     @posts = Post.all
     @questions = Question.all
-   end
+  end
 end

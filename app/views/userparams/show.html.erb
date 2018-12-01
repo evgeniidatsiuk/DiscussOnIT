@@ -1,11 +1,22 @@
-Аватар:
-<%= image_tag @userparam.avatar.url %>
-Нікнейм:
-<%= @userparam.nickname %><br/>
-Ім'я:
-<%= @userparam.firstname %><br/>
-Прізвище:
-<%= @userparam.lastname %><br/>
-Вік:
-<%= @userparam.age %><br/>
-<%= link_to "Редагувати", edit_userparam_path(@userparam.id) %><br/>
+<div class="row">
+  <div class="col">
+    <div class="row">
+      <div class="col-2">
+        <%=image_tag @userparam.avatar.url,width:100%>
+      </div>
+      <div class="col">
+        <h3>Профіль користувача
+          <b><%=@userparam.nickname%></b>
+        </h3>
+        <h5><%=@userparam.user.email%></h5>
+        <h5><%=@userparam.firstname%></h5>
+        <h5><%=@userparam.lastname%></h5>
+        <h5><%= @userparam.age %></h5>
+        <%if user_signed_in? && current_user.id == @userparam.user.id%>
+          <%=link_to "Редагувати профіль", edit_userparam_path(@userparam.id)%>
+          <%=link_to "Змінити дані для входу", edit_user_registration_path%>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

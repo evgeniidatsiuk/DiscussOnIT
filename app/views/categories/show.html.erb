@@ -1,0 +1,12 @@
+<h2>Пости категорії "<%=@category.name%>" :</h2>
+<% if @posts == [] %>
+  <p>НЕ знайдено жодного запису</p>
+<% else %>
+  <%=render @posts%>
+<% end %>
+<h2>Питання категорії "<%=@category.name%>" :</h2>
+<% if @questions == [] %>
+  <p>Не знайдено жодних питань</p>
+<% else %>
+  <%=render @questions%>
+<% end %>

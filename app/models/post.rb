@@ -4,6 +4,6 @@ class Post < ApplicationRecord
   has_many :tags, as: :object
 
   def all_tags
-    Tag.where(object: self).map{|tag| tag = Category.find(tag.category_id)}.map(&:name).join(', ')
+    tags.map { |tag| Category.find(tag.category_id) }.map(&:name).join(', ')
   end
 end

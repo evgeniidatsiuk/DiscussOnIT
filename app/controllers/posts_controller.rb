@@ -14,9 +14,11 @@ class PostsController < ApplicationController
     @all_tags = params[:post][:all_tags]
     @post = current_user.posts.build(post_params)
     if @post.save
-      Tag.new.all_tags_c(@post, @all_tags)
-      redirect_to root_path
-  end
+      Tag.all_tags(@post, @all_tags)
+      redirect_to post_path(@post.id)
+    else
+      render 'new'
+    end
   end
 
   def show
