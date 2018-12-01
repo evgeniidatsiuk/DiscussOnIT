@@ -7,5 +7,4 @@ class Question < ApplicationRecord
   def all_tags
     tags.map { |tag| Category.find(tag.category_id) }.map(&:name).join(', ')
   end
-
 end
