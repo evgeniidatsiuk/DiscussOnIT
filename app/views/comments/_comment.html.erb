@@ -1,16 +1,21 @@
-<p>
-  <%=comment.text%><br/>
-  Користувач:
+<il class="content-list__item content-list__item_comment js-comment ">
+<div><div>  Користувач:
+  <%= image_tag comment.user.userparam.avatar.url, height:22 %>
   <%=comment.user.userparam.nickname%><br/>
-  <%= image_tag comment.user.userparam.avatar.url() %>
-</p>
-Відповісти на комент
+  <%=comment.text%><br/>
+  </div>
+  <div>
+
+  <div>
+</div>
 <%= form_for :comment, url:comments_path do |f| %>
+<% @object= comment%>
 <%= render 'comments/form', f:f%>
-<%= f.hidden_field :object_id, value: comment.id%>
-<%= f.hidden_field :object_type, value: comment.class.name%>
-<%= f.submit "Відправити" %>
 <% end %>
+<ul class="content-list content-list_nested-comments content-list_nested-comments-0">
 <% Comment.where(object: comment).each do |comment| %>
-<%=render 'comments/comment', comment:comment %>s
+<%=render 'comments/comment', comment:comment %>
+
 <%end%>
+<ul>
+</il>
