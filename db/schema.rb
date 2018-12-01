@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20181201173245) do
     t.integer "object_id"
     t.string "object_type"
     t.integer "activeuser_id"
+    t.datetime "read_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
