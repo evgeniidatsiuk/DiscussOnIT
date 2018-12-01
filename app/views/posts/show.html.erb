@@ -17,6 +17,7 @@
 <%= f.hidden_field :object_type, value: @post.class.name%>
 <%= f.submit "Відправити" %>
 <% end %>
+Коменти:
 <% Comment.where(object: @post).each do |comment| %>
 <%=render 'comments/comment', comment:comment %>
 <%end%>
