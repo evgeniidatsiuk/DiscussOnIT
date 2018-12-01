@@ -19,3 +19,13 @@
 <% Comment.where(object: @question).each do |comment| %>
 <%=render 'comments/comment', comment:comment %>
 <%end%>
+<hr>
+Дати відповідь
+<%= form_for :answer, url:answers_path do |f| %>
+<%= render 'answers/form', f:f%>
+<%= f.submit "Відповісти" %>
+<% end %>
+<hr>
+<h3>Відповіді:</h3>
+<hr>
+<%= render @question.answers%>

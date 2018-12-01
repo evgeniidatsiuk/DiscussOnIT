@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :userparams, except: [:index]
   resources :comments, except: %i[new edit show index]
   resources :questions
-
+  resources :answers, except: %i[index show]
   resources :posts
   resources :categories, only: %i[index show]
 

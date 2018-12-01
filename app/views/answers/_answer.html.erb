@@ -1,0 +1,5 @@
+<%=answer.text.html_safe%>
+<small class="text-right text-dark float-right"><%=image_tag answer.user.userparam.avatar.url, height:20%> <b class="align-bottom"><%= link_to answer.user.userparam.nickname, userparam_path(answer.user.userparam)%></b></small><br/>
+
+</div>
+<hr>
