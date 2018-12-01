@@ -12,45 +12,11 @@
 <% end %><br/>
 <%= form_for :comment, url:comments_path do |f| %>
 <% @object= @post%>
-<%= render 'comments/form', f:f%>
+  <%= render 'comments/form', f:f%>
 <% end %>
-<style>
-  .content-list__item_comment {
-      padding: 0;
-  }
-  .content-list__item {
-    position: relative;
-    box-sizing: border-box;
-    padding: 10px 0 14px;
-}
-li {
-    display: list-item;
-    text-align: -webkit-match-parent;
-}
-.content-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-.content-list_comments {
-    overflow: hidden;
-    margin: 20px 0 0;
-    margin-left: -20px;
-    padding-left: 20px;
-}
-ul{
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-}
-</style>
 Коменти:
 <ul class="content-list content-list_comments">
-<% Comment.where(object: @post).each do |comment| %>
-<%=render 'comments/comment', comment:comment %>
-<%end%>
+  <% Comment.where(object: @post).each do |comment| %>
+    <%=render 'comments/comment', comment:comment %>
+  <%end%>
 </ul>
