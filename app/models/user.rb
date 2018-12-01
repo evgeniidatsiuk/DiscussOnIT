@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :questions
   has_many :answers
+  has_many :comment, as: :activeuser
 
   def create_userparam
     # cтворює юзеру його парамси .
