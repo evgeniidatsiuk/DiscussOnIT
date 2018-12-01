@@ -2,6 +2,5 @@
 <small class="text-right text-dark float-right"><%=image_tag answer.user.userparam.avatar.url, height:20%>
   <b class="align-bottom"><%= link_to answer.user.userparam.nickname, userparam_path(answer.user.userparam)%></b>
 </small><br/>
-
-</div>
 <hr>
+<%=answer.text.html_safe%><small class="text-right text-dark float-right"><%=image_tag answer.user.userparam.avatar.url, height:20%><b class="align-bottom"><%= link_to answer.user.userparam.nickname, userparam_path(answer.user.userparam)%></small>Коментувати<%= form_for :comment, url:comments_path do |f| %><%= render 'comments/form', f:f%><%= f.hidden_field :object_id, value: @question.id%><%= f.hidden_field :object_type, value: @question.class.name%><%= f.submit "Відправити" %><% end %>Коменти:<% Comment.where(object: @question).each do |comment| %><%=render 'comments/comment', comment:comment %><%end%>
