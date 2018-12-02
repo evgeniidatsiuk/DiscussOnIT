@@ -22,12 +22,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post.view+=1
-    if @post.save
-
-    @post = Post.find(params[:id])
+    @post.view += 1
+    @post.save
   end
-end
 
   def edit; end
 
