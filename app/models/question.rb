@@ -3,6 +3,7 @@ class Question < ApplicationRecord
   has_many :сomments, as: :object
   has_many :tags, as: :object
   has_many :answers
+  has_one :right_answer, class_name: 'Answer'
 
   def url
     ['/' + object.class.name.downcase + 's', id].join('/')

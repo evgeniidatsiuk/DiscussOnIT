@@ -14,6 +14,10 @@ class Comment < ApplicationRecord
     @st = @st.object while @st.class.name == 'Comment'
   end
 
+  def rooter
+    objec.object.class.name != 'Comment'
+  end
+
   def create_notification
     nots = Notification.generate(object.user, self, 'create', user)
     # User.find(nots.activeuser_id).userparam
