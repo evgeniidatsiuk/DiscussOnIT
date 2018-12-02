@@ -10,13 +10,13 @@
   <p><%= link_to "Редагувати", edit_post_path(@post.id) %>
     <%= link_to "Видалити", post_path(@post.id), method: :delete %></p>
 <% end %><br/>
-Коментувати
 <%= form_for :comment, url:comments_path do |f| %>
-<%= render 'comments/form', f:f%>
-<%= f.hidden_field :object_id, value: @post.id%>
-<%= f.hidden_field :object_type, value: @post.class.name%>
-<%= f.submit "Відправити" %>
+<% @object= @post%>
+  <%= render 'comments/form', f:f%>
 <% end %>
-<% Comment.where(object: @post).each do |comment| %>
-<%=render 'comments/comment', comment:comment %>
-<%end%>
+Коменти:
+<ul class="content-list content-list_comments">
+  <% Comment.where(object: @post).each do |comment| %>
+    <%=render 'comments/comment', comment:comment %>
+  <%end%>
+</ul>

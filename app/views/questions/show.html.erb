@@ -9,16 +9,16 @@
   <p><%= link_to "Редагувати", edit_question_path(@question.id) %><br/>
     <%= link_to "Видалити", question_path(@question.id), method: :delete %><br/></p>
 <% end %><br/>
-Коментувати
+
 <%= form_for :comment, url:comments_path do |f| %>
-<%= render 'comments/form', f:f%>
-<%= f.hidden_field :object_id, value: @question.id%>
-<%= f.hidden_field :object_type, value: @question.class.name%>
-<%= f.submit "Відправити" %>
+<% @object= @question%>
+  <%= render 'comments/form', f:f%>
 <% end %>
+<ul>
 <% Comment.where(object: @question).each do |comment| %>
-<%=render 'comments/comment', comment:comment %>
+  <%=render 'comments/comment', comment:comment %>
 <%end%>
+</ul>
 <hr>
 Дати відповідь
 <%= form_for :answer, url:answers_path do |f| %>
