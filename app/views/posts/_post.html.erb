@@ -5,6 +5,8 @@
 Aвтор:
 <b><%= post.user.userparam.nickname %></b>
 <br/>
+View:
+<%= post.view %><br>
 <%= raw post.tags.map{ |tag| link_to tag.category.name, category_path(tag.category.name), class: 'font-weight-bold badge badge-secondary' }.join(' ') %>
 <br/>
 <p><%= link_to "Більше", post_path(post.id) %></p>
