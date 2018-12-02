@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :questions
   has_many :answers
   has_many :notifications
+  has_many :votes
 
   def create_userparam
     # cтворює юзеру його парамси .

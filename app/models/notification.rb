@@ -10,4 +10,8 @@ class Notification < ApplicationRecord
       Notification.where(user_id: user.id, object_type: object.class.name, object_id: object.id, action: action, activeuser_id: activeuser.id).first_or_create!
     end
   end
+
+  def write
+    [activeuser.userparam.nickname, action, object.class.name].join(' ')
+  end
 end
