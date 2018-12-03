@@ -1,31 +1,44 @@
-<%= image_tag @question.user.userparam.avatar.url %><br/>
-Користувач:<%= @question.user.userparam.nickname %><br/>
-Назва:
-<%= @question.name %><br/>
-Текст:
-<%= @question.text %><br/>
-<% if @question.user_id == current_user.id %>
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-6">
+      <div class="row">
+        <div class="col col-lg-4">
+          <%= link_to userparam_path(@question.user.userparam.id) do %>
+          <p class="title"><%= image_tag @question.user.userparam.avatar.url, size: "48x48" %>
+          <%= @question.user.userparam.nickname %></p>
+          <%end%>
+        </div>
+        <div class="col col-lg-8">
+          <p class="title"><%= @question.name %>
+          <% if @question.user_id == current_user.id %>
+          <%= link_to "Редагувати", edit_question_path(@question.id) %>
+            <%= link_to "Видалити", question_path(@question.id), method: :delete %>
+            <% end %></p>
+        </div>
+        <%= @question.text %><br/>
+      </div>
+    </div>
+    <div class="col col-lg-6">
+      <h3>Відповіді:</h3>
+      <hr>
+      <%= render @question.answers%>
+    </div>
+  </div>
+  <%= form_for :comment, url:comments_path do |f| %>
+  <% @object= @question%>
+    <%= render 'comments/form', f:f%>
+  <% end %>
+  <ul>
+    <% Comment.where(object: @question).each do |comment| %>
+      <%=render 'comments/comment', comment:comment %>
+      <hr>
+    <%end%>
 
-  <p><%= link_to "Редагувати", edit_question_path(@question.id) %><br/>
-    <%= link_to "Видалити", question_path(@question.id), method: :delete %><br/></p>
-<% end %><br/>
+  </ul>
 
-<%= form_for :comment, url:comments_path do |f| %>
-<% @object= @question%>
-  <%= render 'comments/form', f:f%>
+  Дати відповідь
+  <%= form_for :answer, url:answers_path do |f| %>
+  <%= render 'answers/form', f:f%>
+  <%= f.submit "Відповісти" %>
 <% end %>
-<ul>
-<% Comment.where(object: @question).each do |comment| %>
-  <%=render 'comments/comment', comment:comment %>
-<%end%>
-</ul>
-<hr>
-Дати відповідь
-<%= form_for :answer, url:answers_path do |f| %>
-<%= render 'answers/form', f:f%>
-<%= f.submit "Відповісти" %>
-<% end %>
-<hr>
-<h3>Відповіді:</h3>
-<hr>
-<%= render @question.answers%>
+</div>

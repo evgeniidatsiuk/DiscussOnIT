@@ -4,7 +4,7 @@
   		<%if comment.user.id==current_user.id%><%=link_to comment_path(comment.id),data: {confirm: "Видалити?"}, method: :delete do%> <span class = "fa fa-times" style="color: lightgray;"><%end%>
   		<%end%>
   </div>
-
+<!--Юлік на це знизу увагу не звиртати то хня!--!>
   <%= form_for :comment, url:comments_path do |f| %>
   <% @object= comment%>
     <%= render 'comments/form', f:f%>
@@ -15,5 +15,4 @@
 
     <%end%>
   </ul>
-    <hr class="hr-1" />
 </il>
