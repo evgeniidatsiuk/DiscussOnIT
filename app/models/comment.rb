@@ -1,21 +1,29 @@
 class Comment < ApplicationRecord
   after_create :create_notification
 
-  belongs_to :object, polymorphic: true
+  belongs_to :object, polymorphic: true, dependent: :destroy
   belongs_to :user
-  has_many :сomments, as: :object
+  has_many :comments, as: :object
 
   def url
-    ['', root.class.name.downcase + 's', root.id.to_s + '#comment_' + id.to_s].join('/')
+    root.url + '/#comments_' + id.to_s
   end
 
   def root
-    @st = object
-    @st = @st.object while @st.class.name == 'Comment'
+    pp self
+    if object_type == 'Answer'
+      return object.question
+    else
+      if object_type == 'Comment'
+        object.root
+      else
+        object
+      end
+    end
   end
 
   def rooter
-    objec.object.class.name != 'Comment'
+    object.class.name != 'Comment'
   end
 
   def create_notification

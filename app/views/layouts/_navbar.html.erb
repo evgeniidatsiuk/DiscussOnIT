@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -26,18 +26,26 @@
 
     <ul class="navbar-nav">
       <%if user_signed_in?%>
-        <span class="navbar-text">
-          <%= current_user.userparam.nickname %>
-        </span>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            <img class="img-circle" style="margin-top: -4px; margin-bottom: -4px;" height="30px" src="<%=current_user.userparam.avatar.url%>">
+            <%if current_user.userparam %>
+              <span class="navbar-text">
+                <%= current_user.userparam.nickname %>
+              </span>
+              <img class="img-circle" style="margin-top: -4px; margin-bottom: -4px;" height="30px" src="<%=current_user.userparam.avatar.url%>">
+            <%else%>
+              <%= current_user.email %>
+            <%end%>
           </a>
           <div class="dropdown-menu dropdown-menu-right">
+            <%if current_user.userparam %>
+              <p class="dropdown-item">
+                <span class="fa fa-user" style="color: lightgray;"></span> <%= link_to "Профіль", userparam_path(current_user.userparam.id)%>
+              </p>
+            <%end%>
             <p class="dropdown-item">
-              <span class="fa fa-user" style="color: lightgray;"></span>&nbsp;<%= link_to t('profile'), userparam_path(current_user.userparam.id)%></p>
-            <p class="dropdown-item">
-              <span class="fa fa-envelope " style="color: lightgray;"></span>&nbsp;<%= link_to "Сповіщення", notifications_path%>
+              <span class="fa fa-envelope " style="color: lightgray;"></span> <%= link_to "Сповіщення", notifications_path%>
               <% if Notification.where(user_id: current_user.id).count > 0%>
                 <span class="badge badge-primary" data-toggle="tooltip" title="Кількість непрочитаних">
                   <%= Notification.where(user_id: current_user.id).count%>
@@ -46,14 +54,14 @@
             </p>
             <hr>
             <p class="dropdown-item">
-              <span class="fa fa-sign-out" style="color: lightgray;"></span>&nbsp;<%= link_to t('sign_out'), destroy_user_session_path,method: :delete%></p>
+              <span class="fa fa-sign-out" style="color: lightgray;"></span>&nbsp;<%= link_to "Вихід", destroy_user_session_path,method: :delete%></p>
 
           </div>
         </li>
         <li class="nav-item"></li>
       <%else%>
         <li class="nav-item">
-          <%= link_to t('sign_in'), new_user_session_path, class:'nav-link'%>
+          <%= link_to "Вхід", new_user_session_path, class:'nav-link'%>
         </li>
       <%end%>
     </ul>

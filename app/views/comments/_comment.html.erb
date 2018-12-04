@@ -1,18 +1,22 @@
 <il id="comment_<%=comment.id%>" class="content-list__item content-list__item_comment js-comment ">
-  <div class="bg-light">
-  		<b><%=image_tag comment.user.userparam.avatar.url, height:22%></span> <%=comment.user.userparam.nickname%>:</b> <%=strip_tags(comment.text)%>
-  		<%if comment.user.id==current_user.id%><%=link_to comment_path(comment.id),data: {confirm: "Видалити?"}, method: :delete do%> <span class = "fa fa-times" style="color: lightgray;"><%end%>
-  		<%end%>
-  </div>
-<!--Юлік на це знизу увагу не звиртати то хня!--!>
-  <%= form_for :comment, url:comments_path do |f| %>
-  <% @object= comment%>
-    <%= render 'comments/form', f:f%>
-  <% end %>
-  <ul class="content-list content-list_nested-comments content-list_nested-comments-0">
-    <% Comment.where(object: comment).each do |comment| %>
-      <%=render 'comments/comment', comment:comment %>
+  <div
+    class="bg-light forms-b>
+    <b><%=image_tag comment.user.userparam.avatar.url, height:22%></span>
+    <%=comment.user.userparam.nickname%>:</b>
+  <%=comment.text%>
 
-    <%end%>
+  <%if comment.user.id==current_user.id%>
+    <%=link_to comment_path(comment.id),data: {confirm: "Видалити?"}, method: :delete do%>
+      <span class="fa fa-times" style="color:lightgray;"></span>
+      <%end%>
+<%else%>
+<% @object= comment%>
+  <%= render 'comments/form'%>
+<%end%>
+
+</div>
+<!--Юлік на це знизу увагу не звиртати то хня!--!>
+  <ul>
+    <%=render comment.comments %>
   </ul>
 </il>

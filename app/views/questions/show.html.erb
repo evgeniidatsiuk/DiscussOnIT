@@ -5,40 +5,53 @@
         <div class="col col-lg-4">
           <%= link_to userparam_path(@question.user.userparam.id) do %>
           <p class="title"><%= image_tag @question.user.userparam.avatar.url, size: "48x48" %>
-          <%= @question.user.userparam.nickname %></p>
-          <%end%>
-        </div>
-        <div class="col col-lg-8">
-          <p class="title"><%= @question.name %>
-          <% if @question.user_id == current_user.id %>
-          <%= link_to "Редагувати", edit_question_path(@question.id) %>
-            <%= link_to "Видалити", question_path(@question.id), method: :delete %>
-            <% end %></p>
-        </div>
-        <%= @question.text %><br/>
+            <%= @question.user.userparam.nickname %></p>
+        <%end%>
       </div>
-    </div>
-    <div class="col col-lg-6">
-      <h3>Відповіді:</h3>
-      <hr>
-      <%= render @question.answers%>
-    </div>
+      <div class="col col-lg-8">
+        <p class="title"><%= @question.name %>
+          <% if @question.user_id == current_user.id %>
+            <%= link_to edit_question_path(@question.id) do%>
+            <span class="fa fa-pencil"></span><%end%>
+          <%= link_to question_path(@question.id),data: {confirm: "Видалити?"}, method: :delete do %>
+          <span class="fa fa-times" style="color: red;"></span>
+        <%end%>
+      <% end %>
+    </p>
   </div>
-  <%= form_for :comment, url:comments_path do |f| %>
-  <% @object= @question%>
-    <%= render 'comments/form', f:f%>
-  <% end %>
-  <ul>
-    <% Comment.where(object: @question).each do |comment| %>
-      <%=render 'comments/comment', comment:comment %>
-      <hr>
-    <%end%>
-
-  </ul>
-
-  Дати відповідь
+  <%= @question.text %><br/>
+</div>
+</div>
+<div class="col col-lg-6">
+  <% if @question.right_answer_id %>
+  <h3>Рекомендована відповідь</h3>
+<hr>
+  <%=render Answer.find(@question.right_answer_id) %>
+  <%end%>
+<h3>Відповіді:</h3>
+<hr>
+<%= render @answers%>
+<div style="text-align: center;">
+  <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#new_answer">
+    <span class="glyphicon glyphicon-plus"></span>Відповісти
+  </button>
+</div>
+<br/>
+<div id="new_answer" class="collapse">
   <%= form_for :answer, url:answers_path do |f| %>
   <%= render 'answers/form', f:f%>
   <%= f.submit "Відповісти" %>
-<% end %>
+  <% end %>
+</div>
+
+</div>
+</div>
+<% @object= @question%>
+<%= render 'comments/form'%>
+Коменти:
+<ul>
+  <%=render @comments %>
+</ul>
+
+
 </div>

@@ -1,7 +1,7 @@
  <%if @question.right_answer_id == answer.id %>
-<div style="background-color:green">
+<div id="answer_<%=answer.id%>" style="background-color:green">
   <%else%>
-  <div>
+  <div id="answer_<%=answer.id%>">
   <%end%>
   Користувач<%=image_tag answer.user.userparam.avatar.url, height:20%>
   <b class="align-bottom"><%= link_to answer.user.userparam.nickname, userparam_path(answer.user.userparam)%></b>
@@ -16,10 +16,7 @@
     </button>
   </div>
   <div id="answer_comment_block_<%=answer.id%>" class="collapse">
-    <%= form_for :comment, url:comments_path do |f| %>
-    <%@object=answer %><%= render 'comments/form', f:f%>
-    <% end %>Коменти:<% Comment.where(object: @question).each do |comment| %><%=render 'comments/comment', comment:comment %>
-    <%end%>
+    <%@object=answer %><%= render 'comments/form'%>Коменти:<%=render answer.comments %>
   </div>
 </div>
 <hr>

@@ -23,12 +23,14 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers.to_a - [Answer.find_by(id: @question.right_answer_id)]
+    @comments = @question.comments
   end
 
   def edit; end
 
   def update
-    redirect_to root_path if @question.update(question_params)
+    redirect_to question_path(@question.id) if @question.update(question_params)
   end
 
   def destroy
