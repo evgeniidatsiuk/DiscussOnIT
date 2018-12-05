@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_answer, only: %i[edit update destroy]
+  before_action :find_answer, only: %i[edit update destroy right]
 
   def new
     @answer = Answer.new
@@ -24,6 +24,13 @@ class AnswersController < ApplicationController
   def destroy
     @post.destroy
     redirect_to root_path
+  end
+
+  def right
+    if @answer.question.user.id = current_user.id
+      @answer.question.update(right_answer_id: @answer.id)
+      redirect_to question_path(@answer.question.id)
+    end
   end
 
   private
