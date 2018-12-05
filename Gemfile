@@ -40,17 +40,16 @@ gem 'devise'
 gem 'paperclip', '~> 6.0.0'
 # text edit
 gem 'tinymce-rails'
-
+# css
+gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
-
-gem 'bootstrap', '~> 4.0.0'
 
 gem 'rubocop', require: false
 
 # Вибір країни
 gem 'country_select'
 # По-сторінковий вивід
-gem 'will_paginate', '~> 3.1.0'
+# gem 'will_paginate', '~> 3.1.0'
 
 gem 'order_as_specified'
 
