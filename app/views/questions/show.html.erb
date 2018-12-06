@@ -23,11 +23,11 @@
 </div>
 </div>
 <div class="col col-lg-6">
-  <% if @question.right_answer_id %>
+<% if @question.right_answer_id %>
   <h3>Рекомендована відповідь</h3>
-<hr>
+  <hr>
   <%=render Answer.find(@question.right_answer_id) %>
-  <%end%>
+<%end%>
 <h3>Відповіді:</h3>
 <hr>
 <%= render @answers%>
@@ -41,7 +41,7 @@
   <%= form_for :answer, url:answers_path do |f| %>
   <%= render 'answers/form', f:f%>
   <%= f.submit "Відповісти" %>
-  <% end %>
+<% end %>
 </div>
 
 </div>
@@ -50,8 +50,7 @@
 <%= render 'comments/form'%>
 Коменти:
 <ul>
-  <%=render @comments %>
+<%=render @comments %>
 </ul>
-
 
 </div>

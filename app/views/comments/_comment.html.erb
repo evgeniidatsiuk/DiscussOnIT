@@ -8,8 +8,8 @@
   <%if comment.user.id==current_user.id%>
     <%=link_to comment_path(comment.id),data: {confirm: "Видалити?"}, method: :delete do%>
       <span class="fa fa-times" style="color:lightgray;"></span>
-      <%end%>
-<%else%>
+    <%end%>
+      <%else%>
 <% @object= comment%>
   <%= render 'comments/form'%>
 <%end%>

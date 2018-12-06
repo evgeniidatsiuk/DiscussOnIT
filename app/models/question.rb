@@ -4,9 +4,9 @@ class Question < ApplicationRecord
   has_many :tags, as: :object
   has_many :answers
   has_one :right_answer, class_name: 'Answer'
+  has_many :votes, as: :object
 
   def url
-    pp self
     ['', self.class.name.downcase + 's', id.to_s].join('/')
   end
 

@@ -45,17 +45,19 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 
 gem 'rubocop', require: false
+gem 'rbeautify'
 
 # Вибір країни
 gem 'country_select'
 # По-сторінковий вивід
 # gem 'will_paginate', '~> 3.1.0'
 
+#вивід об'єктів відновідно до знаходження в масиві пошуку
 gem 'order_as_specified'
 
 gem 'pg'
-# search gem
-gem 'ransack'
+# search gem думаю напишу сам
+#gem 'ransack'
 
 # tests show
 gem 'simplecov', require: false, group: :test

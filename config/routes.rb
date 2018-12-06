@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   resources :categories, only: %i[index show]
   resources :notifications, only: [:index]
 
+  get '/:type/:id/positiv_vote', to: 'votes#positiv_vote', as: 'positiv_vote'
+  get '/:type/:id/negativ_vote', to: 'votes#negativ_vote', as: 'negativ_vote'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

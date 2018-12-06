@@ -1,13 +1,35 @@
-Назва:
-<b><%= post.name %></b><br>
-Текст:
-<%= post.text %><br>
-Aвтор:
-<b><%= post.user.userparam.nickname %></b>
-<br/>
-View:
-<%= post.view %><br>
-<%= raw post.tags.map{ |tag| link_to tag.category.name, category_path(tag.category.name), class: 'font-weight-bold badge badge-secondary' }.join(' ') %>
-<br/>
-<p><%= link_to "Більше", post_path(post.id) %></p>
+<div class="row">
+  <div class="col-1" align="center">
+		 <span class="fa fa-eye" title="Перегляди"><span>
+		<p style="font-size: 32px" align="center"><b><%=post.view%></b></p>
+		<hr>
+    <%=link_to positiv_vote_path(post.class.name,post.id) do%>
+    <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
+  <%end%>
+  <h3 class="text-center text-dark" style="margin: 0px"><%=post.votes.sum(:score)%></h3>
+  <%=link_to negativ_vote_path(post.class.name,post.id) do%>
+  <span class="fa fa-chevron-down" title="Голосувати ПРОТИ"></span>
+<%end%>
+</div>
+<div class="col">
+<h5><%= link_to post.name, post_path(post.id) %>
+  Автор: <%=image_tag post.user.userparam.avatar.url, height:22%>
+  <small>
+    <b class="text-secondary"><%= link_to post.user.userparam.nickname, userparam_path(post.user.userparam)%>
+    </b>
+  </small>
+
+</h5>
+<p>
+  <%=strip_tags(post.text)[0..255]%>...
+  <div>
+    <p>
+      <%= raw post.tags.map{ |tag| link_to tag.category.name, category_path(tag.category.name), class: 'font-weight-bold badge badge-secondary' }.join(' ') %>
+    </p>
+  </div>
+</p>
+<br>
+
+</div>
+</div>
 <hr>

@@ -10,9 +10,8 @@ class Comment < ApplicationRecord
   end
 
   def root
-    pp self
     if object_type == 'Answer'
-      return object.question
+      object.question
     else
       if object_type == 'Comment'
         object.root
