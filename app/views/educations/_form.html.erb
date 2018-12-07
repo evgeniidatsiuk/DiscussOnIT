@@ -1,0 +1,6 @@
+<p>
+<%= fields_for @education do |e|%>
+<%= t.label "Університет" %>
+<%= t.select :university , :name , University.all %>
+<%end%>
+</p>
