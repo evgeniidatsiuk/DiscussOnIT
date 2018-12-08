@@ -1,3 +1,4 @@
 class Specialty < ApplicationRecord
-  has_and_belongs_to_many :university
+  has_many :university_specialties
+  has_many :universities, through: :university_specialties
 end

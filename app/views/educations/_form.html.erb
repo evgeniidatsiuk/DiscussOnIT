@@ -1,6 +1,19 @@
 <p>
 <%= fields_for @education do |e|%>
-<%= t.label "Університет" %>
-<%= t.select :university , :name , University.all %>
+<%= e.label "Університет" %>
+<%= e.select :university  , University.all.collect {|p| [ p.name, p.id ] },{onchange: "innerReplace();" } %>
+    <%= e.select :specialty , "" %>
 <%end%>
+<script type="text/javascript">
+
+function innerReplace()
+{
+
+    var sel = document.getElementById("university").value;
+    var catselect = document.getElementById("specialty");
+
+    catselect.innerHTML = <%Specialty.where(university_id: sel).all.map { |specialty| [specialty.name, specialty.id] } %>
+}
+
+</script>
 </p>

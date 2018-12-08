@@ -1,5 +1,4 @@
 class Education < ApplicationRecord
-  belongs_to :user
-  belongs_to :university
-  # belongs_to :specialty
+  belongs_to :userparam
+  belongs_to :university_specialty
 end

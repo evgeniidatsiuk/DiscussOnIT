@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181207171227) do
+ActiveRecord::Schema.define(version: 20181208153232) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -63,9 +63,8 @@ ActiveRecord::Schema.define(version: 20181207171227) do
   end
 
   create_table "educations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "university_id"
-    t.integer "specialty_id"
+    t.integer "userparam_id"
+    t.integer "university_specialty_id"
     t.integer "begind_year"
     t.integer "end_year"
     t.datetime "created_at", null: false
@@ -122,6 +121,13 @@ ActiveRecord::Schema.define(version: 20181207171227) do
     t.string "name"
     t.string "desc"
     t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "university_specialities", force: :cascade do |t|
+    t.integer "university_id"
+    t.integer "speciality_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
