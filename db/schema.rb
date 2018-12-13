@@ -96,10 +96,10 @@ ActiveRecord::Schema.define(version: 20181208153232) do
     t.integer "user_id"
     t.string "name"
     t.string "text"
+    t.integer "view", default: 0
+    t.integer "right_answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "right_answer_id"
-    t.integer "view", default: 0
   end
 
   create_table "specialties", force: :cascade do |t|
@@ -125,15 +125,16 @@ ActiveRecord::Schema.define(version: 20181208153232) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "university_specialities", force: :cascade do |t|
+  create_table "university_specialties", force: :cascade do |t|
     t.integer "university_id"
-    t.integer "speciality_id"
+    t.integer "specialty_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "userparams", force: :cascade do |t|
     t.integer "user_id"
+    t.string "nickname"
     t.string "firstname"
     t.string "lastname"
     t.string "age"
@@ -143,7 +144,6 @@ ActiveRecord::Schema.define(version: 20181208153232) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string "nickname"
   end
 
   create_table "users", force: :cascade do |t|

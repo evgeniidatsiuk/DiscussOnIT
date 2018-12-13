@@ -1,2 +1,0 @@
-class UniversitySpeciality < ApplicationRecord
-end

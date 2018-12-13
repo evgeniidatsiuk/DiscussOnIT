@@ -1,19 +1,10 @@
 <p>
-<%= fields_for @education do |e|%>
+<%= fields_for :education do |e|%>
 <%= e.label "Університет" %>
-<%= e.select :university  , University.all.collect {|p| [ p.name, p.id ] },{onchange: "innerReplace();" } %>
-    <%= e.select :specialty , "" %>
+<%= e.select :university  , University.all.collect {|p| [ p.name, p.id ] },{include_blank: false},{onchange: "selUn();" } %>
+    <%= e.select :specialty,  "", prompt:"Спочатку Оберіть заклад" %>
 <%end%>
 <script type="text/javascript">
-
-function innerReplace()
-{
-
-    var sel = document.getElementById("university").value;
-    var catselect = document.getElementById("specialty");
-
-    catselect.innerHTML = <%Specialty.where(university_id: sel).all.map { |specialty| [specialty.name, specialty.id] } %>
-}
 
 </script>
 </p>

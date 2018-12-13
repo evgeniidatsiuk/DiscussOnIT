@@ -1,4 +1,4 @@
 class University < ApplicationRecord
   has_many :university_specialties
-  has_many :university_specialties, through: :specialties
+  has_many :specialties, through: :university_specialties
 end

@@ -10,9 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
+//= require jquery
+//= require jquery_ujs
+//= require tinymce-jquery
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require popper
+//= require bootstrap-sprockets
+function selUn(){
+  var replace ={ <%=raw University.all.map{|university| "'"+university.id.to_s+"':'"+raw(university.specialties.collect { |specialty|'<option value="'+specialty.id.to_s+'">'+specialty.name.to_s+"</option>" }.join(""))+"'" }.join(",")%>}
+  var sel = document.getElementById("education_university").value;
+  var catselect = document.getElementById("education_specialty");
+
+  catselect.innerHTML = replace[sel];
+}
