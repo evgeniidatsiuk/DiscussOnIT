@@ -20,8 +20,8 @@
 //= require bootstrap-sprockets
 function selUn(){
   var replace ={ <%=raw University.all.map{|university| "'"+university.id.to_s+"':'"+raw(university.specialties.collect { |specialty|'<option value="'+specialty.id.to_s+'">'+specialty.name.to_s+"</option>" }.join(""))+"'" }.join(",")%>}
-  var sel = document.getElementById("education_university").value;
-  var catselect = document.getElementById("education_specialty");
+  var sel = document.getElementById("education_university_id").value;
+  var catselect = document.getElementById("education_specialty_id");
 
   catselect.innerHTML = replace[sel];
 }

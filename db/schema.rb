@@ -64,7 +64,8 @@ ActiveRecord::Schema.define(version: 20181208153232) do
 
   create_table "educations", force: :cascade do |t|
     t.integer "userparam_id"
-    t.integer "university_specialty_id"
+    t.integer "university_id"
+    t.integer "specialty_id"
     t.integer "begind_year"
     t.integer "end_year"
     t.datetime "created_at", null: false

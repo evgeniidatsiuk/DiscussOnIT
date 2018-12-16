@@ -3,7 +3,7 @@ class Userparam < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: %r{\Aimage/.*\z}
 
   belongs_to :user
-  has_many :educations
+  has_one :education
 
   validates :nickname, presence: true
 end
