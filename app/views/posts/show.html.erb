@@ -9,7 +9,16 @@
 <% if @post.user_id == current_user.id %>
   <p><%= link_to "Редагувати", edit_post_path(@post.id) %>
     <%= link_to "Видалити", post_path(@post.id), method: :delete %></p>
-<% end %><br/>
+    <% else %>
+      <%= link_to chose_path(@post.class.name,@post.id) do %>
+        <%if Chosen.find_by(object_id: @post.id,object_type: @post.class.name, user_id: current_user.id) %>
+          <span class="fa fa-star"></span>
+        <%else%>
+          <span class="fa fa-star-o"></span>
+        <%end%>
+      <%end%>
+    <% end %>
+    <br/>
 <% @object= @post%>
   <%= render 'comments/form'%>
   Коменти:

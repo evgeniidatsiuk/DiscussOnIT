@@ -12,11 +12,20 @@
         <p class="title"><%= @question.name %>
           <% if @question.user_id == current_user.id %>
             <%= link_to edit_question_path(@question.id) do%>
-            <span class="fa fa-pencil"></span><%end%>
-          <%= link_to question_path(@question.id),data: {confirm: "Видалити?"}, method: :delete do %>
-          <span class="fa fa-times" style="color: red;"></span>
-        <%end%>
-      <% end %>
+              <span class="fa fa-pencil"></span>
+            <%end%>
+            <%= link_to question_path(@question.id),data: {confirm: "Видалити?"}, method: :delete do %>
+              <span class="fa fa-times" style="color: red;"></span>
+            <%end%>
+          <% else %>
+            <%= link_to chose_path(@question.class.name,@question.id) do %>
+              <%if Chosen.find_by(object_id: @question.id,object_type: @question.class.name, user_id: current_user.id) %>
+                <span class="fa fa-star"></span>
+              <%else%>
+                <span class="fa fa-star-o"></span>
+              <%end%>
+            <%end%>
+          <% end %>
     </p>
   </div>
   <%= @question.text %><br/>

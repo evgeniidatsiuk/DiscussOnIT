@@ -14,10 +14,11 @@ class User < ApplicationRecord
   has_many :answers
   has_many :notifications
   has_many :votes
+  has_many :chosens, dependent: :destroy
 
   def create_userparam
     # cтворює юзеру його парамси .
     @userparam = Userparam.create(user_id: id)
     @userparam.save
-   end
+  end
 end

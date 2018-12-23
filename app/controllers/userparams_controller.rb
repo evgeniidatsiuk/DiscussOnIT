@@ -11,7 +11,10 @@ class UserparamsController < ApplicationController
   def create
     @userparam = current_user.build_userparam(profile_params)
     @education = @userparam.build_education(education_params)
-    redirect_to userparam_path(@userparam.id) if @userparam.save && @education.save
+    if @userparam.save
+      redirect_to userparam_path(@userparam.id)
+      @education.save
+    end
   end
 
   def show

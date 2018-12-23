@@ -5,6 +5,8 @@ class Question < ApplicationRecord
   has_many :answers
   has_one :right_answer, class_name: 'Answer'
   has_many :votes, as: :object
+  has_many :chosens, as: :object, dependent: :destroy
+  include ChosenModul
 
   def url
     ['', self.class.name.downcase + 's', id.to_s].join('/')

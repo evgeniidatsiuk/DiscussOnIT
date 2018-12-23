@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   resources :categories, only: %i[index show]
   resources :notifications, only: [:index]
 
+  get '/:type/:id/chose', to: 'chosens#chose', as: 'chose'
+
   get '/:type/:id/positiv_vote', to: 'votes#positiv_vote', as: 'positiv_vote'
   get '/:type/:id/negativ_vote', to: 'votes#negativ_vote', as: 'negativ_vote'
 
