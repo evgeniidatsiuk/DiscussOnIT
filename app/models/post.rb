@@ -1,8 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :сomments, as: :object
-  has_many :tags, as: :object
-  has_many :votes, as: :object
+
+  has_many :comments, as: :object, dependent: :destroy
+  has_many :tags, as: :object, dependent: :destroy
+  has_many :votes, as: :object, dependent: :destroy
   has_many :chosens, as: :object, dependent: :destroy
   include ChosenModul
 

@@ -1,10 +1,11 @@
 class Question < ApplicationRecord
   belongs_to :user
-  has_many :comments, as: :object
-  has_many :tags, as: :object
-  has_many :answers
-  has_one :right_answer, class_name: 'Answer'
-  has_many :votes, as: :object
+
+  has_many :comments, as: :object, dependent: :destroy
+  has_many :tags, as: :object, dependent: :destroy
+  has_many :answers, dependent: :destroy
+  has_one :right_answer, class_name: 'Answer', dependent: :destroy
+  has_many :votes, as: :object, dependent: :destroy
   has_many :chosens, as: :object, dependent: :destroy
   include ChosenModul
 
