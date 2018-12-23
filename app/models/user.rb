@@ -7,13 +7,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :userparam
-  has_many :comments
-  has_many :posts
-  has_many :questions
-  has_many :answers
-  has_many :notifications
-  has_many :votes
+  has_one :userparam , dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :notifications, dependent: :destroy
+  has_many :votes, dependent: :destroy
+  
 
   def create_userparam
     # cтворює юзеру його парамси .
