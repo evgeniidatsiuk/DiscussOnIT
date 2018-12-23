@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   root to: 'pages#index'
+
+  namespace :pages do
+    post :search
+    get :search
+  end
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -15,6 +21,9 @@ Rails.application.routes.draw do
   resources :posts
   resources :categories, only: %i[index show]
   resources :notifications, only: [:index]
+
+  get '/:type/:id/positiv_vote', to: 'votes#positiv_vote', as: 'positiv_vote'
+  get '/:type/:id/negativ_vote', to: 'votes#negativ_vote', as: 'negativ_vote'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

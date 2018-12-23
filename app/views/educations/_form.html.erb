@@ -1,0 +1,8 @@
+<p>
+<%= fields_for @education do |e|%>
+<%= e.label "Університет" %>
+<%= e.select :university_id  , University.all.collect {|p| [ p.name, p.id ] },{include_blank: true},{onchange: "selUn();" } %>
+    <%= e.select :specialty_id,  "", prompt:"Спочатку Оберіть заклад" %>
+<%end%>
+
+</p>

@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
   after_create :create_notification
 
-  belongs_to :object, polymorphic: true, dependent: :destroy
+  belongs_to :object, polymorphic: true
   belongs_to :user
   has_many :comments, as: :object
 
@@ -10,9 +10,8 @@ class Comment < ApplicationRecord
   end
 
   def root
-    pp self
     if object_type == 'Answer'
-      return object.question
+      object.question
     else
       if object_type == 'Comment'
         object.root
@@ -27,7 +26,6 @@ class Comment < ApplicationRecord
   end
 
   def create_notification
-    nots = Notification.generate(object.user, self, 'create', user)
-    # User.find(nots.activeuser_id).userparam
+    Notification.generate(object.user, self, 'create', user)
   end
 end

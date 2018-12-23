@@ -18,11 +18,10 @@
         <%=link_to "Категорії", categories_path, class:"nav-link"%>
       </li>
     </ul>
-
-    <form class="form-inline my-2 my-lg-0" style="padding:0px 15px 0px;">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <%= form_for :search, url: pages_search_path, html:{ class:"form-inline my-2 my-lg-0",style:"padding:0px 15px 0px"} do |f| %>
+      <%= f.text_field :text , class:"form-control mr-sm-2",prompt:"Search" %>
+      <%= f.submit "Search", class:"btn btn-outline-success my-2 my-sm-0" %>
+    <%end%>
 
     <ul class="navbar-nav">
       <%if user_signed_in?%>

@@ -1,26 +1,26 @@
 <a href="#" data-toggle="modal" data-target="#new_comment_to_<%=@object.class.name.downcase%>_<%=@object.id%>">
-    <span class="fa fa-comment"></span></a>
-  <div class="modal fade" id="new_comment_to_<%=@object.class.name.downcase%>_<%=@object.id%>" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-        <%= form_for :comment, url:comments_path do |f| %>
-        <div class="modal-header">
-          <h5 class="modal-title">Новий коментарь</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true" class="fa fa-times"></span>
-          </button>
-        </div>
+  <span class="fa fa-comment"></span></a>
+<div class="modal fade" id="new_comment_to_<%=@object.class.name.downcase%>_<%=@object.id%>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <%= form_for :comment, url:comments_path do |f| %>
+      <div class="modal-header">
+        <h5 class="modal-title">Новий коментарь</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="fa fa-times"></span>
+        </button>
+      </div>
 
-        <div class="modal-body">
-          <%= f.text_area :text, class: "form-control", :rows => 8 %>
-          <%= f.hidden_field :object_id, value: @object.id%>
-          <%= f.hidden_field :object_type, value: @object.class.name%>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Закрити</button>
-          <%= f.submit "Відправити", :class=>"btn btn-sm btn-primary"%>
-        </div>
-      <%end%>
-    </div>
+      <div class="modal-body">
+        <%= f.text_area :text, class: "form-control", :rows => 8 %>
+        <%= f.hidden_field :object_id, value: @object.id%>
+        <%= f.hidden_field :object_type, value: @object.class.name%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Закрити</button>
+        <%= f.submit "Відправити", :class=>"btn btn-sm btn-primary"%>
+      </div>
+    <%end%>
   </div>
+</div>
 </div>
