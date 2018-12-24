@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :find_question, only: %i[show edit update destroy]
 
   def index
-    @questions = Question.paginate(:page => params[:page]).order('id DESC')
+@questions = Question.all.page(params[:page]).per(10)
   end
 
   def new
