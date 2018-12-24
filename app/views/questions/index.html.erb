@@ -21,6 +21,7 @@
       <p>Не знайдено жодних питань</p>
     <% else %>
       <%=render @questions%>
+        <%= will_paginate @questions%>
     <% end %>
   </div>
 </div>

@@ -5,7 +5,7 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_one :right_answer, class_name: 'Answer', dependent: :destroy
   has_many :votes, as: :object, dependent: :destroy
-
+  self.per_page = 15
   def url
     ['', self.class.name.downcase + 's', id.to_s].join('/')
   end
