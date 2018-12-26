@@ -26,6 +26,7 @@
       <p>НЕ знайдено жодного запису</p>
     <% else %>
       <%=render @posts%>
+        <%= will_paginate @posts%>
     <% end %>
   </div>
   <hr>
@@ -51,6 +52,7 @@
       <p>Не знайдено жодних питань</p>
     <% else %>
       <%=render @questions%>
+        <%= will_paginate @questions%>
     <% end %>
   </div>
 </div>

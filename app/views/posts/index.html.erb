@@ -21,6 +21,7 @@
       <p>НЕ знайдено жодного запису</p>
     <% else %>
       <%=render @posts%>
+      <%= will_paginate @posts%>
     <% end %>
   </div>
 </div>

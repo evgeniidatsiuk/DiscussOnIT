@@ -49,7 +49,7 @@ gem 'jquery-rails'
 # gem 'country_select'
 
 # По-сторінковий вивід
-# gem 'will_paginate', '~> 3.1.0'
+ gem 'will_paginate', '~> 3.1.0'
 
 # вивід об'єктів відновідно до знаходження в масиві пошуку
 gem 'order_as_specified'
