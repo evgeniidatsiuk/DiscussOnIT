@@ -1,24 +1,35 @@
-Автор:
-<%= @post.user.userparam.nickname %><br>
-<%= image_tag @post.user.userparam.avatar.url %><br>
-Назва:
-<%= @post.name %><br>
-Текст:
+<div class="container">
+<h1 >
+  <%=image_tag @post.user.userparam.avatar.url, height:48%>
+  <small>
+    <b class="text-secondary">
+      <%= link_to @post.user.userparam.nickname, userparam_path(@post.user.userparam)%>
+    </b>
+  </small>
+  розповів:
+  <%= @post.name %>
+  <% if @post.user_id == current_user.id %>
+    <p>
+      <%= link_to "Редагувати", edit_post_path(@post.id) %>
+      <%= link_to "Видалити", post_path(@post.id), method: :delete %>
+    </p>
+  <% else %>
+    <%= link_to chose_path(@post.class.name,@post.id) do %>
+      <%if Chosen.find_by(object_id: @post.id,object_type: @post.class.name, user_id: current_user.id) %>
+        <span class="fa fa-star"></span>
+      <%else%>
+        <span class="fa fa-star-o"></span>
+      <%end%>
+    <%end%>
+  <% end %>
+  </h1>
+
+<hr>
+<p><%= raw @post.tags.map{ |tag| link_to tag.category.name, category_path(tag.category.name), class: 'font-weight-bold badge badge-secondary' }.join(' ') %></p>
+
 <%= @post.text %><br>
 
-<% if @post.user_id == current_user.id %>
-  <p><%= link_to "Редагувати", edit_post_path(@post.id) %>
-    <%= link_to "Видалити", post_path(@post.id), method: :delete %></p>
-    <% else %>
-      <%= link_to chose_path(@post.class.name,@post.id) do %>
-        <%if Chosen.find_by(object_id: @post.id,object_type: @post.class.name, user_id: current_user.id) %>
-          <span class="fa fa-star"></span>
-        <%else%>
-          <span class="fa fa-star-o"></span>
-        <%end%>
-      <%end%>
-    <% end %>
-    <br/>
+
 <% @object= @post%>
   <%= render 'comments/form'%>
   Коменти:
@@ -28,3 +39,4 @@
       <HR>
     <%end%>
   </ul>
+  </div>

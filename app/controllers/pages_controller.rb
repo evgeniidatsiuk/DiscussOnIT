@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @posts ||= Post.paginate(:page => params[:page]).order('id DESC')
-    @questions ||= Question.all
+    @posts      ||= Post.all.page(params[:page]).per(10)
+    @questions  ||= Question.all.page(params[:page]).per(10)
   end
 
   def search

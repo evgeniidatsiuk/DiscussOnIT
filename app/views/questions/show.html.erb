@@ -3,7 +3,7 @@
     <div class="col col-lg-6">
       <div class="row">
         <div class="col col-lg-4">
-          <%= link_to userparam_path(@question.user.userparam.id) do %>
+        <%= link_to userparam_path(@question.user.userparam.id) do %>
           <p class="title"><%= image_tag @question.user.userparam.avatar.url, size: "48x48" %>
             <%= @question.user.userparam.nickname %></p>
         <%end%>
@@ -34,7 +34,6 @@
 <div class="col col-lg-6">
 <% if @question.right_answer_id %>
   <h3>Рекомендована відповідь</h3>
-  <hr>
   <%=render Answer.find(@question.right_answer_id) %>
 <%end%>
 <h3>Відповіді:</h3>
