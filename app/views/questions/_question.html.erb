@@ -23,7 +23,7 @@
       <%=strip_tags(question.text)[0..255]%>...
       <div>
         <p>
-          <%= raw question.tags.map{ |tag| link_to tag.category.name, category_path(tag.category.name), class: 'font-weight-bold badge badge-secondary' }.join(' ') %>
+          <%=render "categories/tags", object:question %>
           <b class="d-inline pull-right small" style="margin-right: 20px">
             Питання створено <%=question.created_at %> |
             <span class="fa fa-eye" title="Перегляди"></span> <%= question.view %>

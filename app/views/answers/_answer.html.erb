@@ -1,15 +1,17 @@
  <%if @question.right_answer_id == answer.id %>
-<div id="answer_<%=answer.id%>"  class="border border-success" style="padding: 5px;">
+<div id="answer_<%=answer.id%>"  class="border border-success" style="padding: 5px; margin-top: 10px; margin-bottom: 10px;">
   <%else%>
-  <div id="answer_<%=answer.id%>" style="padding: 5px;">
+  <div id="answer_<%=answer.id%>"class="border border-secondary" style="padding: 5px; margin-top: 10px; margin-bottom: 10px;">
   <%end%>
-  <%=image_tag answer.user.userparam.avatar.url, height:20%>
-  <b class="align-bottom"><%= link_to answer.user.userparam.nickname, userparam_path(answer.user.userparam)%></b>
-  відповів:
+    <%=image_tag answer.user.userparam.avatar.url, height:20%>
+    <b class="align-bottom"><%= link_to answer.user.userparam.nickname, userparam_path(answer.user.userparam)%></b>
+      відповів
   <br/>
-  <%=answer.text%><br/>
+  <%=answer.text%>
+  <br/>
+  <%if @question.user.id==current_user.id && @question.right_answer_id !=answer.id%>
   <%=link_to "Правильна відповідь", right_answer_path(answer.id)%>
-  <hr>
+  <%end%>
   <div style="text-align: center;">
     <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#answer_comment_block_<%=answer.id%>">
       <span class="glyphicon glyphicon-plus">Коменти</span>
@@ -19,4 +21,3 @@
     <%@object=answer %><%= render 'comments/form'%>Коменти:<%=render answer.comments %>
   </div>
 </div>
-<hr>

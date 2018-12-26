@@ -16,17 +16,18 @@
   <% else %>
     <%= link_to chose_path(@post.class.name,@post.id) do %>
       <%if Chosen.find_by(object_id: @post.id,object_type: @post.class.name, user_id: current_user.id) %>
-        <span class="fa fa-star"></span>
+        <span class="fa fa-star"style="color:gold"></span>
       <%else%>
-        <span class="fa fa-star-o"></span>
+        <span class="fa fa-star-o"style="color:gold"></span>
       <%end%>
     <%end%>
   <% end %>
   </h1>
 
 <hr>
-<p><%= raw @post.tags.map{ |tag| link_to tag.category.name, category_path(tag.category.name), class: 'font-weight-bold badge badge-secondary' }.join(' ') %></p>
-
+<p>
+  <%=render "categories/tags", object:@post %>
+<p>
 <%= @post.text %><br>
 
 

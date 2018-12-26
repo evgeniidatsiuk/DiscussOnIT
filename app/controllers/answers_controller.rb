@@ -27,10 +27,11 @@ class AnswersController < ApplicationController
   end
 
   def right
-    if @answer.question.user.id = current_user.id
+    # тільки власник питання може обрати правильне
+    if @answer.question.user.id == current_user.id
       @answer.question.update(right_answer_id: @answer.id)
-      redirect_to question_path(@answer.question.id)
     end
+    redirect_to question_path(@answer.question.id)
   end
 
   private
