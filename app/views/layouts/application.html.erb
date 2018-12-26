@@ -13,6 +13,8 @@
     <%if !@navbar_off %>
       <%= render "layouts/navbar" %>
     <%end%>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -56,10 +56,10 @@
     <% end %>
   </div>
 </div>
-<div styel="align: center;">
-<% if @posts.count> @questions.count %>
-  <%= will_paginate @posts%>
-<%else%>
-  <%= will_paginate @questions%>
-<%end%>
+<div class="digg_pagination">
+  <% if @posts.count> @questions.count %>
+    <%= will_paginate @posts%>
+  <%else%>
+    <%= will_paginate @questions%>
+  <%end%>
 </div>

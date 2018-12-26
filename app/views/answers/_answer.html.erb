@@ -3,7 +3,7 @@
   <%else%>
   <div id="answer_<%=answer.id%>" style="padding: 5px;">
   <%end%>
-  Користувач<%=image_tag answer.user.userparam.avatar.url, height:20%>
+  <%=image_tag answer.user.userparam.avatar.url, height:20%>
   <b class="align-bottom"><%= link_to answer.user.userparam.nickname, userparam_path(answer.user.userparam)%></b>
   відповів:
   <br/>

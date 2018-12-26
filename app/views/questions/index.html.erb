@@ -21,7 +21,9 @@
       <p>Не знайдено жодних питань</p>
     <% else %>
       <%=render @questions%>
+      <div class="digg_pagination">
         <%= will_paginate @questions%>
+      </div>
     <% end %>
   </div>
 </div>
