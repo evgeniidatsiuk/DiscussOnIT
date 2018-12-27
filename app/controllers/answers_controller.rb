@@ -9,6 +9,11 @@ class AnswersController < ApplicationController
   def create
     @answer = current_user.answers.build(answer_params)
     if @answer.save
+      # сповіщення про створення нової відповіді
+      @answer.question.chosens.each do |chosen|
+        Notification.generate(chosen.user, @answer, 'create', current_user)
+      end
+
       redirect_to question_path(@answer.question.id)
     else
       render 'new'
@@ -18,7 +23,14 @@ class AnswersController < ApplicationController
   def edit; end
 
   def update
-    redirect_to question_path(@answer.question.id) if @answer.update(answer_params)
+    if @answer.update(answer_params)
+      @answer.question.chosens.each do |chosen|
+        Notification.generate(chosen.user, @answer, 'update', current_user)
+      end
+      redirect_to question_path(@answer.question.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -30,8 +42,13 @@ class AnswersController < ApplicationController
     # тільки власник питання може обрати правильне
     if @answer.question.user.id == current_user.id
       @answer.question.update(right_answer_id: @answer.id)
+      @answer.question.chosens.each do |chosen|
+        Notification.generate(chosen.user, @answer, 'select right answer', current_user)
+      end
+      redirect_to question_path(@answer.question.id)
+    else
+      render 'show'
     end
-    redirect_to question_path(@answer.question.id)
   end
 
   private

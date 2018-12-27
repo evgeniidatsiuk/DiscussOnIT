@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :find_question, only: %i[show edit update destroy]
 
   def index
-@questions = Question.all.page(params[:page]).per(10)
+    @questions = Question.all.order(created_at: :DESC).page(params[:page]).per(10)
   end
 
   def new
@@ -32,7 +32,14 @@ class QuestionsController < ApplicationController
   def edit; end
 
   def update
-    redirect_to question_path(@question.id) if @question.update(question_params)
+    if @question.update(question_params)
+      @question.chosens.each do |chosen|
+        Notification.generate(chosen.user, @question, 'update', current_user)
+      end
+      redirect_to question_path(@question.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
