@@ -1,4 +1,5 @@
-
+<h2>Обране</h2>
+<hr>
 <div class="row">
   <div class="col">
     <div class="row">
@@ -22,7 +23,6 @@
       <p>НЕ знайдено жодного запису</p>
     <% else %>
       <%=render @posts%>
-      <!--  <%= will_paginate @posts%> --!>
     <% end %>
   </div>
   <hr>
@@ -48,14 +48,6 @@
       <p>Не знайдено жодних питань</p>
     <% else %>
       <%=render @questions%>
-      <!--  <%= will_paginate @questions%> --!>
     <% end %>
   </div>
-</div>
-<div class="digg_pagination">
-  <% if @posts.count> @questions.count %>
-    <%= will_paginate @posts%>
-  <%else%>
-    <%= will_paginate @questions%>
-  <%end%>
 </div>

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :categories, only: %i[index show]
   resources :notifications, only: [:index]
+  resources :chosens, only: [:index]
 
   get '/:type/:id/chose', to: 'chosens#chose', as: 'chose'
 

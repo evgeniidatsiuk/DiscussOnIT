@@ -18,7 +18,7 @@ class UserparamsController < ApplicationController
   end
 
   def show
-    @userparam = Userparam.find_by(user_id: current_user.id)
+    @userparam = Userparam.find_by(user_id: params[:id])
   end
 
   def edit

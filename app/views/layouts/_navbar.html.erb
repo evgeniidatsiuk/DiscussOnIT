@@ -40,15 +40,24 @@
           <div class="dropdown-menu dropdown-menu-right">
             <%if current_user.userparam %>
               <p class="dropdown-item">
-                <span class="fa fa-user" style="color: lightgray;"></span> <%= link_to "Профіль", userparam_path(current_user.userparam.id)%>
+                <%= link_to userparam_path(current_user.userparam.id) do%>
+                  <span class="fa fa-user" style="color: lightgray;"></span> Профіль
+                <%end%>
               </p>
             <%end%>
             <p class="dropdown-item">
-              <span class="fa fa-envelope " style="color: lightgray;"></span> <%= link_to "Сповіщення", notifications_path%>
-              <% if Notification.where(user_id: current_user.id).count > 0%>
-                <span class="badge badge-primary" data-toggle="tooltip" title="Кількість непрочитаних">
-                  <%= Notification.where(user_id: current_user.id).count%>
-                </span>
+              <%= link_to notifications_path do%>
+                <span class="fa fa-envelope " style="color: lightgray;"></span> Сповіщення
+                <% if Notification.where(user_id: current_user.id).count > 0%>
+                  <span class="badge badge-primary" data-toggle="tooltip" title="Кількість непрочитаних">
+                    <%= Notification.where(user_id: current_user.id).count%>
+                  </span>
+                <%end%>
+              <%end%>
+            </p>
+            <p class="dropdown-item">
+              <%= link_to chosens_path do%>
+              <span class="fa fa-star " style="color: lightgray;"></span> Обране
               <%end%>
             </p>
             <hr>
