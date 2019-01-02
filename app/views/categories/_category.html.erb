@@ -1,4 +1,4 @@
 <li class="item float-item border border border-dark"">
-  <%=link_to category.name, category_path(category.name), class:"badge badge-primary" %>
-  [<span ><%= Tag.where(category_id: category.id).count %></span>]
+  <%=link_to category.name, category_path(category.name), class:"badge badge-primary" %> x 
+  <span ><%= Tag.where(category_id: category.id).count %></span>
 </li>

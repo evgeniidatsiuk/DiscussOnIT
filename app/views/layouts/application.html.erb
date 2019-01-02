@@ -3,18 +3,19 @@
   <head>
     <title>DiscussOnIT</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  </head>
+
+    </head>
 
   <body>
-    <%if !@navbar_off %>
-      <%= render "layouts/navbar" %>
-    <%end%>
-    <div class="container">
-      <%= yield %>
-    </div>
+      <%if !@navbar_off %>
+        <%= render "layouts/navbar" %>
+      <%end%>
+        <div class="content">
+          <%= yield %>
+        </div>
   </body>
 </html>
