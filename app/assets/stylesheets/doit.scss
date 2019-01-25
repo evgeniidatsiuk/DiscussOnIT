@@ -2,6 +2,10 @@ body{
   padding: 0;
   margin: 0;
 }
+
+a{
+  text-decoration: none;
+}
 .collapse-content {
   display: none;
 
@@ -119,31 +123,63 @@ body{
   padding-top: 50px;
 
   .left-sidebar{
-    display: inline-block;
+    left: auto;
     position: fixed;
     width: 300px;
     height: 100%;
     background: #474747;
     border: 0.5px solid #808080;
     box-sizing: border-box;
+
+    color: #FFFFFF;
+    .fa{
+      position: relative;
+      display: table-cell;
+      width: 30px;
+      height: 36px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .text{
+      display: table-cell;
+      vertical-align: middle;
+    }
+    a{
+      display: table;
+      font-size: 18px;
+      color: #FFFFFF;
+    }
+    li:hover{
+      background: #666FB0;
+    }
+    .active{
+      background: #666FB0;
+    }
+    ul{
+      margin: 0px;
+      padding-left: 0px;
+    }
+    li{
+      display: list-item;
+      text-align: left;
+      height: 40px;
+    }
+
   }
 
   .content{
-    display: inline-block;
     position: absolute;
-    width: calc(100% - 600px);
-    padding-right: 50px;
-    padding-left: 50px;
+    width: calc(100% - 700px);
+    padding:0px 50px 0px 50px;
     margin-left: 300px;
   }
 
   .right-sidebar{
-    display: inline-block;
     position: absolute;
     margin-left: calc(100% - 300px);
-    height: 100%;
+    min-height: 100%;
     width: 300px;
-    border: 0.5px solid #474747;
-    box-sizing: border-box;
+    //border: 0.5px solid #474747;
+    //box-sizing: border-box;
   }
 }

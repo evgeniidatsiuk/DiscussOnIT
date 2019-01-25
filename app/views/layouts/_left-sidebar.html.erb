@@ -1,3 +1,24 @@
 <div id="left-sidebar" class="left-sidebar">
-  sss
+  <ul>
+      <% if @questions %>
+      <li class="active">
+      <%else%>
+      <li>
+      <%end%>
+      <%=link_to questions_path do %>
+      <span class="fa fa-question"></span><span class="text">Питання</span><%end%>
+  </li>
+  <% if @posts %>
+    <li class="active">
+    <%else%>
+      <li>
+      <%end%>
+      <%=link_to posts_path do %>
+      <i class="fa fa-exclamation"></i>
+      <span class="text">Записи</span><%end%>
+  </li>
+  <li>
+    Інше
+  </li>
+</ul>
 </div>
