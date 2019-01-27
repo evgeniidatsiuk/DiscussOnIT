@@ -13,6 +13,9 @@ a{
 .show{
   display: inline;
 }
+.user-icon{
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
 
 .navbar{
   padding: -5px;
@@ -163,6 +166,61 @@ a{
       display: list-item;
       text-align: left;
       height: 40px;
+    }
+
+    .dropbtn {
+      height: 50px;
+      width: 299px;
+      text-align: left;
+      background: #474747;
+      color: white;
+      padding: 12px;
+      font-size: 18px;
+      //border: none;
+      border: none;
+      .text{
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+    .dropdown {
+      margin: 0px;
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #F0F0F0;
+      width: 299px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content span{
+      display: inline;
+      color: #000000
+    }
+    .dropdown-content a:hover {
+      background: #666FB0;
+      color: #FFFFFF;
+      span{
+        display: inline;
+        color: #FFFFFF;
+      }
+    }
+    .dropdown:hover {
+      .dropdown-content {
+        display: block;
+      }
+      .dropbtn {
+        background: #666FB0;
+      }
     }
 
   }

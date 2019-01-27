@@ -1,6 +1,55 @@
 <div id="left-sidebar" class="left-sidebar">
+  <div class="dropdown">
+  <%if user_signed_in?%>
+    <button type="button" name="user-button" class="dropbtn" data-toggle="collapse" >
+    <%if current_user.userparam %><img class="img-circle" height="36px" src="<%=current_user.userparam.avatar.url%>">
+      <span class="text">
+        <%= current_user.userparam.nickname %>
+      </span>
+
+      <%else%>
+        <%= current_user.email %>
+      <%end%>
+    </button>
+    <%else%>
+        <%= link_to  new_user_session_path do%><spin class="fa fa-sign-in"></spin> Вхід<%end%>
+    <%end%>
+    <%if user_signed_in?%>
+      <div class="dropdown-content">
+          <div>
+                <ul>
+                  <%if current_user.userparam %>
+                    <li>
+                      <%= link_to userparam_path(current_user.userparam.id) do  %>
+                        <span class="fa fa-user""></span> Профіль
+                      <%end%>
+                    </li>
+                  <%end%>
+                  <li>
+                    <%= link_to notifications_path do%>
+                      <span class="fa fa-envelope "></span> Сповіщення
+                      <% if Notification.where(user_id: current_user.id).count > 0%>
+                        <span class="badge badge-primary" data-toggle="tooltip" title="Кількість непрочитаних">
+                          <%= Notification.where(user_id: current_user.id).count%>
+                        </span>
+                      <%end%>
+                    <%end%>
+                  </li>
+                  <li>
+                    <%= link_to chosens_path do%>
+                    <span class="fa fa-star " ></span> Обране
+                    <%end%>
+                  </li>
+                  <li style="background-color: red">
+                    <%= link_to destroy_user_session_path,method: :delete do%><span class="fa fa-sign-out" style="color: lightgray;"></span> Вихід <%end%>
+                  </li>
+                </ul>
+          </div>
+      </div>
+      <%end%>
+      </div>
   <ul>
-      <% if @questions %>
+      <%if @questions%>
       <li class="active">
       <%else%>
       <li>
@@ -8,17 +57,25 @@
       <%=link_to questions_path do %>
       <span class="fa fa-question"></span><span class="text">Питання</span><%end%>
   </li>
-  <% if @posts %>
+  <%if @posts%>
     <li class="active">
+  <%else%>
+    <li>
+  <%end%>
+      <%=link_to posts_path do %>
+        <i class="fa fa-exclamation"></i>
+        <span class="text">Записи</span>
+      <%end%>
+    </li>
+    <%if @categories%>
+      <li class="active">
     <%else%>
       <li>
-      <%end%>
-      <%=link_to posts_path do %>
-      <i class="fa fa-exclamation"></i>
-      <span class="text">Записи</span><%end%>
-  </li>
-  <li>
-    Інше
+    <%end%>
+    <%=link_to posts_path do %>
+      <i class="fa fa-tags"></i>
+      <span class="text">Теги</span>
+    <%end%>
   </li>
 </ul>
 </div>
