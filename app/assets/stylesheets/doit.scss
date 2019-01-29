@@ -133,7 +133,6 @@ a{
     background: #474747;
     border: 0.5px solid #808080;
     box-sizing: border-box;
-
     color: #FFFFFF;
     .fa{
       position: relative;
@@ -151,6 +150,7 @@ a{
       display: table;
       font-size: 18px;
       color: #FFFFFF;
+      width: 100%;
     }
     li:hover{
       background: #666FB0;
@@ -167,6 +167,17 @@ a{
       text-align: left;
       height: 40px;
     }
+    .profile{
+      .icon{
+        vertical-align:middle;
+        display: inline-block;
+      }
+      .fa{
+        display: inline-block;
+        vertical-align:middle;
+        text-align: right;
+      }
+    }
 
     .dropbtn {
       height: 50px;
@@ -178,10 +189,6 @@ a{
       font-size: 18px;
       //border: none;
       border: none;
-      .text{
-        vertical-align: middle;
-        display: inline-block;
-      }
     }
     .dropdown {
       margin: 0px;
@@ -198,6 +205,7 @@ a{
     }
     .dropdown-content a {
       color: black;
+      width: calc(100% - 32px);
       padding: 12px 16px;
       text-decoration: none;
       display: block;
@@ -240,4 +248,13 @@ a{
     //border: 0.5px solid #474747;
     //box-sizing: border-box;
   }
+
+  @media only screen and (max-width: 1024px) {
+  .right-sidebar{
+    display: none;
+  }
+  .content{
+    width: calc(100% - 400px);
+  }
+}
 }

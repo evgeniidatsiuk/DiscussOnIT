@@ -8,6 +8,7 @@
   </small>
   розповів:
   <%= @post.name %>
+  <% if user_signed_in? %>
   <% if @post.user_id == current_user.id %>
     <p>
       <%= link_to "Редагувати", edit_post_path(@post.id) %>
@@ -22,6 +23,7 @@
       <%end%>
     <%end%>
   <% end %>
+  <%end%>
   </h1>
 
 <hr>
