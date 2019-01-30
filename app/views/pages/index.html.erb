@@ -36,11 +36,14 @@
       <!--  <%= will_paginate @questions%> --!>
     <% end %>
   </div>
-  <div class="digg_pagination">
-    <% if @posts.count> @questions.count %>
-      <%= will_paginate @posts%>
-    <%else%>
-      <%= will_paginate @questions%>
-    <%end%>
-  </div>
+
+</div>
+<div class="row">
+  <nav aria-label="Page navigation">
+  <% if @posts.count> @questions.count %>
+    <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+  <%else%>
+    <%= will_paginate @questions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+  <%end%>
+  </nav>
 </div>

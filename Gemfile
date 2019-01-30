@@ -50,7 +50,7 @@ gem 'jquery-rails'
 
 # По-сторінковий вивід
 gem 'will_paginate', '~> 3.1.0'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap4'
 # вивід об'єктів відновідно до знаходження в масиві пошуку
 gem 'order_as_specified'
 

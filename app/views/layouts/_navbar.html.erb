@@ -1,20 +1,17 @@
-<div class="navbar">
-  <div class="logo">
-  <%= link_to "DoIT", root_path%>
-  </div>
+<nav class="navbar fixed-top navbar-expand-lg">
+  <%= link_to "DoIT", root_path, class:"navbar-brand col-md-2"%>
   <div class="dropdown">
-    <button name="add-button" class="dropbtn"><i class="fa fa-plus"></i></button>
-    <div class="dropdown-content">
-      <%=link_to "Питання", new_question_path %>
-      <%=link_to "Запис", new_post_path %>
+    <button name="add-button" class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus"></i></button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <%=link_to "Питання", new_question_path, class:"dropdown-item" %>
+      <%=link_to "Запис", new_post_path, class:"dropdown-item" %>
     </div>
   </div>
-  <div class="collapse">
-    <button id="collapsebtn-search" class="collapsebtn" for="search" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false" aria-controls="collapse-search">
+    <button id="collapsebtn-search" class="btn" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false" aria-controls="collapse-search">
       <i class="fa fa-search"></i>
     </button>
-    <span id="collapse-search" class="collapse-content">
+    <span id="collapse-search" class="collapse">
       <input class="form-control" type="text" id="search" placeholder="Enter your query...">
     </span>
   </div>
-</div>
+</nav>

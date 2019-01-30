@@ -8,16 +8,22 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    </head>
+  </head>
 
   <body>
-        <%= render "layouts/navbar" %>
-        <div class="container">
-          <%= render "layouts/left-sidebar" %>
-          <div class="content">
+    <%= render "layouts/navbar" %>
+    <div class="container-fluid">
+      <div class="row">
+        <%= render "layouts/left-sidebar" %>
+        <div class="col-md-10 ml-sm-auto row">
+          <div class="col-md-10 content">
             <%= yield %>
           </div>
+          <div class="col-md-2">
           <%= render "layouts/right-sidebar" %>
+          </div>
         </div>
+      </div>
+    </div>
   </body>
 </html>
