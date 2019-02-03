@@ -1,6 +1,5 @@
 body{
   height: 100%;
-  padding-top: 50px;
 }
 .navbar{
   background: #474747;
@@ -52,13 +51,34 @@ body{
   }
   li{
     height: 40px;
-    padding-left: 10px;
-    vertical-align: middle;
+    text-align: left;
+
+    a{
+      padding: 8px 0px;
+      width: 100%;
+      display: table;
+    }
+    i{
+      width: 30px;
+      text-align: center;
+    }
+    img{
+      padding-left: 10px;
+      padding-right: 5px;
+    }
+    span{
+      vertical-align:middle;
+      display: inline-block;
+    }
   }
   li:hover{
     a{
       text-decoration: none;
     }
+    background: #666FB0;
+    color: #FFF;
+  }
+  .active{
     background: #666FB0;
     color: #FFF;
   }

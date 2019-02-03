@@ -1,29 +1,29 @@
 <nav class="col-md-2 d-none d-md-block sidebar">
   <ul class="list-unstyled components">
-    <li class="align-middle" style="height:50px">
+
       <%if user_signed_in?%>
-        <button name="user-button" class="btn" style="height:100%; width:calc(100% + 15px); margin-left:-15px; background: #595959; text-align:left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li style="height:50px">
+        <button name="user-button" class="btn" style="height:50px; width:calc(100% + 15px); margin-left:-15px; background: #595959; text-align:left; padding: 0px 10px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%=link_to userparam_path(current_user.id) do%>
-          <div>
             <%if current_user.userparam %>
               <%=image_tag current_user.userparam.avatar.url, style:"height:30px;"%>
-              <%= current_user.userparam.nickname %>
+              <span><%= current_user.userparam.nickname %></span>
             <%else%>
-              <%= current_user.email %>
+              <span><%= current_user.email %></span>
             <%end%>
-          </div>
         <%end%>
       </button>
     <%else%>
+      <li>
       <%= link_to new_user_session_path do%>
-      <spin class="fa fa-sign-in"></spin>
+      <i class="fa fa-sign-in"></i>
       Вхід<%end%>
   <%end%>
   <%if user_signed_in?%>
-      <ul class="dropdown-menu" id="userSubmenu">
+      <ul class="dropdown-menu" id="userSubmenu" style="padding-left:10px;">
         <li>
           <%= link_to notifications_path, class:"dropdown-item" do%>
-          <span class="fa fa-envelope "></span>
+          <i class="fa fa-envelope "></i>
           Сповіщення
           <% if Notification.where(user_id: current_user.id).count > 0%>
             <span class="badge badge-primary" data-toggle="tooltip" title="Кількість непрочитаних">
@@ -34,33 +34,48 @@
         </li>
         <li>
           <%= link_to chosens_path, class:"dropdown-item" do%>
-          <span class="fa fa-star "></span>
+          <i class="fa fa-star "></i>
           Обране
         <%end%>
         </li>
         <li>
           <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do%>
-          <span class="fa fa-sign-out"></span>
+          <i class="fa fa-sign-out"></i>
           Вихід
         <%end%>
         </li>
       </ul>
       <%end%>
     </li>
-<li>
+
+  <%if @questions %>
+  <li class="active">
+    <%else%>
+    <li>
+  <%end%>
   <%=link_to questions_path do %>
-  <span class="fa fa-question"></span><span class="text">Питання</span><%end%>
-</li>
-<li>
-  <%=link_to posts_path do %>
-  <i class="fa fa-exclamation"></i>
-  <span class="text">Записи</span>
+    <i class="fa fa-question"></i>
+    <span>Питання</span>
   <%end%>
 </li>
-<li>
+<%if @posts %>
+<li class="active">
+  <%else%>
+  <li>
+<%end%>
   <%=link_to posts_path do %>
-  <i class="fa fa-tags"></i>
-  <span class="text">Теги</span>
+    <i class="fa fa-exclamation"></i>
+    <span>Записи</span>
+  <%end%>
+</li>
+<%if @categories %>
+<li class="active">
+  <%else%>
+  <li>
+<%end%>
+  <%=link_to categories_path do %>
+    <i class="fa fa-tags"></i>
+    <span class="text">Теги</span>
   <%end%>
 </li>
 </ul>
