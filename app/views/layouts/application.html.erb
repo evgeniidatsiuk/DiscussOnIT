@@ -15,12 +15,14 @@
     <div class="container-fluid">
       <div class="row" style="padding-top:50px;">
         <%= render "layouts/left-sidebar" %>
-        <div class="col-md-10 ml-sm-auto row">
-          <div class="col-md-10 content">
+        <div class="col-md-10 ml-sm-auto">
+            <div class="row">
+          <div class="col-sm-10 content">
             <%= yield %>
           </div>
-          <div class="col-md-2">
+          <div class="col-sm-2">
           <%= render "layouts/right-sidebar" %>
+          </div>
           </div>
         </div>
       </div>
