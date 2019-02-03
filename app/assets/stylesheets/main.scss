@@ -97,3 +97,34 @@ body{
 .content{
   padding: 10px 50px;
 }
+
+.question{
+  background: rgba(71, 71, 71, 0.02);
+  border: 0.25px solid #474747;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  .question-count{
+    background: rgba(195, 194, 194, 0.1);
+    border-radius: 5px 35px 35px 5px;
+    font-size: 36px;
+    text-align: center;
+    text-indent: 10px;
+    color: #474747;
+    padding: 15px 10px;
+    padding-right: 30px;
+  }
+  .question-content{
+    padding-top: 15px;
+  }
+  .question-title{
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 18px;
+    color: #474747;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+}

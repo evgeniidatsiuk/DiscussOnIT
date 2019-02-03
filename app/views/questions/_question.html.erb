@@ -1,35 +1,33 @@
-<div class="row">
-  <div class="col-1" align="center">
-    <%=link_to positiv_vote_path(question.class.name,question.id) do%>
-      <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
-    <%end%>
-    <h3 class="text-center text-dark" style="margin: 0px"><%=question.votes.sum(:score)%></h3>
-    <%=link_to negativ_vote_path(question.class.name,question.id) do%>
-      <span class="fa fa-chevron-down" title="Голосувати ПРОТИ"></span>
-    <%end%>
-  </div>
-  <div class="col">
-    <h5><%= link_to question.name, question_path(question.id) %>
-      <span class="badge <%if question.right_answer_id %>badge-success<%else%>badge-primary<%end%>" title="Кількість відповідей"><%= question.answers.count %></span>  -
-      <%= link_to  userparam_path(question.user.userparam) do %>
-        <%=image_tag question.user.userparam.avatar.url, height:24%>
-        <small>
-          <b class="text-secondary">
-            <%= question.user.userparam.nickname%>
-          </b>
-        </small>
-      <%end%>
-    </h5>
-      <%=strip_tags(question.text)[0..255]%>...
-      <div>
-        <p>
-          <%=render "categories/tags", object:question %>
-          <b class="d-inline pull-right small" style="margin-right: 20px">
-            Питання створено <%=question.created_at %> |
-            <span class="fa fa-eye" title="Перегляди"></span> <%= question.view %>
-          </b>
-        </p>
+<div class="row question">
+  <div class="col-sm-3 question-count">
+    <div class="row">
+      <div class="col-sm-4">
+        <%=question.votes.sum(:score)%>
       </div>
+      <div class="col-sm-4">
+        <%if question.right_answer_id %>
+        <%=question.answers.count%>
+        <%else%>
+        <%=question.answers.count%>
+        <%end%>
+      </div>
+      <div class="col-sm-4">
+        <%= question.view %>
+      </div>
+    </div>
   </div>
+  <div class="col-sm-9 question-content">
+    <div class="row">
+      <%= link_to question.name, question_path(question.id),class:"question-title"%>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <%=render "categories/tags", object:question %>
+      </div>
+      <div class="col-sm-4">
+        Задав <%= link_to  userparam_path(question.user.userparam) do %> <%= question.user.userparam.nickname%> <%=image_tag question.user.userparam.avatar.url, height:16%> <%end%><span style="font-size:8px"> <%=question.created_at %> </span>
+      </div>
+    </div>
+  </div>
+
 </div>
-<hr>
