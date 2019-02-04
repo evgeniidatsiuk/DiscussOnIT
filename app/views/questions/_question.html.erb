@@ -1,7 +1,6 @@
-<div class="row question" onclick="window.location.href=<%=questions_path(question.id)%>">
+<div class="row question">
   <div class="col-sm-4 question-count">
     <div class="row">
-      
       <div class="col-sm-3">
           <div class="view">
             <%=question.votes.sum(:score)%>
@@ -10,7 +9,6 @@
             </div>
           </div>
       </div>
-
       <div class="col-sm-3">
           <div class="view">
             <%if question.right_answer_id %>
@@ -39,7 +37,7 @@
 
   <div class="col-sm-8 question-content">
       <div class="col question-title">
-        <%=question.name%>
+          <%=link_to question_path(question.id) ,style:"color:grey" do %><%=question.name%><%end%>
       </div>
       <div class="row">
       <div class="col-sm-7">
@@ -59,5 +57,4 @@
       </div>
     </div>
   </div>
-</div>
-
+  </div>

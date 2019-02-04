@@ -1,1 +1,1 @@
-<%= raw object.tags.map{ |tag| link_to tag.category.name, category_path(tag.category.name), class: 'font-weight-bold badge badge-primary' }.join(' ') %>
+<%= raw object.tags.map{ |tag| link_to tag.category.name, category_path(tag.category.name), class: 'badge tag' }.join(' ') %>
