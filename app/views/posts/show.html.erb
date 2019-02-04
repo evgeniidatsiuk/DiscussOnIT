@@ -1,41 +1,51 @@
+ <div class="container">
 
-<h1 >
-  <%=image_tag @post.user.userparam.avatar.url, height:48%>
-  <small>
-    <b class="text-secondary">
-      <%= link_to @post.user.userparam.nickname, userparam_path(@post.user.userparam)%>
-    </b>
-  </small>
+
+<div class="row">
+  <%=image_tag @post.user.userparam.avatar.url, height:128%>
+   <small>
+     <b class="text-secondary">
+       <%= link_to @post.user.userparam.nickname, userparam_path(@post.user.userparam)%>
+     </b>
+   </small>
+     <div class="row align-items-end">
+         <li>
+         <span class="fa fa-eye" title="Перегляди"><span>
+        <p style="font-size: 14px" align="center"><b><%=@post.view%></b></p>
+       </li>
+         <li>
+           <span class="fa fa-heart" title="Вдопобань"><span>
+          <p style="font-size: 14px" align="center"><b><%=@post.votes.sum(:score)%></b></p>
+         </li>
+
+       <li >
+           <span class="fa fa-calendar" title="Опубліковано"><span>
+          <p style="font-size: 14px" align="center"><b><%=@post.created_at%></b></p>
+         </li>
+   </div>
+</div>
 <br>
-<li style="display:inline-block;">
 
-  <span class="fa fa-eye" title="Перегляди"><span>
- <p style="font-size: 32px" align="center"><b><%=@post.view%></b></p>
-</li>
-<li style="display:inline-block;">
+<div class="row">
 
-  <span class="fa fa-eye" title="Перегляди"><span>
- <p style="font-size: 32px" align="center"><b><%=@post.view%></b></p>
-</li>
-<li style="display:inline-block;">
+    <p style="word-wrap: break-word">
+      <%= @post.name%>
+    </p>
 
-  <span class="fa fa-eye" title="Перегляди"><span>
- <p style="font-size: 32px" align="center"><b><%=@post.view%></b></p>
-</li>
-<li style="display:inline-block;">
+  </div>
 
-  <span class="fa fa-eye" title="Перегляди"><span>
- <p style="font-size: 32px" align="center"><b><%=@post.view%></b></p>
-</li>
-    <%= @post.name %>
+</div>
+
 
   <% if user_signed_in? %>
   <% if @post.user_id == current_user.id %>
 
-    <p>
-      <%= link_to "Редагувати", edit_post_path(@post.id) %>
-      <%= link_to "Видалити", post_path(@post.id), method: :delete %>
-    </p>
+    <div class="row">
+   <%= link_to "Редагувати", edit_post_path(@post.id), class:"fa fa-pencil" , style:"text-decoration: none;" %>
+      <%= link_to "Видалити", post_path(@post.id), method: :delete, class:"fa fa-trash" , style:"text-decoration: none;" %>
+
+    </div>
+
   <% else %>
     <%= link_to chose_path(@post.class.name,@post.id) do %>
       <%if Chosen.find_by(object_id: @post.id,object_type: @post.class.name, user_id: current_user.id) %>
@@ -64,3 +74,4 @@
       <HR>
     <%end%>
   </ul>
+  </div>
