@@ -104,6 +104,7 @@ body{
   box-sizing: border-box;
   border-radius: 5px;
   margin-bottom: 15px;
+  height: 80px;
   .question-count{
     background: rgba(195, 194, 194, 0.1);
     border-radius: 5px 35px 35px 5px;
@@ -111,11 +112,14 @@ body{
     text-align: center;
     text-indent: 10px;
     color: #474747;
-    padding: 15px 10px;
+    padding: 0px;
     padding-right: 30px;
+    height: 80px;
+    cursor: pointer;
   }
   .question-content{
     padding-top: 15px;
+    font-size: 12px;
   }
   .question-title{
     font-style: normal;
@@ -123,11 +127,22 @@ body{
     line-height: normal;
     font-size: 18px;
     color: #474747;
+    margin-left: 10px;
   }
   a:hover{
     text-decoration: none;
   }
 }
+<<<<<<< HEAD
 .card-body{
   overflow:auto;
+=======
+.humburger{
+}
+@media(min-width: 768px) and (max-width: 1920px){
+  .humburger{
+    display: none;
+    width: 0px;
+  }
+>>>>>>> 1ac083b50857a15da6b2fec38e573f1937f430ed
 }

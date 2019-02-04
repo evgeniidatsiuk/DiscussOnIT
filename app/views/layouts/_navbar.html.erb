@@ -1,25 +1,34 @@
 <nav class="navbar fixed-top navbar-expand-lg">
-  <div class="col-8 col-sm-8 col-md-2">
+  <div class="col-2 col-sm-2 humburger">
+    <div>
+      <button id="collapsebtn-humburger" class="btn" data-toggle="collapse" data-target="#collapse-sidebar" aria-expanded="false">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+  </div>
+  <div class="col-6 col-sm-6 col-md-2">
     <%= link_to "DoIT", root_path, class:"navbar-brand"%>
   </div>
   <div class="col-4 col-sm-4 col-md-10" style="display:inherit">
-<div class="search">
-    <button id="collapsebtn-search" class="btn" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false" aria-controls="collapse-search">
-      <i class="fa fa-search"></i>
-    </button>
-    <span id="collapse-search" class="collapse">
-      <input class="form-control" type="text" id="search" placeholder="Enter your query...">
-    </span>
+    <div class="dropdown">
+      <button name="add-button" class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-plus"></i>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%=link_to "Питання", new_question_path, class:"dropdown-item" %>
+        <%=link_to "Запис", new_post_path, class:"dropdown-item" %>
+      </div>
     </div>
-  <div class="dropdown">
-    <button name="add-button" class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fa fa-plus"></i>
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <%=link_to "Питання", new_question_path, class:"dropdown-item" %>
-      <%=link_to "Запис", new_post_path, class:"dropdown-item" %>
+    <div class="search">
+      <button id="collapsebtn-search" class="btn" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false" aria-controls="collapse-search">
+        <i class="fa fa-search"></i>
+      </button>
+      <div style="    display: -webkit-inline-box;">
+      <span id="collapse-search" class="collapse">
+        <input class="form-control" type="text" id="search" placeholder="Enter your query...">
+      </span>
+      </div>
     </div>
   </div>
-</div>
 </div>
 </nav>
