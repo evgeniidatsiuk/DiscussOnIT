@@ -36,8 +36,8 @@
   </div>
 
   <div class="col-sm-8 question-content">
-      <div class="col question-title">
-          <%=link_to question_path(question.id) ,style:"color:grey" do %><%=question.name%><%end%>
+      <div class="col">
+          <%=link_to question_path(question.id) ,class:"question-title" do %><%=question.name%><%end%>
       </div>
       <div class="row">
       <div class="col-sm-7">
