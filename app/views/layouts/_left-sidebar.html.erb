@@ -3,15 +3,16 @@
 
       <%if user_signed_in?%>
         <li style="height:50px">
-        <button name="user-button" class="btn" style="height:50px; width:calc(100% + 15px); margin-left:-15px; background: #595959; text-align:left; padding: 0px 10px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%=link_to userparam_path(current_user.id) do%>
+        <button name="user-button" class="btn dropdown-toggle" style="color: #fff; height:50px; width:calc(100% + 15px); margin-left:-15px; background: #595959; text-align:left; padding: 0px 10px;" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+
             <%if current_user.userparam %>
               <%=image_tag current_user.userparam.avatar.url, style:"height:30px;"%>
               <span><%= current_user.userparam.nickname %></span>
             <%else%>
               <span><%= current_user.email %></span>
             <%end%>
-        <%end%>
+              <span class="caret"></span>
+
       </button>
     <%else%>
       <li>
