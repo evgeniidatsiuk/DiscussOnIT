@@ -6,10 +6,32 @@
       <%= link_to @post.user.userparam.nickname, userparam_path(@post.user.userparam)%>
     </b>
   </small>
-  розповів:
-  <%= @post.name %>
+<br>
+<li style="display:inline-block;">
+
+  <span class="fa fa-eye" title="Перегляди"><span>
+ <p style="font-size: 32px" align="center"><b><%=@post.view%></b></p>
+</li>
+<li style="display:inline-block;">
+
+  <span class="fa fa-eye" title="Перегляди"><span>
+ <p style="font-size: 32px" align="center"><b><%=@post.view%></b></p>
+</li>
+<li style="display:inline-block;">
+
+  <span class="fa fa-eye" title="Перегляди"><span>
+ <p style="font-size: 32px" align="center"><b><%=@post.view%></b></p>
+</li>
+<li style="display:inline-block;">
+
+  <span class="fa fa-eye" title="Перегляди"><span>
+ <p style="font-size: 32px" align="center"><b><%=@post.view%></b></p>
+</li>
+    <%= @post.name %>
+
   <% if user_signed_in? %>
   <% if @post.user_id == current_user.id %>
+
     <p>
       <%= link_to "Редагувати", edit_post_path(@post.id) %>
       <%= link_to "Видалити", post_path(@post.id), method: :delete %>

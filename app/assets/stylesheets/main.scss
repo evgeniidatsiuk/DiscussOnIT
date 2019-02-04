@@ -160,6 +160,11 @@ body {
     text-decoration: none;
   }
 }
+.humburger{
+}
+@media(min-width: 768px) and (max-width: 1920px){
+  .humburger{}
+
 @media(min-width: 768px) and (max-width: 1920px) {
   .humburger {
     display: none;
@@ -208,4 +213,5 @@ body {
     color: #666FB0;
     background-color: #fff;
   }
+}
 }
