@@ -1,7 +1,7 @@
 <div class="col-sm-3" style="padding-bottom:30px">
   <div class="card">
       <div class="card-body">
-        <%=link_to category.name, category_path(category.name), class:"btn btn-light card-title", style:"width:100%; color:#666FB0"%>
+        <%=link_to category.name, category_path(category.name), class:"btn btn-light card-title", style:"width:100%; color:#666FB0,overflow:auto"%></p>
         <span class="badge badge-secondary"><%= Tag.where(category_id: category.id).count %></span> елментів
         <p class="card-text"><%=category.desc%>Опис , добавити пізніше</p>
       </div>
