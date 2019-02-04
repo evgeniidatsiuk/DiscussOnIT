@@ -107,13 +107,12 @@ body{
   height: 80px;
   .question-count{
     background: rgba(195, 194, 194, 0.1);
-    border-radius: 5px 35px 35px 5px;
+    border-radius: 5px 65px 65px 5px;
     font-size: 36px;
     text-align: center;
     text-indent: 10px;
     color: #474747;
     padding: 0px;
-    padding-right: 30px;
     height: 80px;
     cursor: pointer;
   }
@@ -140,4 +139,16 @@ body{
     display: none;
     width: 0px;
   }
+}
+
+.text {
+  text-align:center;
+}
+
+.view {
+  text-align:center;
+}
+
+.creat {
+  margin-top: 20px;
 }
