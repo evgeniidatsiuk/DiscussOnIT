@@ -1,70 +1,86 @@
- <div class="container">
-
-
-<div class="row">
-  <%=image_tag @post.user.userparam.avatar.url, height:128%>
-   <small>
-     <b class="text-secondary">
-       <%= link_to @post.user.userparam.nickname, userparam_path(@post.user.userparam)%>
-     </b>
-   </small>
-     <div class="row align-items-end">
-         <li>
-         <span class="fa fa-eye" title="Перегляди"><span>
-        <p style="font-size: 14px" align="center"><b><%=@post.view%></b></p>
-       </li>
-         <li>
-           <span class="fa fa-heart" title="Вдопобань"><span>
-          <p style="font-size: 14px" align="center"><b><%=@post.votes.sum(:score)%></b></p>
-         </li>
-
-       <li >
-           <span class="fa fa-calendar" title="Опубліковано"><span>
-          <p style="font-size: 14px" align="center"><b><%=@post.created_at%></b></p>
-         </li>
-   </div>
-</div>
-<br>
-
-<div class="row">
-
-    <p style="word-wrap: break-word">
-      <%= @post.name%>
-    </p>
-
-  </div>
-
-</div>
-
-
-  <% if user_signed_in? %>
-  <% if @post.user_id == current_user.id %>
-
-    <div class="row">
-   <%= link_to "Редагувати", edit_post_path(@post.id), class:"fa fa-pencil" , style:"text-decoration: none;" %>
-      <%= link_to "Видалити", post_path(@post.id), method: :delete, class:"fa fa-trash" , style:"text-decoration: none;" %>
+<div class="container">
+  <div class="row">
+    <div class="col-2 align-self-center">
+      <p class="title"><%= image_tag @post.user.userparam.avatar.url, size: "64x64" %>
 
     </div>
 
-  <% else %>
-    <%= link_to chose_path(@post.class.name,@post.id) do %>
-      <%if Chosen.find_by(object_id: @post.id,object_type: @post.class.name, user_id: current_user.id) %>
+    <div class="col-8 col-sm-4">
+    <%= @post.name %>  
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-4 col-sm-2">
+   <%= link_to @post.user.userparam.nickname, userparam_path(@post.user.userparam)%>
+    </div>
+    <div class="row">
+      <div class="col ">
+        <%=render "categories/tags", object:@post %>
+    </div>
+  </div>
+    <div class="col-10" style="display: -webkit-inline-box;">
+           
+              <li style="padding-right: 10px;">
+               <span class="fa fa-eye" title="Перегляди"><span>
+              <p style="font-size: 14px"><b><%=@post.view%></b></p>
+             </li>
+
+               <li style="padding-right: 10px;">
+                 <span class="fa fa-heart" title="Вдопобань"><span>
+                <p style="font-size: 14px" ><b><%=@post.votes.sum(:score)%></b></p>
+               </li>
+
+             <li>
+                 <span class="fa fa-calendar" title="Опубліковано"><span>
+                <p style="font-size: 14px" ><b><%=@post.created_at.to_s.split(' ').first%></b></p>
+               </li>
+
+             </div>
+  </div>
+
+<div class="row">
+  
+    <div class="col-1" style="margin-right:10px;">
+     <%=link_to positiv_vote_path(@post.class.name,@post.id) do%>
+    <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
+  <%end%>
+  <h3  style="margin: 0px"><%=@post.votes.sum(:score)%></h3>
+  <%=link_to negativ_vote_path(@post.class.name,@post.id) do%>
+  <span class="fa fa-chevron-down" title="Голосувати ПРОТИ"></span>
+<%end%>
+    </div>
+    <div class="col">
+    
+<%=@post.text%>
+    </div>
+
+  </div>
+</div>
+
+
+
+    <div class="row">   
+     <div class="col-1">
+                 <% if user_signed_in? && @post.user_id == current_user.id %>
+                 <%= link_to  post_path(@post.id), method: :delete, style:"text-decoration: none; color:#474747;" do %>
+                     <span class="fa fa-trash" title="Видалити"><span>
+                      <%end%>
+                   <%= link_to  edit_post_path(@post.id), style:"text-decoration: none;color:#474747" do %>
+                   <span class="fa fa-pencil" title="Редагувати"><span>
+                   <%end%>
+                       <% else %>
+             <%= link_to chose_path(@post.class.name,@post.id) do %>
+         <%if Chosen.find_by(object_id: @post.id,object_type: @post.class.name, user_id: current_user.id) %>
         <span class="fa fa-star"style="color:gold"></span>
       <%else%>
         <span class="fa fa-star-o"style="color:gold"></span>
       <%end%>
     <%end%>
-  <% end %>
-  <%end%>
-  </h1>
-
-<hr>
-<p>
-  <%=render "categories/tags", object:@post %>
-<p>
-<%= @post.text %><br>
-
-
+    <%end%>
+</div>
+    </div>
 <% @object= @post%>
   <%= render 'comments/form'%>
   Коменти:
@@ -74,4 +90,3 @@
       <HR>
     <%end%>
   </ul>
-  </div>
