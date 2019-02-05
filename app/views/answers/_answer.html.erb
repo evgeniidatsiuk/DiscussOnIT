@@ -1,13 +1,29 @@
 <div class="row answer">
   <div class="col-1">
+    <div class="col-12">
+
+
+    <%=link_to positiv_vote_path(answer.class.name,answer.id) do%>
+      <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
+      <%end%>
+  <h3 style="margin: 0px"><%=answer.votes.sum(:score)%></h3>
+  <%=link_to negativ_vote_path(answer.class.name,answer.id) do%>
+  <span class="fa fa-chevron-down" title="Голосувати ПРОТИ"></span>
+    <%end%>
+    </div>
+    <div class="col-12">
+
+
     <%if @question.right_answer_id == answer.id %>
       <i class="fa fa-check" style="color:#28a745; font-size:30px"></i>
-    <%end%>
-    <%if @question.user.id==current_user.id && @question.right_answer_id !=answer.id%>
+    <%else%>
+    <%if @question.user.id==current_user.id%>
       <%=link_to right_answer_path(answer.id) do%>
       <i class="fa fa-question" style="font-size:30px" title="Правильна відповідь"></i>
     <%end%>
+    <%end%>
   <%end%>
+  </div>
 </div>
 <div class="col-11">
 

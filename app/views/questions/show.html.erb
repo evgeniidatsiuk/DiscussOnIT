@@ -87,7 +87,10 @@
         <%=render Answer.find(@question.right_answer_id) %>
         <hr>
       <%end%>
-      <%= render @answers%>
+      <% if @question.answers.count>1 || (@question.answers.count==1 && !@question.right_answer_id)%>
+        <h4>Відповіді:</h4>
+        <%= render @answers%>
+      <%end%>
     </div>
   </div>
 </div>
