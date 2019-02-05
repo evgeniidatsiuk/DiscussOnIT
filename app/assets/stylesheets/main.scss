@@ -160,17 +160,6 @@ body {
     text-decoration: none;
   }
 }
-.humburger{
-}
-@media(min-width: 768px) and (max-width: 1920px){
-  .humburger{}
-
-@media(min-width: 768px) and (max-width: 1920px) {
-  .humburger {
-    display: none;
-    width: 0;
-  }
-}
 
 .text {
   text-align: center;
@@ -214,8 +203,24 @@ body {
     background-color: #fff;
   }
 }
-}
+
 li{
       list-style-type: none;
 }
 
+.title{
+  font-style: normal;
+  line-height: normal;
+  font-size: 18px;
+  text-align: justify;
+  color: #474747;
+  margin-bottom: 10px
+}
+
+
+@media(min-width: 768px) and (max-width: 1920px) {
+  .humburger {
+    display: none;
+    width: 0;
+  }
+}
