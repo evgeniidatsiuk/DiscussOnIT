@@ -1,23 +1,26 @@
- <%if @question.right_answer_id == answer.id %>
-<div id="answer_<%=answer.id%>"  class="border border-success" style="padding: 5px; margin-top: 10px; margin-bottom: 10px;">
-  <%else%>
-  <div id="answer_<%=answer.id%>"class="border border-secondary" style="padding: 5px; margin-top: 10px; margin-bottom: 10px;">
+<div class="row answer">
+  <div class="col-1">
+    <%if @question.right_answer_id == answer.id %>
+      <i class="fa fa-check" style="color:#28a745; font-size:30px"></i>
+    <%end%>
+    <%if @question.user.id==current_user.id && @question.right_answer_id !=answer.id%>
+      <%=link_to right_answer_path(answer.id) do%>
+      <i class="fa fa-question" style="font-size:30px" title="Правильна відповідь"></i>
+    <%end%>
   <%end%>
-    <%=image_tag answer.user.userparam.avatar.url, height:20%>
-    <b class="align-bottom"><%= link_to answer.user.userparam.nickname, userparam_path(answer.user.userparam)%></b>
-      відповів
-  <br/>
-  <%=answer.text%>
-  <br/>
-  <%if @question.user.id==current_user.id && @question.right_answer_id !=answer.id%>
-  <%=link_to "Правильна відповідь", right_answer_path(answer.id)%>
-  <%end%>
-  <div style="text-align: center;">
-    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#answer_comment_block_<%=answer.id%>">
-      <span class="glyphicon glyphicon-plus">Коменти</span>
-    </button>
+</div>
+<div class="col-11">
+
+    <%=answer.text%>
+  <div class="col-12" style="text-align:right;">
+    Відповів
+    <%= link_to userparam_path(answer.user.userparam.id) do %>
+      <%= answer.user.userparam.nickname %>
+      <%= image_tag answer.user.userparam.avatar.url, size: "24x24" %>
+    <%end%>
   </div>
-  <div id="answer_comment_block_<%=answer.id%>" class="collapse">
-    <%@object=answer %><%= render 'comments/form'%>Коменти:<%=render answer.comments %>
+  <div class="col-12">
+      <%@object=answer %><%= render 'comments/form'%>Коменти:<%=render answer.comments %>
+    </div>
   </div>
 </div>

@@ -1,18 +1,18 @@
+<div class="container">
   <div class="row">
-    <div class="col col-lg-6">
+    <div class="col-1">
+      <%=link_to positiv_vote_path(@question.class.name,@question.id) do%>
+      <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
+    <%end%>
+    <h3 style="margin: 0px"><%=@question.votes.sum(:score)%></h3>
+    <%=link_to negativ_vote_path(@question.class.name,@question.id) do%>
+    <span class="fa fa-chevron-down" title="Голосувати ПРОТИ"></span>
+  <%end%>
+    </div>
+    <div class="col-11">
       <div class="row">
-        <div class="col col-lg-4">
-          <div class="border border-secondary rounded-left" style="padding: 10px 0px 0px 10px">
-            <%= link_to userparam_path(@question.user.userparam.id) do %>
-              <p class="title"><%= image_tag @question.user.userparam.avatar.url, size: "48x48" %>
-                <%= @question.user.userparam.nickname %>
-              </p>
-            <%end%>
-            <p>Тут буде інша інформація про користувача</p>
-          </div>
-        </div>
-        <div class="col col-lg-8">
-        <p class="title"><%= @question.name %>
+        <div class="col title">
+          <%= @question.name %>
           <% if @question.user_id == current_user.id %>
             <%= link_to edit_question_path(@question.id) do%>
               <span class="fa fa-pencil"></span>
@@ -28,38 +28,66 @@
                 <span class="fa fa-star-o"style="color:gold"></span>
               <%end%>
             <%end%>
-          <% end %>
-        </p>
-        <%=render "categories/tags", object:@question %>
+          <%end%>
+        </div>
       </div>
-      <%= @question.text %><br/>
+      <div class="row">
+        <div class="col">
+          <%=render "categories/tags", object:@question %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= @question.text.html_safe %>
+        </div>
+      </div>
+      <div class="row" style="margin-top:15px;margin-bottom:15px">
+        <div class="col-12 col-md-4">
+          <div style="text-align: center;">
+            <button type="button" class="btn btn-outline-success btn-lg btn-block" data-toggle="collapse" data-target="#new_answer">
+              <span class="fa fa-plus"></span> Відповісти
+            </button>
+          </div>
+        </div>
+        <div class="col-12 col-md-8" style="text-align:right;">
+          <%= link_to userparam_path(@question.user.userparam.id) do %>
+            <%= @question.user.userparam.nickname %>
+            <%= image_tag @question.user.userparam.avatar.url, size: "36x36" %>
+          <%end%>
+        </div>
+        <div class="col-12">
+          <div id="new_answer" class="collapse">
+            <%= form_for :answer, url:answers_path do |f| %>
+            <%= render 'answers/form', f:f%>
+          <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4">
+          Відповідей: <%=@question.answers.count%>
+        </div>
+        <div class="col-12 col-md-8" style="text-align: right;">
+          <% @object= @question%>
+          <%= render 'comments/form'%>
+          Коменти:
+          <ul>
+          <%=render @comments %>
+          </ul>
+        </div>
+        <div class="сol-12">
+          риска
+          <hr style="weight:100%">
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <% if @question.right_answer_id %>
+        <h4>Рекомендована відповідь:</h4>
+        <%=render Answer.find(@question.right_answer_id) %>
+        <hr>
+      <%end%>
+      <%= render @answers%>
     </div>
   </div>
-<div class="col col-lg-6">
-<% if @question.right_answer_id %>
-  <h3>Рекомендована відповідь</h3>
-  <%=render Answer.find(@question.right_answer_id) %>
-<%end%>
-<h3>Відповіді:</h3>
-<%= render @answers%>
-
-<div style="text-align: center;">
-  <button type="button" class="btn btn-outline-success btn-lg btn-block" data-toggle="collapse" data-target="#new_answer">
-    <span class="fa fa-plus"></span> Відповісти
-  </button>
 </div>
-<div id="new_answer" class="collapse">
-  <%= form_for :answer, url:answers_path do |f| %>
-  <%= render 'answers/form', f:f%>
-<% end %>
-</div>
-
-</div>
-</div>
-<hr>
-<% @object= @question%>
-<%= render 'comments/form'%>
-Коменти:
-<ul>
-<%=render @comments %>
-</ul>

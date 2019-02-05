@@ -1,7 +1,12 @@
 body {
   height: 100%;
 }
-
+a{
+  color: #666FB0;
+}
+a:hover{
+  color: #6f42c1;
+}
 .navbar {
   background: #474747;
   color: #FFF;
@@ -217,6 +222,9 @@ li{
   margin-bottom: 10px
 }
 
+.answer{
+  margin-top: 10px;
+}
 
 @media(min-width: 768px) and (max-width: 1920px) {
   .humburger {
