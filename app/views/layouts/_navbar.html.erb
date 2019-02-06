@@ -1,15 +1,16 @@
 <nav class="navbar fixed-top navbar-expand-lg">
-  <div class="col-2 col-sm-2 humburger">
-    <div>
+  <div class="row" style="    width: 100%">
+  <div class="col-9 col-md-2" style="display:inline-flex">
+    <div class="humburger">
       <button id="collapsebtn-humburger" class="btn" data-toggle="collapse" data-target="#collapse-sidebar" aria-expanded="false">
         <i class="fa fa-bars"></i>
       </button>
     </div>
-  </div>
-  <div class="col-6 col-sm-6 col-md-2">
+    <div style="width: 100%;">
     <%= link_to "DoIT", root_path, class:"navbar-brand"%>
+    </div>
   </div>
-  <div class="col-4 col-sm-4 col-md-10" style="display:inherit">
+  <div class="col-3 col-md-10" style="    display: inline-flex;">
     <div class="dropdown">
       <button name="add-button" class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-plus"></i>

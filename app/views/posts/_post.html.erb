@@ -5,45 +5,38 @@
       <div class="col-12 col-md-5 post-count">
         <div class="row">
 
-
-        <div class="col-12">
-          <%= link_to post.name, post_path(post.id), class:"post-title" %>
-        </div>
-        <div class="col-12">
-          <%=render "categories/tags", object:post %>
-        </div>
+          <div class="col-12">
+            <%= link_to post.name, post_path(post.id), class:"post-title" %>
+          </div>
+          <div class="col-12">
+            <%=render "categories/tags", object:post %>
+          </div>
         </div>
       </div>
 
       <div class="col-12 col-md-7 post-content">
         <div class="row">
 
-
-        <div class="col-12 col-md-9">
-          <%=strip_tags(post.text)[0..255]%>...
-        </div>
-        <div class="col-12 col-md-3" style="text-align:center">
-          <div class="row">
-            <%= link_to userparam_path(post.user.userparam) do %>
-            <div class="col-4 col-md-12">
-              <%=image_tag post.user.userparam.avatar.url, height:24%>
-            </div>
-            <div class="col-4 col-md-12">
-              <%= post.user.userparam.nickname%>
-            </div>
+          <div class="col-12 col-md-9">
+            <%=strip_tags(post.text)[0..255]%>...
+          </div>
+          <div class="col-12 col-md-3" style="text-align:center">
+            <div class="row">
+              <%= link_to userparam_path(post.user.userparam) do %>
+              <div class="col-4 col-md-12">
+                <%=image_tag post.user.userparam.avatar.url, height:24%>
+              </div>
+              <div class="col-4 col-md-12">
+                <%= post.user.userparam.nickname%>
+              </div>
             <%end%>
             <div class="col-4 col-md-12" style="font-size:8px">
-              Створено <%=post.created_at%>
+              Створено
+              <%=post.created_at%>
             </div>
-
-
-
-
-
-
+          </div>
         </div>
       </div>
-              </div>
     </div>
   </div>
 </div>
