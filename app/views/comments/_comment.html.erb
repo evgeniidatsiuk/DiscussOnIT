@@ -1,6 +1,6 @@
-<il id="comment_<%=comment.id%>" class="content-list__item content-list__item_comment js-comment ">
-  <div
-    class="bg-light forms-b>
+<li id="comment_<%=comment.id%>" class="content-list__item content-list__item_comment js-comment ">
+  <div class="bg-light forms-b">
+ 
     <b><%=image_tag comment.user.userparam.avatar.url, height:22%></span>
     <%=comment.user.userparam.nickname%>:</b>
   <%=comment.text%>
@@ -15,8 +15,8 @@
 <%end%>
 
 </div>
-<!--Юлік на це знизу увагу не звиртати то хня!--!>
+<!--Юлік на це знизу увагу не звертай, то ---! Юлік, то комент комента, не слухай Саню, слухай Жеку.-->
   <ul>
     <%=render comment.comments %>
   </ul>
-</il>
+</li>

@@ -7,6 +7,8 @@ class Question < ApplicationRecord
   has_one :right_answer, class_name: 'Answer', dependent: :destroy
   has_many :votes, as: :object, dependent: :destroy
   has_many :chosens, as: :object, dependent: :destroy
+  validates :name, length: { maximum: 50 }
+  validates :name,:text, presence: true
   include ChosenModul
 
   def url

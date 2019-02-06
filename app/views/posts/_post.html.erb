@@ -9,7 +9,7 @@
             <%= link_to post.name, post_path(post.id), class:"post-title" %>
           </div>
           <div class="col-12">
-            <%=render "categories/tags", object:post %>
+            <%=render "categories/tags", object:post%>
           </div>
         </div>
       </div>
@@ -18,7 +18,7 @@
         <div class="row">
 
           <div class="col-12 col-md-9">
-            <%=strip_tags(post.text)[0..255]%>...
+            <%=strip_tags(post.text)[0..120]%>...
           </div>
           <div class="col-12 col-md-3" style="text-align:center">
             <div class="row">
