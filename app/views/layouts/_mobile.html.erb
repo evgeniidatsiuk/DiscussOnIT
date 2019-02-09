@@ -1,9 +1,15 @@
 <nav class="navbar fixed-bottom navbar-expand">
   <div class="row" style="width:100%;height:50px">
+    <div class="col-3 text-center">
+      <%=link_to userparam_path(current_user.id) do %>
+        <i class="fa fa-user"></i>
+        <br>Користувача
+      <%end%>
+    </div>
   <%if @questions %>
-  <div class="col-4 active text-center">
+  <div class="col-3 active text-center">
     <%else%>
-    <div class="col-4 text-center">
+    <div class="col-3 text-center">
   <%end%>
   <%=link_to questions_path do %>
     <i class="fa fa-question"></i>
@@ -11,9 +17,9 @@
   <%end%>
   </div>
   <%if @posts %>
-  <div class="col-4 active text-center">
+  <div class="col-3 active text-center">
   <%else%>
-  <div class="col-4 text-center">
+  <div class="col-3 text-center">
   <%end%>
   <%=link_to posts_path do %>
     <i class="fa fa-exclamation"></i>
@@ -21,9 +27,9 @@
   <%end%>
   </div>
   <%if @categories %>
-  <div class="col-4 active text-center">
+  <div class="col-3 active text-center">
   <%else%>
-  <div class="col-4 text-center">
+  <div class="col-3 text-center">
   <%end%>
   <%=link_to categories_path do %>
     <i class="fa fa-tags"></i>
