@@ -1,0 +1,35 @@
+<nav class="navbar fixed-bottom navbar-expand">
+  <div class="row" style="width:100%;height:50px">
+  <%if @questions %>
+  <div class="col-4 active text-center">
+    <%else%>
+    <div class="col-4 text-center">
+  <%end%>
+  <%=link_to questions_path do %>
+    <i class="fa fa-question"></i>
+    <br>Питання
+  <%end%>
+  </div>
+  <%if @posts %>
+  <div class="col-4 active text-center">
+  <%else%>
+  <div class="col-4 text-center">
+  <%end%>
+  <%=link_to posts_path do %>
+    <i class="fa fa-exclamation"></i>
+    <br>Записи
+  <%end%>
+  </div>
+  <%if @categories %>
+  <div class="col-4 active text-center">
+  <%else%>
+  <div class="col-4 text-center">
+  <%end%>
+  <%=link_to categories_path do %>
+    <i class="fa fa-tags"></i>
+    <br>Теги
+  <%end%>
+  </div>
+  </div>
+
+</nav>

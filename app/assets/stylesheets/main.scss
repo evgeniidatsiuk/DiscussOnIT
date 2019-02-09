@@ -250,6 +250,22 @@ li{
     border-radius: 5px 0px 40px 5px;
     height: 80px;
   }
+  .fixed-bottom{
+    display: none;
+  }
+}
+.fixed-bottom{
+  a{
+    color: #FFF;
+    text-decoration: none;
+  }
+  .active {
+    background: #666FB0;
+    color: #FFF;
+  }
+  .row{
+    margin: 0px;
+  }
 }
 hr{
   margin-top: -10px;
