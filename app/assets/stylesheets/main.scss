@@ -28,9 +28,13 @@ a:hover{
     vertical-align: text-top;
   }
 
+  .form-control{
+    width: auto;
+    height: 30px;
+  }
+
   li{
-    padding: 4px;
-    margin-left: 5px;
+    margin-left: 20px;
   }
 }
 
@@ -38,6 +42,7 @@ a:hover{
   .dropdown-item:hover {
     background: #666FB0;
     color: #FFFFFF;
+    margin-left: 20px;
   }
 }
 
@@ -114,6 +119,11 @@ a:hover{
       color: #FFFFFF;
     }
   }
+}
+
+/* Style right-sidebar */
+#right-sidebar{
+  margin-top: 50px;
 }
 
 .content {
@@ -354,6 +364,7 @@ li{
   float: left;
   color: #999;
 }
+
 .profile{
   background: #FFFFFF;
 border: 1px solid #474747;
