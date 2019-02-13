@@ -1,3 +1,20 @@
-<li>
-<%= notification.write %> and <%= link_to "URL" , notification.object.url%>
+<li class="notification" <% if !notification.read_at %> style="background-color: #d9edf7;border-color: #bce8f1;color: #31708f;" <%end%>>
+  <div class="media">
+        <div class="media-left">
+          <div class="media-object">
+            <%if notification.action = "create" %>
+            <i class="fa fa-3x fa-plus"></i>
+            <%else%>
+            <%end%>
+          </div>
+        </div>
+        <div class="media-body">
+          <strong class="notification-title"><%=link_to notification.activeuser.nickname, userparam_path(notification.activeuser.id)%> <%= notification.write %> to <%= link_to notification.root.name , notification.object.url%></strong>
+
+          <div class="notification-meta">
+            <small class="timestamp"><%=notification.created_at%> <%if !notification.read_at%> <%=link_to read_notification_path(notification.id) do%><i class="fa fa-eye" style="color:red"></i><%end%><%else%><%=link_to unread_notification_path(notification.id) do%><i class="fa fa-eye-slash" style="color:red"></i><%end%><%end%></small>
+          </div>
+        </div>
+      </div>
+
  </li>

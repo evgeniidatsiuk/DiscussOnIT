@@ -20,7 +20,12 @@ Rails.application.routes.draw do
   end
   resources :posts
   resources :categories, only: %i[index show]
-  resources :notifications, only: [:index]
+  resources :notifications, only: [:index] do
+    member do
+      get :read
+      get :unread
+    end
+  end
   resources :chosens, only: [:index]
 
   get '/:type/:id/chose', to: 'chosens#chose', as: 'chose'
