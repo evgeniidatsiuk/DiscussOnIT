@@ -1,4 +1,4 @@
-body {
+ body {
   height: 100%;
 }
 a{
@@ -10,32 +10,27 @@ a:hover{
 .navbar {
   background: #474747;
   color: #FFF;
-  padding: 0;
   height: 50px;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15)!important;
-
+  a{
+    color: #666FB0;
+  }
+  a:hover{
+    color: #6f42c1;
+  }
   .navbar-brand {
     text-align: center;
-    width: 100%;
     color: #FFF;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
     font-size: 24px;
-    margin: 0;
     vertical-align: text-top;
   }
 
-  .btn {
-    height: 48px;
-    width: 48px;
-    margin-right: 5px;
-    background: #474747;
-    color: #FFF;
-    font-size: 18px;
-    border: 0.5px solid #C0C0C0;
-    box-sizing: border-box;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+  li{
+    padding: 4px;
+    margin-left: 5px;
   }
 }
 
@@ -129,11 +124,13 @@ a:hover{
   background: rgba(71, 71, 71, 0.02);
   border: 0.25px solid #474747;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 15px;
   height: auto;
 
   .question-count {
+    height: 100%;
+    border-radius: 10px 60px 60px 10px;
   }
 
   .question-content {
@@ -209,9 +206,9 @@ li{
 }
 
 .title{
-  font-style: normal;
+  font-weight: bold;
   line-height: normal;
-  font-size: 18px;
+  font-size: 24px;
   text-align: justify;
   color: #474747;
   margin-bottom: 10px
@@ -220,7 +217,23 @@ li{
 .answer{
   margin-top: 10px;
 }
-
+@media(max-width: 768px){
+  .btn{
+    border: none;
+  }
+  .fixed-top{
+    .row{
+      margin: 0px;
+    }
+  }
+  .question{
+    border-radius: 1px;
+  }
+  .content{
+    padding: 5px;
+    padding-top: 20px;
+  }
+}
 @media(min-width: 768px) and (max-width: 1920px) {
   .humburger {
     display: none;
@@ -265,6 +278,9 @@ li{
   }
   .row{
     margin: 0px;
+  }
+  .col-3{
+    padding: 0px;
   }
 }
 
@@ -341,5 +357,5 @@ li{
 .profile{
   background: #FFFFFF;
 border: 1px solid #474747;
-box-sizing: border-box; 
+box-sizing: border-box;
 }

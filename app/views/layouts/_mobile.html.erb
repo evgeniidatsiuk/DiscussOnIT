@@ -2,47 +2,47 @@
   <div class="row" style="width:100%;height:50px">
     <div class="col-3 text-center">
       <%if user_signed_in?%>
-      <%=link_to userparam_path(current_user.id) do %>
-        <i class="fa fa-user"></i>
-        <br>Користувача
-      <%end%>
+        <%=link_to userparam_path(current_user.id) do %>
+          <i class="fa fa-user"></i>
+          <br>Користувач
+        <%end%>
       <%else%>
         <%= link_to new_user_session_path do%>
-        <i class="fa fa-sign-in"></i>
-      <br>Вхід
-      <%end%>
+          <i class="fa fa-sign-in"></i>
+          <br>Вхід
+        <%end%>
       <%end%>
     </div>
-  <%if @questions %>
+<%if @questions %>
   <div class="col-3 active text-center">
-    <%else%>
+  <%else%>
     <div class="col-3 text-center">
-  <%end%>
-  <%=link_to questions_path do %>
+    <%end%>
+    <%=link_to questions_path do %>
     <i class="fa fa-question"></i>
     <br>Питання
   <%end%>
-  </div>
-  <%if @posts %>
+</div>
+<%if @posts %>
   <div class="col-3 active text-center">
   <%else%>
-  <div class="col-3 text-center">
-  <%end%>
-  <%=link_to posts_path do %>
+    <div class="col-3 text-center">
+    <%end%>
+    <%=link_to posts_path do %>
     <i class="fa fa-exclamation"></i>
     <br>Записи
   <%end%>
-  </div>
-  <%if @categories %>
+</div>
+<%if @categories %>
   <div class="col-3 active text-center">
   <%else%>
-  <div class="col-3 text-center">
-  <%end%>
-  <%=link_to categories_path do %>
+    <div class="col-3 text-center">
+    <%end%>
+    <%=link_to categories_path do %>
     <i class="fa fa-tags"></i>
     <br>Теги
   <%end%>
-  </div>
-  </div>
+</div>
+</div>
 
 </nav>

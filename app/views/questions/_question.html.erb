@@ -1,19 +1,19 @@
 <div class="row question">
   <div class="col-sm-12 col-md-4 question-count">
     <div class="row">
-      <div class="col-3">
+      <div class="col-4">
         <div class="view">
-          <div class="col-2 col-md-12">
+          <div class="">
             <%=question.votes.sum(:score)%>
           </div>
-          <div class="col-10 col-md-12 text" style="font-size:10px">
+          <div class="" style="font-size:10px">
             Голосів
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-4">
         <div class="view">
-          <div class="col-2 col-md-12">
+          <div class="">
             <%if question.right_answer_id %>
               <div style="color:green;">
                 <%=question.answers.count%>
@@ -23,18 +23,18 @@
             <%end%>
           </div>
 
-          <div class="col-10 col-md-12 text" style="font-size:10px">
+          <div class=" text" style="font-size:10px">
             Відповідей
           </div>
         </div>
       </div>
 
-      <div class="col-3">
+      <div class="col-4">
         <div class="view">
-          <div class="col-2 col-md-12">
+          <div class="">
           <%= question.view %>
           </div>
-          <div class="col-10 col-md-12 text" style="font-size:10px">
+          <div class="text" style="font-size:10px">
             Переглядів
           </div>
         </div>
