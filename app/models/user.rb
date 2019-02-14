@@ -21,4 +21,8 @@ class User < ApplicationRecord
     @userparam = Userparam.create(user_id: id)
     @userparam.save
   end
+
+  def nickname
+    userparam.nickname
+  end
 end
