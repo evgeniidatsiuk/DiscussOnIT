@@ -2,14 +2,14 @@
   <span class="fa fa-comment"></span></a>
 <div class="modal fade" id="new_comment_to_<%=@object.class.name.downcase%>_<%=@object.id%>" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <%= form_for :comment, url:comments_path do |f| %>
-      <div class="modal-header">
-        <h5 class="modal-title">Новий коментар</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="fa fa-times"></span>
-        </button>
-      </div>
+      <div class="modal-content">
+        <%= form_for :comment, url:comments_path do |f| %>
+        <div class="modal-header">
+          <h5 class="modal-title">Новий коментар</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="fa fa-times"></span>
+          </button>
+        </div>
 
       <div class="modal-body">
         <%= f.text_area :text, class: "form-control", :rows => 8 %>
@@ -24,4 +24,3 @@
   </div>
 </div>
 </div>
-
