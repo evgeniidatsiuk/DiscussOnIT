@@ -28,12 +28,9 @@ a:hover{
     vertical-align: text-top;
   }
 
-  .form-control{
-    height: 30px;
-  }
-
   li{
-    margin-left: 20px;
+    padding: 4px;
+    margin-left: 5px;
   }
 }
 
@@ -41,7 +38,6 @@ a:hover{
   .dropdown-item:hover {
     background: #666FB0;
     color: #FFFFFF;
-
   }
 }
 
@@ -118,11 +114,6 @@ a:hover{
       color: #FFFFFF;
     }
   }
-}
-
-/* Style right-sidebar */
-#right-sidebar{
-  margin-top: 50px;
 }
 
 .content {
@@ -363,9 +354,19 @@ li{
   float: left;
   color: #999;
 }
-
 .profile{
   background: #FFFFFF;
-border: 1px solid #474747;
-box-sizing: border-box;
+  color: #ffffff;
+  border: 2px solid #474747;
+  border-radius: 30px;
+    img{
+      width: 150px;
+    }
+    .btn{
+      width: 150px;
+      padding: 5px 10px;
+    }
+    hr{
+      border: 1px solid #474747;
+    }
 }
