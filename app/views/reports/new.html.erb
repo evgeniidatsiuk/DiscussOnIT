@@ -1,0 +1,4 @@
+<%= form_for @report, url:reports_path do |f| %>
+<%= render 'reports/form', f:f%>
+<%= f.submit "Створити" , class:"btn btn-dark"%>
+<% end %>

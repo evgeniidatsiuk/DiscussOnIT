@@ -1,3 +1,5 @@
-<ul>
+У вас <%=Notification.where(user_id:current_user.id).count%> сповіщення з них  <%=Notification.where(user_id:current_user.id).unread.count%>
+<hr>
+<ul class="notifications">
   <%=render @notifications%>
 </ul>

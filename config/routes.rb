@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'pages#index'
 
   namespace :pages do
@@ -20,8 +21,14 @@ Rails.application.routes.draw do
   end
   resources :posts
   resources :categories, only: %i[index show]
-  resources :notifications, only: [:index]
+  resources :notifications, only: [:index] do
+    member do
+      get :read
+      get :unread
+    end
+  end
   resources :chosens, only: [:index]
+  resources :reports
 
   get '/:type/:id/chose', to: 'chosens#chose', as: 'chose'
 

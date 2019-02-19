@@ -7,8 +7,8 @@ class ChosensController < ApplicationController
   end
 
   def index
-    @posts = Post.where(id: current_user.chosens.where(object_type: 'Post').collect(&:object_id))
-    @questions = Question.where(id: current_user.chosens.where(object_type: 'Question').collect(&:object_id))
+    @posts = Post.where(id: current_user.chosens.where(object_type: 'Post').collect(&:object_id)).order(created_at: :DESC).page(params[:page]).per(10)
+    @questions = Question.where(id: current_user.chosens.where(object_type: 'Question').collect(&:object_id)).order(created_at: :DESC).page(params[:page]).per(10)
   end
 
   private

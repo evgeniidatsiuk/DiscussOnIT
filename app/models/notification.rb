@@ -12,6 +12,18 @@ class Notification < ApplicationRecord
   end
 
   def write
-    [activeuser.userparam.nickname, action, object.class.name].join(' ')
+    [action, object.class.name].join(' ')
+  end
+
+  def root
+    if object_type == 'Answer'
+      object.question
+    else
+      if object_type == 'Comment'
+        object.root
+      else
+        object
+      end
+    end
   end
 end

@@ -15,6 +15,16 @@
       </li>
 
       <li class="nav-item">
+        <div class="dropdown">
+          <a name="add-button" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-2x fa-file"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%=link_to "Report", new_report_path, class:"dropdown-item" %>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
         <div class="search">
           <a id="collapsebtn-search" role="button" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false" aria-controls="collapse-search">
             <i class="fa fa-2x fa-search"></i>

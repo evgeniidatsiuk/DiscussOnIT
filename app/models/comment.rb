@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
   has_many :comments, as: :object, dependent: :destroy
 
   def url
-    root.url + '/#comments_' + id.to_s
+    root.url + '/#comment_' + id.to_s
   end
 
   def root
