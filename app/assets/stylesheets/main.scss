@@ -371,3 +371,37 @@ li{
     background: rgba(94, 94, 94, 0.4);
   }
 }
+
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.profil-sidebar{
+  border: 1px solid #474747;
+  height: 100%;
+   z-index: 999;
+   li{
+     margin:0px -15px;
+     text-align:center;
+   }
+   li:hover {
+     a {
+       text-decoration: none;
+       color: #FFF;
+     }
+     background: #666FB0;
+     color: #FFF;
+   }
+
+   a {
+     color: #595959;
+     font-size: 18px;
+   }
+
+   a {
+       padding: 8px 0;
+       width: 100%;
+       display: table;
+     }
+}

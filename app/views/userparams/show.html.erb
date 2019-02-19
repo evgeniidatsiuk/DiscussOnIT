@@ -4,51 +4,60 @@
     <div class="nick">
       <h3>
       <b><%=@userparam.nickname%></b>
-
-    <%=link_to positiv_vote_path(@userparam.class.name,@userparam.id) do %>
-      <span class="fa fa-plus" style="color:#28a745;"></span>
-    <%end%>
-    <%=@userparam.votes.sum(:score)%>
-    <%=link_to negativ_vote_path(@userparam.class.name,@userparam.id) do %>
-    <span class="fa fa-minus" style="color:#dc3545;"></span>
-  <%end%>
-</h3>
-</div>
-</div>
-
-
-<div class="row" style="text-align:center;">
-  <div class="col-4 col-md-12">
-    <a class="btn btn-primary" data-toggle="collapse" data-target="#Info" aria-expanded="false" role="button" aria-controls="Info">Опис</a>
+        <%=link_to positiv_vote_path(@userparam.class.name,@userparam.id) do %>
+          <span class="fa fa-plus" style="color:#28a745;"></span>
+        <%end%>
+        <%=@userparam.votes.sum(:score)%>
+        <%=link_to negativ_vote_path(@userparam.class.name,@userparam.id) do %>
+        <span class="fa fa-minus" style="color:#dc3545;"></span>
+      <%end%>
+    </div>
   </div>
 
-  <div class="col-4 col-md-12">
-    <a class="btn btn-primary" data-toggle="collapse" data-target="#Stat" aria-expanded="false" role="button" aria-controls="Stat">Cтатистика</a>
-  </div>
+  <div class="wrapper">
+    <nav id="profil-sidebar" class="col-8 col-md-3 d-none d-md-block profil-sidebar">
+          <ul class="list-unstyled components">
+              <li>
+                  <a href="#info">Опис</a>
+              </li>
 
-  <div class="col-4 col-md-12">
-    <a class="btn btn-primary" data-toggle="collapse" data-target="#Other" aria-expanded="false" role="button" aria-controls="Other">Інше</a>
-  </div>
-</div>
-<br>
+              <li>
+                  <a href="#stats">Статистика</a>
+              </li>
+              <li>
+                  <a href="#other">Інше</a>
+              </li>
+          </ul>
+      </nav>
+      <div class="content">
+      <div id="info">
+        <h3>Профіль користувача
+          <b><%=@userparam.nickname%></b>
+        </h3>
+        <h5><%=@userparam.firstname%>
+        <%=@userparam.lastname%></h5>
+        <h5><%=@userparam.user.email%></h5>
+        <h5><%= @userparam.age %></h5>
+        <% if @userparam.education %>
+          <h5><%=@userparam.education.university.name%>
+            |
+            <%=@userparam.education.specialty.name%>
+            |</h5>
+        <%end%>
+        <%if user_signed_in? && current_user.id == @userparam.user.id%>
+          <%=link_to "Редагувати профіль", edit_userparam_path(@userparam.id)%>
+          <%=link_to "Змінити дані для входу", edit_user_registration_path%>
+        <%end%>
+        </div>
 
-<div class="col-12 col-md-9">
-<h3>Профіль користувача
-  <b><%=@userparam.nickname%></b>
-</h3>
-<h5><%=@userparam.firstname%>
-<%=@userparam.lastname%></h5>
-<h5><%=@userparam.user.email%></h5>
-<h5><%= @userparam.age %></h5>
-<% if @userparam.education %>
-  <h5><%=@userparam.education.university.name%>
-    |
-    <%=@userparam.education.specialty.name%>
-    |</h5>
-<%end%>
-<%if user_signed_in? && current_user.id == @userparam.user.id%>
-  <%=link_to "Редагувати профіль", edit_userparam_path(@userparam.id)%>
-  <%=link_to "Змінити дані для входу", edit_user_registration_path%>
-<%end%>
-</div>
+        <div id="stats">
+          <h3>Тут має бути статистика</h3>
+          </div>
+
+        <div id="other">
+          <h3>А тут все інше</h3>
+        </div>
+
+      </div>
+  </div>
 </div>
