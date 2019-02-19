@@ -1,6 +1,7 @@
-<div class="col-md-6 col-md-offset-3 login-box">
-  <%=form_for @userparam, url:userparam_path, method: :patch do |f|%>
-  <%=render 'userparams/form', f:f%>
-  <%=f.submit "Оновити"%>
+<h3>Профіль користувача
+  <b><%=@userparam.user.email.split('@').first%></b>
+</h3>
+<%=form_for @userparam, url:userparam_path(current_user.id) do |f|%>
+<%=render 'userparams/form', f:f%>
+<%=f.submit "Update"%>
 <%end%>
-</div>
