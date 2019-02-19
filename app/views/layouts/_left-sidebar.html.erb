@@ -23,6 +23,12 @@
   <%if user_signed_in?%>
       <ul class="dropdown-menu" id="userSubmenu" style="padding-left:10px;">
         <li>
+          <%= link_to userparam_path(current_user) ,class:"dropdown-item" do %>
+          <i class="fa fa-user"></i>
+          Профіль
+          <%end%>
+        </li>
+        <li>
           <%= link_to notifications_path, class:"dropdown-item" do%>
           <i class="fa fa-envelope "></i>
           Сповіщення
