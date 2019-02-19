@@ -1,11 +1,15 @@
 class ReportsController < ApplicationController
   def new
- @report = Report.new
+    @report = Report.new
   end
+
   def create
     @report = Report.new(report_params)
-    redirect_to report_path(@report.id) if @report.save
-  else render "new"
+    if @report.save
+      redirect_to report_path(@report.id)
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -13,13 +17,12 @@ class ReportsController < ApplicationController
   end
 
   def index
-    @reports =  Report.all
+    @reports = Report.all
   end
 
   private
 
   def report_params
-  params.require(:report).permit(:user_email, :text, photos: [])
+    params.require(:report).permit(:user_email, :text, photos: [])
   end
-
 end

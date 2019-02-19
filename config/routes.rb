@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: 'pages#index'
 
   namespace :pages do
@@ -28,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
   resources :chosens, only: [:index]
-  resources :reports
+  resources :reports, except: %i[edit update]
 
   get '/:type/:id/chose', to: 'chosens#chose', as: 'chose'
 
