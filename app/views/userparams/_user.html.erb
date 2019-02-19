@@ -1,0 +1,9 @@
+<div class="user">
+  <%= link_to userparam_path(object.user.userparam) do %>
+    <%= object.user.userparam.nickname%>
+    <%=image_tag object.user.userparam.avatar.url, height:16%>
+  <%end%>
+  <div class="info">
+    Какой-то текст который должен быть в блоке<br>
+  </div>
+</div>

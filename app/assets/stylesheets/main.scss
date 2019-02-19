@@ -355,18 +355,72 @@ li{
   color: #999;
 }
 .profile{
-  background: #FFFFFF;
+  width: 100%;
+  height: 210px;
+  background: #123123;
   color: #ffffff;
-  border: 2px solid #474747;
-  border-radius: 30px;
-    img{
-      width: 150px;
-    }
-    .btn{
-      width: 150px;
-      padding: 5px 10px;
-    }
-    hr{
-      border: 1px solid #474747;
-    }
+  img{
+    margin: 15px;
+    border-radius: 360px;
+    width: 120px;
+  }
+  .nick{
+    padding: 3px;
+    width: 100%;
+    height: 35px;
+    background: rgba(94, 94, 94, 0.4);
+  }
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.profil-sidebar{
+  border: 1px solid #474747;
+  height: 100%;
+   z-index: 999;
+   li{
+     margin:0px -15px;
+     text-align:center;
+   }
+   li:hover {
+     a {
+       text-decoration: none;
+       color: #FFF;
+     }
+     background: #666FB0;
+     color: #FFF;
+   }
+
+   a {
+     color: #595959;
+     font-size: 18px;
+   }
+
+   a {
+       padding: 8px 0;
+       width: 100%;
+       display: table;
+     }
+}
+
+.user{
+}
+.info{
+    font-size: 14px;
+    display:none;
+    padding:10px;
+    background:#f3f3f3;
+    height:50px;
+    -moz-box-shadow:0 5px 5px rgba(0,0,0,0.3);
+    -webkit-box-shadow:0 5px 5px rgba(0,0,0,0.3);
+    box-shadow:0 5px 5px rgba(0,0,0,0.3);
+}
+.user:hover .info{
+    display:block;
+    position:absolute;
+    z-index:9999;
+    width:400px;
 }

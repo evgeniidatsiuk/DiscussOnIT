@@ -1,7 +1,7 @@
 <div class="row question">
   <div class="col-sm-12 col-md-4 question-count">
     <div class="row">
-      <div class="col-4">
+      <div class="col-3">
         <div class="view">
           <div class="">
             <%=question.votes.sum(:score)%>
@@ -11,7 +11,7 @@
           </div>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <div class="view">
           <div class="">
             <%if question.right_answer_id %>
@@ -29,7 +29,7 @@
         </div>
       </div>
 
-      <div class="col-4">
+      <div class="col-3">
         <div class="view">
           <div class="">
           <%= question.view %>
@@ -54,10 +54,8 @@
     <div class="col-sm-5">
       <div class="creat">
         Задав
-        <%= link_to userparam_path(question.user.userparam) do %>
-        <%= question.user.userparam.nickname%>
-        <%=image_tag question.user.userparam.avatar.url, height:16%>
-      <%end%>
+        <%=render "userparams/user", object:question %>
+
       <span style="font-size:8px">
         <%=question.created_at %>
       </span>
