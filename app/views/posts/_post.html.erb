@@ -22,7 +22,7 @@
           </div>
           <div class="col-12 col-md-3" style="text-align:center">
             <div class="row">
-              <%= link_to userparam_path(post.user.userparam) do %>
+              <%= link_to userparam_path(post.user.userparam),class:"user-prof" do %>
               <div class="col-4 col-md-12">
                 <%=image_tag post.user.userparam.avatar.url, height:24%>
               </div>

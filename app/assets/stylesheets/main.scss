@@ -370,3 +370,21 @@ li{
       border: 1px solid #474747;
     }
 }
+
+.user{
+}
+.info{
+    display:none;
+    padding:10px;
+    background:#f3f3f3;
+    height:50px;
+    -moz-box-shadow:0 5px 5px rgba(0,0,0,0.3);
+    -webkit-box-shadow:0 5px 5px rgba(0,0,0,0.3);
+    box-shadow:0 5px 5px rgba(0,0,0,0.3);
+}
+.user:hover .info{
+    display:block;
+    position:absolute;
+    z-index:9999;
+    width:400px;
+}

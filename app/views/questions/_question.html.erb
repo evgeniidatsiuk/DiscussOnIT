@@ -54,10 +54,8 @@
     <div class="col-sm-5">
       <div class="creat">
         Задав
-        <%= link_to userparam_path(question.user.userparam) do %>
-        <%= question.user.userparam.nickname%>
-        <%=image_tag question.user.userparam.avatar.url, height:16%>
-      <%end%>
+        <%=render "userparams/usericon", object:question %>
+
       <span style="font-size:8px">
         <%=question.created_at %>
       </span>
