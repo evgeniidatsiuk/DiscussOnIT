@@ -1,7 +1,7 @@
-<div class="row" style="margin:-10px -60px">
-  <div class="col-12 col-md-3 profile" style="text-align:center;" ">
-    <%=image_tag @userparam.avatar.url, style:"width:100%" %>
-    <div style="margin:10px;">
+<div class="row">
+  <div class="col-12 col-md-3 profile" style="text-align:center;">
+    <%=image_tag @userparam.avatar.url %>
+    <hr>
       <%=link_to positiv_vote_path(@userparam.class.name,@userparam.id) do %>
       <span class="fa fa-plus" style="color:#28a745;"></span>
     <%end%>
@@ -9,29 +9,29 @@
     <%=link_to negativ_vote_path(@userparam.class.name,@userparam.id) do %>
     <span class="fa fa-minus" style="color:#dc3545;"></span>
   <%end%>
+  <hr>
+<div class="row" style="text-align:center;">
+  <div class="col-4 col-md-12">
+    <a class="btn btn-primary" data-toggle="collapse" data-target="#Info" aria-expanded="false" role="button" aria-controls="Info">Опис</a>
+  </div>
+
+  <div class="col-4 col-md-12">
+    <a class="btn btn-primary" data-toggle="collapse" data-target="#Stat" aria-expanded="false" role="button" aria-controls="Stat">Cтатистика</a>
+  </div>
+
+  <div class="col-4 col-md-12">
+    <a class="btn btn-primary" data-toggle="collapse" data-target="#Other" aria-expanded="false" role="button" aria-controls="Other">Інше</a>
+  </div>
 </div>
-<div class="row" style="text-align:left">
-  <div class="col-4 col-md-12">
-    <a class="btn btn-secondary" data-toggle="collapse" data-target="#Info" aria-expanded="false" role="button" aria-controls="Info">Опис</a>
-  </div>
-  <div class="col-4 col-md-12">
-    <a class="btn btn-secondary" data-toggle="collapse" data-target="#Stat" aria-expanded="false" role="button" aria-controls="Stat">статистика</a>
-
-  </div>
-  <div class="col-4 col-md-12">
-    <a class="btn btn-secondary" data-toggle="collapse" data-target="#Other" aria-expanded="false" role="button" aria-controls="Other">Інше</a>
-
-  </div>
-</div>
-
+<br>
 </div>
 <div class="col-12 col-md-9">
 <h3>Профіль користувача
   <b><%=@userparam.nickname%></b>
 </h3>
+<h5><%=@userparam.firstname%>
+<%=@userparam.lastname%></h5>
 <h5><%=@userparam.user.email%></h5>
-<h5><%=@userparam.firstname%></h5>
-<h5><%=@userparam.lastname%></h5>
 <h5><%= @userparam.age %></h5>
 <% if @userparam.education %>
   <h5><%=@userparam.education.university.name%>

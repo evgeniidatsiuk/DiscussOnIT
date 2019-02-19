@@ -356,6 +356,17 @@ li{
 }
 .profile{
   background: #FFFFFF;
-border: 1px solid #474747;
-box-sizing: border-box;
+  color: #ffffff;
+  border: 2px solid #474747;
+  border-radius: 30px;
+    img{
+      width: 150px;
+    }
+    .btn{
+      width: 150px;
+      padding: 5px 10px;
+    }
+    hr{
+      border: 1px solid #474747;
+    }
 }
