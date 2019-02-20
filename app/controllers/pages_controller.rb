@@ -1,11 +1,11 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @posts      ||= Post.all.order(created_at: :DESC).page(params[:page]).per(10)
     @questions  ||= Question.all.order(created_at: :DESC).page(params[:page]).per(10)
   end
-  
+
   def search
     if params.key?(:search)
       @s_word = params[:search][:text].downcase.split(' ').map(&:strip)
@@ -27,5 +27,11 @@ class PagesController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def order
+    order_name = params[:name]
+    session['order'] = order_name if %w[name vote date].include?(order_name)
+    redirect_back(fallback_location: root_path)
   end
 end
