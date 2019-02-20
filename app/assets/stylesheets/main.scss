@@ -2,11 +2,7 @@ body {
   height: 100%;
 }
 
-a {
-  color: #666FB0;
-}
-
-a:hover {
+a:hover{
   color: #6f42c1;
 }
 
@@ -18,10 +14,6 @@ a:hover {
 
   a {
     color: #666FB0;
-  }
-
-  a:hover {
-    color: #6f42c1;
   }
 
   .navbar-brand {
@@ -442,4 +434,21 @@ li {
 .times {
   display: inherit;
   font-size: 11px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid #595959;
+  border-radius: 10px;
+  outline: none;
+}
+.input-sign {
+  width: 300px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid #595959;
+  border-radius: 30px;
+  outline: none;
 }
