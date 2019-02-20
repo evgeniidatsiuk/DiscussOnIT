@@ -1,14 +1,16 @@
-<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="reportModalLabel">Відгук</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+<% if @report.errors.any? %>
+ <div class="alert alert-danger" role="alert">
+     <h2>У нас <%= pluralize(@report.errors.count, "error") %>(проблєми), Джоні</h2>
+
+    <ul>
+    <% @report.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
       <%= form_for :report, url:reports_path do |f| %>
-      <div class="modal-body">
+
 
        <%= f.text_field :subject ,  class: "form-control", placeholder:"Введіть вашy subject" %>
 
@@ -27,11 +29,8 @@
         <%= f.file_field :photos, multiple: true %>
 
 
-      </div>
-      <div class="modal-footer">
+
+
         <%= f.submit "Створити" , class:"btn btn-dark" %>
-      </div>
+
       <% end %>
-    </div>
-  </div>
-</div>
