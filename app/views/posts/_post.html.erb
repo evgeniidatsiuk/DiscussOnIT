@@ -24,15 +24,16 @@
             <div class="row">
 
               <div class="col-4 col-md-12">
-                  <% size=18 %>
+
                   <%=render "userparams/user_icon",object:post %>
               </div>
               <div class="col-4 col-md-12">
                   <%=render "userparams/user_nickname", object:post %>
               </div>
             <div class="col-4 col-md-12" style="font-size:8px">
-              Створено
-              <%=post.created_at%>
+              <span class="times">
+                <%if post.created_at==post.updated_at%> Створено<%else%>Оновлено<%end%> <%=distance_of_time_in_words(post.updated_at,Time.now) %>
+              </span>
             </div>
           </div>
         </div>

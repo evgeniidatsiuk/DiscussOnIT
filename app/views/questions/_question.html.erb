@@ -1,19 +1,19 @@
 <div class="row question">
   <div class="col-sm-12 col-md-4 question-count">
     <div class="row">
-      <div class="col-3">
+      <div class="col-4">
         <div class="view">
-          <div class="">
+          <div>
             <%=question.votes.sum(:score)%>
           </div>
-          <div class="" style="font-size:10px">
+          <div style="font-size:10px">
             Голосів
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-4">
         <div class="view">
-          <div class="">
+          <div>
             <%if question.right_answer_id %>
               <div style="color:green;">
                 <%=question.answers.count%>
@@ -23,7 +23,7 @@
             <%end%>
           </div>
 
-          <div class=" text" style="font-size:10px">
+          <div style="font-size:10px">
             Відповідей
           </div>
         </div>
@@ -34,7 +34,7 @@
           <div class="">
           <%= question.view %>
           </div>
-          <div class="text" style="font-size:10px">
+          <div style="font-size:10px">
             Переглядів
           </div>
         </div>
@@ -52,14 +52,12 @@
       <%=render "categories/tags", object:question %>
     </div>
     <div class="col-sm-5">
-      <div class="creat">
         Задав
         <%=render "userparams/user", object:question %>
 
-      <span style="font-size:8px">
-        <%=question.created_at %>
+      <span class="times">
+        <%=distance_of_time_in_words(question.created_at,Time.now) %>
       </span>
-    </div>
   </div>
 </div>
 </div>

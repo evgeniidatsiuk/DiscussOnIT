@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col title">
           <%= @question.name %>
-          <% if @question.user_id == current_user.id %>
+          <% if user_signed_in? && @question.user_id == current_user.id %>
             <%= link_to edit_question_path(@question.id) do%>
               <span class="fa fa-pencil"></span>
             <%end%>
@@ -22,7 +22,7 @@
             <%end%>
           <% else %>
             <%= link_to chose_path(@question.class.name,@question.id) do %>
-              <%if Chosen.find_by(object_id: @question.id,object_type: @question.class.name, user_id: current_user.id) %>
+              <%if user_signed_in? && Chosen.find_by(object_id: @question.id,object_type: @question.class.name, user_id: current_user.id) %>
                 <span class="fa fa-star" style="color:gold"></span>
               <%else%>
                 <span class="fa fa-star-o"style="color:gold"></span>
@@ -68,8 +68,7 @@
           Відповідей: <%=@question.answers.count%>
         </div>
         <div class="col-12 col-md-8" style="text-align: right;">
-          <% @object= @question%>
-          <%= render 'comments/form'%>
+          <%= render 'comments/form',object:@question%>
           Коменти:
           <ul>
           <%=render @comments %>

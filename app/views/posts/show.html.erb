@@ -74,7 +74,7 @@
       <%end%>
     <% else %>
       <%= link_to chose_path(@post.class.name,@post.id) do %>
-      <%if Chosen.find_by(object_id: @post.id,object_type: @post.class.name, user_id: current_user.id) %>
+      <%if user_signed_in? && Chosen.find_by(object_id: @post.id,object_type: @post.class.name, user_id: current_user.id) %>
         <span class="fa fa-star" style="color:gold"></span>
       <%else%>
         <span class="fa fa-star-o" style="color:gold"></span>
@@ -83,8 +83,7 @@
   <%end%>
 </div>
 </div>
-<% @object = @post%>
-<%= render 'comments/form'%>
+<%= render 'comments/form', object:@post%>
 Коменти:
 <ul class="content-list content-list_comments">
   <% Comment.where(object: @post).each do |comment| %>

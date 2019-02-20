@@ -155,20 +155,11 @@ a:hover{
   }
 }
 
-.text {
-  text-align: center;
-  vertical-align: middle;
-display: -webkit-inline-box;
-}
-
 .view {
   text-align: center;
   display: -webkit-inline-box;
 }
 
-.creat {
-  margin-top: 20px;
-}
 
 .tag {
   font-weight: bold;
@@ -407,6 +398,7 @@ li{
 }
 
 .user{
+  display: inline-block;
 }
 .info{
     font-size: 14px;
@@ -417,10 +409,15 @@ li{
     -moz-box-shadow:0 5px 5px rgba(0,0,0,0.3);
     -webkit-box-shadow:0 5px 5px rgba(0,0,0,0.3);
     box-shadow:0 5px 5px rgba(0,0,0,0.3);
+    z-index:9999;
 }
 .user:hover .info{
     display:block;
     position:absolute;
     z-index:9999;
     width:400px;
+}
+.times{
+  display: inherit;
+  font-size:11px;
 }

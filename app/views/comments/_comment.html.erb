@@ -5,14 +5,13 @@
     <%=comment.user.userparam.nickname%>:</b>
   <%=comment.text%>
 
-  <%if comment.user.id==current_user.id%>
+  <%if user_signed_in? && comment.user.id==current_user.id%>
     <%=link_to comment_path(comment.id),data: {confirm: "Видалити?"}, method: :delete do%>
       <span class="fa fa-times" style="color:lightgray;"></span>
     <%end%>
-      <%else%>
-<% @object= comment%>
-  <%= render 'comments/form'%>
-<%end%>
+  <%else%>
+    <%= render 'comments/form', object:comment%>
+  <%end%>
 
 </div>
 <!--Юлік на це знизу увагу не звертай, то ---! Юлік, то комент комента, не слухай Саню, слухай Жеку.-->
