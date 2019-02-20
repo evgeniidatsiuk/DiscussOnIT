@@ -1,12 +1,14 @@
-Аватар:
-<%= f.file_field :avatar %><br>
-Нікнейм:
-<%= f.text_field :nickname %><br>
-Ім'я:
-<%= f.text_field :firstname %><br>
-Прізвище:
-<%= f.text_field :lastname %><br>
-Вік:
-<%= f.text_field :age %><br>
+
+
+
+<p><%= f.text_field :nickname, class: "input-sign", placeholder:"Введіть ваш нікнейм" %><br>
+
+<p><%= f.text_field :firstname, class: "input-sign", placeholder:"Введіть вашу ім'я:" %><br>
+
+<p><%= f.text_field :lastname, class: "input-sign", placeholder:"Введіть вашу прізвище" %><br>
+
+<p><%= f.text_field :age, class: "input-sign", placeholder:"Введіть ваш вік" %><br>
+
+<p>Аватар: <%= f.file_field :avatar %><br>
 
 <%= render 'educations/form' %>
