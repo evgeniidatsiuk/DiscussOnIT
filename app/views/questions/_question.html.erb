@@ -43,15 +43,13 @@
   </div>
 
   <div class="col-sm-8 question-content">
-    <div class="col">
       <%=link_to question_path(question.id) ,class:"question-title" do %><%=question.name%>
     <%end%>
-  </div>
   <div class="row">
-    <div class="col-12 col-md-9">
+    <div class="col-12 col-md-8 tags">
       <%=render "categories/tags", object:question %>
     </div>
-    <div class="col-12 col-md-3">
+    <div class="col-12 col-md-4">
         Задав
         <%=render "userparams/user", object:question %>
 

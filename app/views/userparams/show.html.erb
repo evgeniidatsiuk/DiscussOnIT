@@ -1,9 +1,11 @@
 <div class="row" style="margin:-10px -50px">
   <div class="profile" style="text-align:center;">
+    <div class="crop">
     <%=image_tag @userparam.avatar.url %>
+    </div>
     <div class="nick">
       <h3>
-      <b><%=@userparam.nickname%></b>
+      <b><%=@userparam.nickname%></b><br />
         <%=link_to positiv_vote_path(@userparam.class.name,@userparam.id) do %>
           <span class="fa fa-plus" style="color:#28a745;"></span>
         <%end%>
@@ -31,9 +33,6 @@
       </nav>
       <div class="content">
       <div id="info">
-        <h3>Профіль користувача
-          <b><%=@userparam.nickname%></b>
-        </h3>
         <h5><%=@userparam.firstname%>
         <%=@userparam.lastname%></h5>
         <h5><%=@userparam.user.email%></h5>
