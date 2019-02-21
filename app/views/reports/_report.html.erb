@@ -1,8 +1,5 @@
+Subject: <%=report.subject%><br>
 User: <%=report.user_email%><br>
-Text: <%=report.text%>
-<br><% report.photos.each do |p|%>
-<%= image_tag p.url, style:"width:500px;"%>
-<% end %>
 <br>
 <%= link_to "Read more", report_path(report.id)%>
 Date: <%=report.created_at%>

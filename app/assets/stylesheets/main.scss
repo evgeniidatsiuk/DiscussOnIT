@@ -1,19 +1,21 @@
- body {
+body {
   height: 100%;
 }
 
 a:hover{
   color: #6f42c1;
 }
+
 .navbar {
   background: #474747;
   color: #FFF;
   height: 50px;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15)!important;
 
-  a:hover{
-    color: #6f42c1;
+  a {
+    color: #666FB0;
   }
+
   .navbar-brand {
     text-align: center;
     color: #FFF;
@@ -24,7 +26,7 @@ a:hover{
     vertical-align: text-top;
   }
 
-  li{
+  li {
     padding: 4px;
     margin-left: 5px;
   }
@@ -90,11 +92,13 @@ a:hover{
     background: #666FB0;
     color: #FFF;
   }
-  .active:hover{
+
+  .active:hover {
     background: #ffffff;
-    a{
-    color: #212529;
-  }
+
+    a {
+      color: #212529;
+    }
   }
 
   .dropdown-menu {
@@ -142,7 +146,8 @@ a:hover{
     color: #474747;
     margin-left: 10px;
   }
-  .question-title:hover{
+
+  .question-title:hover {
     color: grey;
   }
 
@@ -155,7 +160,6 @@ a:hover{
   text-align: center;
   display: -webkit-inline-box;
 }
-
 
 .tag {
   font-weight: bold;
@@ -181,44 +185,47 @@ a:hover{
     border-color: #666FB0;
   }
 }
-.page-item{
-  .page-link{
+
+.page-item {
+  .page-link {
     color: #666FB0;
     background-color: #fff;
   }
 }
 
-li{
-      list-style-type: none;
+li {
+  list-style-type: none;
 }
 
-.title{
+.title {
   font-weight: bold;
   line-height: normal;
   font-size: 24px;
   text-align: justify;
   color: #474747;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
-.answer{
+.answer {
   margin-top: 10px;
 }
-@media(max-width: 768px){
-  .btn{
+@media(max-width: 768px) {
+  .btn {
     border: none;
   }
-  .fixed-top{
-    .row{
-      margin: 0px;
+
+  .fixed-top {
+    .row {
+      margin: 0;
     }
   }
-  .question{
+
+  .question {
     border-radius: 1px;
   }
-  .content{
-    padding: 5px;
-    padding-top: 20px;
+
+  .content {
+    padding: 20px 5px 5px;
   }
 }
 @media(min-width: 768px) and (max-width: 1920px) {
@@ -226,10 +233,12 @@ li{
     display: none;
     width: 0;
   }
-  .question{
+
+  .question {
     height: 80px;
   }
-  .question-count{
+
+  .question-count {
     background: rgba(195, 194, 194, 0.1);
     border-radius: 5px 65px 65px 5px;
     font-size: 36px;
@@ -239,47 +248,56 @@ li{
     padding: 0;
     cursor: pointer;
   }
-  .view{
+
+  .view {
     display: grid;
   }
-  .post{
+
+  .post {
     height: 80px;
   }
-  .post-count{
+
+  .post-count {
     background: rgba(195, 194, 194, 0.1);
-    border-radius: 5px 0px 40px 5px;
+    border-radius: 5px 0 40px 5px;
     height: 80px;
   }
-  .fixed-bottom{
+
+  .fixed-bottom {
     display: none;
   }
 }
-.fixed-bottom{
-  a{
+
+.fixed-bottom {
+  a {
     color: #FFF;
     text-decoration: none;
   }
+
   .active {
     background: #666FB0;
     color: #FFF;
   }
-  .row{
-    margin: 0px;
+
+  .row {
+    margin: 0;
   }
-  .col-3{
-    padding: 0px;
+
+  .col-3 {
+    padding: 0;
   }
 }
 
-.post{
+.post {
   margin-bottom: 15px;
   background: rgba(71, 71, 71, 0.02);
   border: 0.25px solid rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   border-radius: 5px;
 }
-.post-count{
-}
+
+.post-count {}
+
 .post-title {
   font-style: normal;
   font-weight: bold;
@@ -288,32 +306,30 @@ li{
   color: #474747;
   margin-left: 10px;
 }
-.post-title:hover{
+
+.post-title:hover {
   color: grey;
   text-decoration: none;
 }
- /* Chat containers */
- .loler {
+/* Chat containers */
+.loler {
   border: 2px solid #dedede;
   background-color: #f1f1f1;
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
 }
-
 /* Darker chat container */
 .darker {
   border-color: #ccc;
   background-color: #ddd;
 }
-
 /* Clear floats */
 .loler::after {
   content: "";
   clear: both;
   display: table;
 }
-
 /* Style images */
 .loler img {
   float: left;
@@ -322,36 +338,36 @@ li{
   margin-right: 20px;
   border-radius: 50%;
 }
-
 /* Style the right image */
 .loler img.right {
   float: right;
   margin-left: 20px;
-  margin-right:0;
+  margin-right: 0;
 }
-
 /* Style time text */
 .time-right {
   float: right;
   color: #aaa;
 }
-
 /* Style time text */
 .time-left {
   float: left;
   color: #999;
 }
-.profile{
+
+.profile {
   width: 100%;
   height: 210px;
   background: #123123;
   color: #ffffff;
-  img{
+
+  img {
     margin: 15px;
     border-radius: 360px;
     width: 120px;
   }
-  .nick{
+
+  .nick {
     padding: 3px;
     width: 100%;
     height: 35px;
@@ -360,62 +376,64 @@ li{
 }
 
 .wrapper {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
-.profil-sidebar{
+.profil-sidebar {
   border: 1px solid #474747;
   height: 100%;
-   z-index: 999;
-   li{
-     margin:0px -15px;
-     text-align:center;
-   }
-   li:hover {
-     a {
-       text-decoration: none;
-       color: #FFF;
-     }
-     background: #666FB0;
-     color: #FFF;
-   }
+  z-index: 999;
 
-   a {
-     color: #595959;
-     font-size: 18px;
-   }
+  li {
+    margin: 0 -15px;
+    text-align: center;
+  }
 
-   a {
-       padding: 8px 0;
-       width: 100%;
-       display: table;
-     }
+  li:hover {
+    a {
+      text-decoration: none;
+      color: #FFF;
+    }
+    background: #666FB0;
+    color: #FFF;
+  }
+
+  a {
+    color: #595959;
+    font-size: 18px;
+    padding: 8px 0;
+    width: 100%;
+    display: table;
+  }
 }
 
-.user{
+.user {
   display: inline-block;
 }
-.info{
-    font-size: 14px;
-    display:none;
-    padding:10px;
-    background:#f3f3f3;
-    height:50px;
-    -moz-box-shadow:0 5px 5px rgba(0,0,0,0.3);
-    -webkit-box-shadow:0 5px 5px rgba(0,0,0,0.3);
-    box-shadow:0 5px 5px rgba(0,0,0,0.3);
-    z-index:9999;
+
+.info {
+  font-size: 14px;
+  display: none;
+  padding: 10px;
+  background: #f3f3f3;
+  height: 50px;
+  -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+  z-index: 9999;
 }
-.user:hover .info{
-    display:block;
-    position:absolute;
-    z-index:9999;
-    width:400px;
+
+.user:hover .info {
+  display: block;
+  position: absolute;
+  z-index: 9999;
+  width: 400px;
 }
-.times{
+
+.times {
   display: inherit;
-  font-size:11px;
+  font-size: 11px;
 }
 
 .input {

@@ -1,0 +1,36 @@
+<% if @report.errors.any? %>
+ <div class="alert alert-danger" role="alert">
+     <h2>У нас <%= pluralize(@report.errors.count, "error") %>(проблєми), Джоні</h2>
+
+    <ul>
+    <% @report.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+      <%= form_for :report, url:reports_path do |f| %>
+
+
+       <%= f.text_field :subject ,  class: "form-control", placeholder:"Введіть вашy subject" %>
+
+        <% if !user_signed_in? %>
+
+        <%= f.text_field :user_email ,  class: "form-control", placeholder:"Введіть ваш емейл" %>
+
+        <% else %>
+
+        <%= f.hidden_field :user_email, value: current_user.email, readonly: true %>
+
+        <% end %>
+
+        <%= f.text_area :text, size: "60x12",  class: "form-control" %>
+
+        <%= f.file_field :photos, multiple: true %>
+
+
+
+
+        <%= f.submit "Створити" , class:"btn btn-dark" %>
+
+      <% end %>

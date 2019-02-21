@@ -13,7 +13,7 @@ class ReportsController < ApplicationController
     if @report.save
       redirect_to report_path(@report.id)
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -24,6 +24,6 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:user_email, :text, photos: [])
+    params.require(:report).permit(:user_email, :text, :subject, photos: [])
   end
 end
