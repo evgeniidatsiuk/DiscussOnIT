@@ -2,11 +2,11 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @posts      ||= Post.all.order(created_at: :DESC).page(params[:page]).per(10)
-    @questions  ||= Question.all.order(created_at: :DESC).page(params[:page]).per(10)
+    @posts      ||= orders(Post.all).page(params[:page]).per(10)
+    @questions  ||= orders(Question.all).page(params[:page]).per(10)
   end
 
-  def search
+  def searcha
     if params.key?(:search)
       @s_word = params[:search][:text].downcase.split(' ').map(&:strip)
       @s_word.delete('')

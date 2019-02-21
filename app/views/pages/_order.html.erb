@@ -1,3 +1,8 @@
-<%=link_to "Назва", order_path("name"), method: :put%>
-<%=link_to "Голосів", order_path("vote"), method: :put%>
-<%=link_to "Дата", order_path("date"), method: :put%>
+<div class="order">
+<ul class="list-group">
+  <%=link_to order_path("name"), method: :put do%><li class="list-group-item <%if session[:order]=="name"%>active<%end%>">Назва </li><%end%>
+  <%=link_to order_path("vote"), method: :put do%><li class="list-group-item <%if session[:order]=="vote"%>active<%end%>">Голосів </li><%end%>
+  <%=link_to order_path("date"), method: :put do%><li class="list-group-item <%if session[:order]=="date"%>active<%end%>">Дата</li><%end%>
+</ul>
+</div>
+<hr>

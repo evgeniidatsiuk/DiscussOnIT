@@ -13,8 +13,6 @@ class Question < ApplicationRecord
   validates :text, presence: { message: 'Something is wrong. Майже, введіть ще раз дані' }
   include ChosenModul
 
-  # scope :rait, -> { votes.sum(:score) }
-
   def url
     ['', self.class.name.downcase + 's', id.to_s].join('/')
   end

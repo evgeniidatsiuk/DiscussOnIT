@@ -2,7 +2,7 @@ body {
   height: 100%;
 }
 
-a:hover{
+a:hover {
   color: #6f42c1;
 }
 
@@ -94,7 +94,7 @@ a:hover{
   }
 
   .active:hover {
-    background: #ffffff;
+    background: #FFF;
 
     a {
       color: #212529;
@@ -127,6 +127,7 @@ a:hover{
   border-radius: 10px;
   margin-bottom: 15px;
   height: auto;
+  box-shadow: 1px 0 9rem 2px rgba(0, 0, 0, 0.15);
 
   .question-count {
     height: 100%;
@@ -444,6 +445,7 @@ li {
   border-radius: 10px;
   outline: none;
 }
+
 .input-sign {
   width: 300px;
   padding: 10px;
@@ -451,4 +453,36 @@ li {
   border: 1px solid #595959;
   border-radius: 30px;
   outline: none;
+}
+
+.order {
+  ul.list-group{
+    clear: both;
+    display: -webkit-inline-box;
+    content: "";
+  }
+
+  .list-group-item {
+    float: left;
+  }
+  a{
+    color: #666FB0;
+  }
+  a:hover{
+    color: #FFF;
+    li{
+      background: #666FB0;
+    }
+  }
+  .active{
+    color: #FFF;
+    background: #666FB0;
+    border-color: #666FB0;
+
+  }
+  .active:hover {
+    background: #FFF;
+    border-color: #212529;
+      color: #212529;
+  }
 }

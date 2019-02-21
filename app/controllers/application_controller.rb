@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       return dates.order(created_at: :DESC)
     else
       return dates.order(name: :DESC) if session['order'] == 'name'
-      # return dates.order(rait: :DESC) if session['order'] == 'vote'
+      return dates.order(score: :DESC) if session['order'] == 'vote'
     end
 
     dates
