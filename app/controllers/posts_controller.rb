@@ -29,7 +29,13 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-    redirect_to root_path if @post.update(post_params)
+    @all_tags = params[:post][:all_tags]
+    if @post.save
+      Tag.all_tags(@post, @all_tags)
+      redirect_to post_path(@post.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -40,7 +46,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :name, :text)
+    params.require(:post).permit(:user_id, :name, :text,tags: [:category_id, :object_type,:object_id])
   end
 
   def find_post

@@ -32,10 +32,13 @@ class QuestionsController < ApplicationController
   def edit; end
 
   def update
+    @all_tags = params[:question][:all_tags]
+
     if @question.update(question_params)
       @question.chosens.each do |chosen|
         Notification.generate(chosen.user, @question, 'update', current_user)
       end
+      Tag.all_tags(@question, @all_tags)
       redirect_to question_path(@question.id)
     else
       render 'edit'
