@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20190221192524) do
   create_table "reports", force: :cascade do |t|
     t.string "user_email"
     t.string "text"
+    t.string "subject"
     t.string "photos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
