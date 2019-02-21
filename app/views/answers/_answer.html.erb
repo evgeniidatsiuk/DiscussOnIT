@@ -6,7 +6,7 @@
     <%=link_to positiv_vote_path(answer.class.name,answer.id) do%>
       <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
       <%end%>
-  <h3 style="margin: 0px"><%=answer.votes.sum(:score)%></h3>
+  <h3 style="margin: 0px"><%=answer.score%></h3>
   <%=link_to negativ_vote_path(answer.class.name,answer.id) do%>
   <span class="fa fa-chevron-down" title="Голосувати ПРОТИ"></span>
     <%end%>

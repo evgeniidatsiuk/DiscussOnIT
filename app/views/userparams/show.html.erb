@@ -9,7 +9,7 @@
         <%=link_to positiv_vote_path(@userparam.class.name,@userparam.id) do %>
           <span class="fa fa-plus" style="color:#28a745;"></span>
         <%end%>
-        <%=@userparam.votes.sum(:score)%>
+        <%=@userparam.score%>
         <%=link_to negativ_vote_path(@userparam.class.name,@userparam.id) do %>
         <span class="fa fa-minus" style="color:#dc3545;"></span>
       <%end%>

@@ -52,7 +52,7 @@
     <%=link_to positiv_vote_path(@post.class.name,@post.id) do%>
     <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
   <%end%>
-  <h3 style="margin: 0px"><%=@post.votes.sum(:score)%></h3>
+  <h3 style="margin: 0px"><%=@post.score%></h3>
   <%=link_to negativ_vote_path(@post.class.name,@post.id) do%>
   <span class="fa fa-chevron-down" title="Голосувати ПРОТИ"></span>
 <%end%>

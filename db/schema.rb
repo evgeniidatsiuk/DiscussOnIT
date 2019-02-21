@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190221192524) do
+ActiveRecord::Schema.define(version: 20190221204253) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20190221192524) do
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "score", default: 0
   end
 
   create_table "categories", force: :cascade do |t|
@@ -115,7 +116,6 @@ ActiveRecord::Schema.define(version: 20190221192524) do
   create_table "reports", force: :cascade do |t|
     t.string "user_email"
     t.string "text"
-    t.string "subject"
     t.string "photos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 20190221192524) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer "score", default: 0
   end
 
   create_table "users", force: :cascade do |t|
