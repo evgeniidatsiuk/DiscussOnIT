@@ -37,12 +37,13 @@
         <%=@userparam.lastname%></h5>
         <h5><%=@userparam.user.email%></h5>
         <h5><%= @userparam.age %></h5>
-        <% if @userparam.education %>
+    <% if false %><% if @userparam.education %>
           <h5><%=@userparam.education.university.name%>
             |
             <%=@userparam.education.specialty.name%>
             |</h5>
         <%end%>
+    <%end%>
         <%if user_signed_in? && current_user.id == @userparam.user.id%>
           <%=link_to "Редагувати профіль", edit_userparam_path(@userparam.id)%>
           <%=link_to "Змінити дані для входу", edit_user_registration_path%>
