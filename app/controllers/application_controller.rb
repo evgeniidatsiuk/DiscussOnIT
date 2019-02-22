@@ -3,12 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :userparam_create
 
   def orders(dates)
-    if session['order'].nil? || session['order'] == 'date'
-      return dates.order(created_at: :DESC)
-    else
-      return dates.order(name: :DESC) if session['order'] == 'name'
-      return dates.order(score: :DESC) if session['order'] == 'vote'
-    end
+    return dates.order("#{session['order_name']} #{session['order_type']}") unless session['order_name'].nil?
 
     dates
   end

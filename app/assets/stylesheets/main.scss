@@ -127,7 +127,7 @@ a:hover {
   border-radius: 10px;
   margin-bottom: 15px;
   height: auto;
-  box-shadow: 1px 0 9rem 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 0 1rem 2px rgba(0, 0, 0, 0.15);
 
   .tags{
     padding-top: 10px;
@@ -470,33 +470,34 @@ li {
 }
 
 .order {
-  ul.list-group{
-    clear: both;
-    display: -webkit-inline-box;
-    content: "";
+  .nav-link{
+    padding: 0.5rem 0.5rem;
   }
-
-  .list-group-item {
-    float: left;
-  }
+  font-size: 12px;
   a{
     color: #666FB0;
   }
   a:hover{
     color: #FFF;
-    li{
-      background: #666FB0;
-    }
-  }
-  .active{
-    color: #FFF;
     background: #666FB0;
     border-color: #666FB0;
+  }
+  .active{
+    background: #666FB0;
+    border-color: #666FB0;
+    a{
+      color: #FFF;
+    }
+    a:hover{
+      color: #212529;
+      background: #FFF;
+      border-color: #666FB0;
+    }
 
   }
   .active:hover {
     background: #FFF;
     border-color: #212529;
-      color: #212529;
+
   }
 }
