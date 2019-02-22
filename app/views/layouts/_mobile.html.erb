@@ -1,48 +1,28 @@
-<nav class="navbar fixed-bottom navbar-expand">
-  <div class="row" style="width:100%;height:50px">
-    <div class="col-3 text-center">
-      <%if user_signed_in?%>
-        <%=link_to userparam_path(current_user.id) do %>
-          <i class="fa fa-user"></i>
-          <br>Користувач
-        <%end%>
-      <%else%>
-        <%= link_to new_user_session_path do%>
-          <i class="fa fa-sign-in"></i>
-          <br>Вхід
-        <%end%>
-      <%end%>
+<nav class="navbar nav nav-pills nav-fill fixed-bottom">
+  <div class="nav-item">
+  <%if user_signed_in?%>
+    <%=link_to userparam_path(current_user.id) do %>
+      <i class="fa fa-2x fa-user"></i>
+    <%end%>
+  <%else%>
+    <%= link_to new_user_session_path do%>
+      <i class="fa fa-2x fa-sign-in"></i>
+    <%end%>
+  <%end%>
+  </div>
+  <%=link_to questions_path do %>
+  <div class="nav-item <%if @questions %>active<%end%>">
+    <i class="fa fa-2x fa-question"></i>
+    <%end%>
     </div>
-<%if @questions %>
-  <div class="col-3 active text-center">
-  <%else%>
-    <div class="col-3 text-center">
-    <%end%>
-    <%=link_to questions_path do %>
-    <i class="fa fa-question"></i>
-    <br>Питання
+    <div class="nav-item <%if @posts %>active  <%end%>">
+  <%=link_to posts_path do %>
+  <i class="fa fa-2x fa-exclamation"></i>
   <%end%>
-</div>
-<%if @posts %>
-  <div class="col-3 active text-center">
-  <%else%>
-    <div class="col-3 text-center">
-    <%end%>
-    <%=link_to posts_path do %>
-    <i class="fa fa-exclamation"></i>
-    <br>Записи
+  </div>
+  <div class="nav-item <%if @categories %>active  <%end%>">
+  <%=link_to categories_path do %>
+  <i class="fa fa-2x fa-tags"></i>
   <%end%>
-</div>
-<%if @categories %>
-  <div class="col-3 active text-center">
-  <%else%>
-    <div class="col-3 text-center">
-    <%end%>
-    <%=link_to categories_path do %>
-    <i class="fa fa-tags"></i>
-    <br>Теги
-  <%end%>
-</div>
-</div>
-
+  </div>
 </nav>

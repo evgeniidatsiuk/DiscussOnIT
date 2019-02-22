@@ -24,6 +24,7 @@ a:hover {
     line-height: normal;
     font-size: 24px;
     vertical-align: text-top;
+        width: 15%;
   }
 
   li {
@@ -255,7 +256,7 @@ li {
   }
 
   .view {
-    display: grid;
+    display: flow-root;
   }
 
   .post {
