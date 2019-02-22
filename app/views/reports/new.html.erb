@@ -13,7 +13,7 @@
 
 
        <%= f.text_field :subject ,  class: "form-control", placeholder:"Введіть вашy subject" %>
-
+<br>
         <% if !user_signed_in? %>
 
         <%= f.text_field :user_email ,  class: "form-control", placeholder:"Введіть ваш емейл" %>
@@ -24,13 +24,11 @@
 
         <% end %>
 
-        <%= f.text_area :text, size: "60x12",  class: "form-control" %>
-
+        <%= f.text_area :text, size: "40x7",  class: "form-control", placeholder:"Enter your report"%>
+<br>
         <%= f.file_field :photos, multiple: true %>
 
-
-
-
+<br><br>
         <%= f.submit "Створити" , class:"btn btn-dark" %>
 
       <% end %>
