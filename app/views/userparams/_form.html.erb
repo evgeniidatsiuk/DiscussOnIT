@@ -1,13 +1,21 @@
+<% if @userparam.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@userparam.errors.count, "error") %> prohibited this userparam from being saved:</h2>
 
+    <ul>
+    <% @userparam.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<p><%= f.text_field :nickname, class: "input-sign", placeholder:"Введіть Bаш нікнейм" %><br>
 
+<p><%= f.text_field :firstname, class: "input-sign", placeholder:"Введіть Bашe ім'я:" %><br>
 
-<p><%= f.text_field :nickname, class: "input-sign", placeholder:"Введіть ваш нікнейм" %><br>
+<p><%= f.text_field :lastname, class: "input-sign", placeholder:"Введіть вашe прізвище" %><br>
 
-<p><%= f.text_field :firstname, class: "input-sign", placeholder:"Введіть вашу ім'я:" %><br>
-
-<p><%= f.text_field :lastname, class: "input-sign", placeholder:"Введіть вашу прізвище" %><br>
-
-<p><%= f.text_field :age, class: "input-sign", placeholder:"Введіть ваш вік" %><br>
+<p><%= f.text_field :age, class: "input-sign", placeholder:"Введіть Bаш вік" %><br>
 
 <p>Аватар: <%= f.file_field :avatar %><br>
 

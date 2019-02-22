@@ -14,6 +14,8 @@ class UserparamsController < ApplicationController
     if @userparam.save
       redirect_to userparam_path(@userparam.id)
       @education.save
+    else
+      render "new"
     end
   end
 
@@ -36,7 +38,9 @@ class UserparamsController < ApplicationController
         @education.save
       end
       redirect_to userparam_path(@userparam.id)
+    else render 'edit'
     end
+
   end
 
   private
