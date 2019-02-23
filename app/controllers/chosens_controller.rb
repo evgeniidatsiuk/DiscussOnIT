@@ -1,4 +1,6 @@
 class ChosensController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :get_object, only: [:chose]
 
   def chose

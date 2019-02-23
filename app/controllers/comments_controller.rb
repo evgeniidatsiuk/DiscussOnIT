@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-#  before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :find_comment, except: [:create]
 
   def create

@@ -1,4 +1,5 @@
-New comment: <a href="#" data-toggle="modal" data-target="#new_comment_to_<%=object.class.name.downcase%>_<%=object.id%>">
+<% if user_signed_in? %>
+answer: <a href="#" data-toggle="modal" data-target="#new_comment_to_<%=object.class.name.downcase%>_<%=object.id%>">
  <span class="fa fa-comment"></span></a>
 <div class="modal fade" id="new_comment_to_<%=object.class.name.downcase%>_<%=object.id%>" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -24,3 +25,4 @@ New comment: <a href="#" data-toggle="modal" data-target="#new_comment_to_<%=obj
   </div>
 </div>
 </div>
+<% end %>
