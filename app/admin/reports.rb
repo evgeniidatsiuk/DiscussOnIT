@@ -11,12 +11,11 @@ ActiveAdmin.register Report do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-permit_params :user_email, :text, photos: []
-
-
+permit_params :user_email,:subject, :text, photos: []
 form(html: { multipart: true }) do |f|
     f.inputs do
       f.input :user_email
+      f.input :subject
       f.input :text
       f.file_field :photos, multiple: true
     end
