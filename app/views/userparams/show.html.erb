@@ -37,7 +37,8 @@
         <%=@userparam.lastname%></h5>
         <h5><%=@userparam.user.email%></h5>
         <h5><%= @userparam.age %></h5>
-    <% if false %><% if @userparam.education %>
+       <% if false %>
+    <% if @userparam.education %>
           <h5><%=@userparam.education.university.name%>
             |
             <%=@userparam.education.specialty.name%>
