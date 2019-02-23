@@ -84,11 +84,9 @@
 </div>
 </div>
 <%= render 'comments/form', object:@post%>
-Коменти:
 <ul class="content-list content-list_comments">
   <% Comment.where(object: @post).each do |comment| %>
     <%=render 'comments/comment', comment:comment %>
-    <HR>
   <%end%>
 </ul>
 </div>

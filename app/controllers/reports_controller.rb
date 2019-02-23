@@ -11,16 +11,15 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     if @report.save
-      redirect_to report_path(@report.id)
+      redirect_to root_path
     else
-      render :new
+      render "new"
     end
   end
 
   def show
     @report = Report.find(params[:id])
   end
-
   private
 
   def report_params

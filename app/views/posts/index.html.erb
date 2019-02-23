@@ -9,10 +9,11 @@
         </ul>
       </div>
     </div>
-          <%=render "pages/order"%>
+
     <% if @posts == [] %>
       <p>НЕ знайдено жодного запису</p>
     <% else %>
+    <%=render "pages/order"%>
       <%=render @posts%>
       <div class="digg_pagination">
         <%= will_paginate @posts%>

@@ -1,18 +1,28 @@
 <li id="comment_<%=comment.id%>" class="content-list__item content-list__item_comment js-comment ">
-  <div class="bg-light forms-b">
+  <div class="panel">
+    <div class="panel-body">
+     <div class="media-block">
+       <%= link_to comment.user.userparam do %>
+       <%=image_tag comment.user.userparam.avatar.url, height:36%>
+        <div class="media-body">
+         <div class="mar-btm">
+           <%=comment.user.userparam.nickname%>
+           <% end %>
+          <p class="text-muted text-sm"><%=distance_of_time_in_words(comment.created_at,Time.now) %></p>
+         </div>
+        <p><%=comment.text%></p>
+            <div class="pad-ver">
+               <%= render 'comments/form', object:comment%>
+                <%if user_signed_in? && comment.user.id==current_user.id%>
+                <br>  Delete:<%=link_to comment_path(comment.id),data: {confirm: "Видалити?"}, method: :delete do%>
+                    <span class="fa fa-times" style="color:lightgray;"></span>
+                  <%end%>
+              <%end%>
+           </div>
 
-    <b><%=image_tag comment.user.userparam.avatar.url, height:22%></span>
-    <%=comment.user.userparam.nickname%>:</b>
-  <%=comment.text%>
-
-  <%if user_signed_in? && comment.user.id==current_user.id%>
-    <%=link_to comment_path(comment.id),data: {confirm: "Видалити?"}, method: :delete do%>
-      <span class="fa fa-times" style="color:lightgray;"></span>
-    <%end%>
-  <%else%>
-    <%= render 'comments/form', object:comment%>
-  <%end%>
-
+       </div>
+     </div>
+   </div>
 </div>
 <!--Юлік на це знизу увагу не звертай, то ---! Юлік, то комент комента, не слухай Саню, слухай Жеку.-->
   <ul>

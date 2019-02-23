@@ -40,13 +40,13 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to root_path
+    redirect_to posts_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :name, :text,tags: [:category_id, :object_type,:object_id])
+    params.require(:post).permit(:user_id, :name, :text)
   end
 
   def find_post
