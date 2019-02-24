@@ -1,6 +1,6 @@
 <div class="user">
   <%= link_to userparam_path(object.user.userparam) do %>
-    <%= object.user.userparam.nickname%>
+    <%= object.user.userparam.username%>
     <%=image_tag object.user.userparam.avatar.url, height:16%>
   <%end%>
   <div class="info">

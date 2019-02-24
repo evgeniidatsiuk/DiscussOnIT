@@ -2,7 +2,7 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email",class: "input-sign", placeholder:"Емайл" %>
+    <p><%= f.text_field :login, autofocus: true, autocomplete: "login",class: "input-sign", placeholder:"Нікейм або емейл" %>
   </div>
 
   <div class="field">

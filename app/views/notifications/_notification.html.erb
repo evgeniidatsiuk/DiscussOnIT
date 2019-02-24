@@ -9,7 +9,7 @@
           </div>
         </div>
         <div class="media-body">
-          <strong class="notification-title"><%=link_to notification.activeuser.nickname, userparam_path(notification.activeuser.id)%> <%= notification.write %> to <%= link_to notification.root.name , notification.object.url%></strong>
+          <strong class="notification-title"><%=link_to notification.activeuser.username, userparam_path(notification.activeuser.id)%> <%= notification.write %> to <%= link_to notification.root.name , notification.object.url%></strong>
 
           <div class="notification-meta">
             <small class="timestamp"><%=notification.created_at%> <%if !notification.read_at%> <%=link_to read_notification_path(notification.id) do%><i class="fa fa-eye" style="color:red"></i><%end%><%else%><%=link_to unread_notification_path(notification.id) do%><i class="fa fa-eye-slash" style="color:red"></i><%end%><%end%></small>

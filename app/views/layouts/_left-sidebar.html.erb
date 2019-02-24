@@ -9,7 +9,7 @@
   <button class="btn btn-sm" href="<%link_to userparam_path(current_user)%>" style="color: #fff; text-align:left; height: 50px;  width:100%;  background: #595959;" type="button">
     <%if current_user.userparam %>
       <%=image_tag current_user.userparam.avatar.url, style:"height:30px; width:30px;"%>
-      <span><%= current_user.userparam.nickname %></span>
+      <span><%= current_user.userparam.username %></span>
     <%else%>
       <span><%= current_user.email %></span>
     <%end%>

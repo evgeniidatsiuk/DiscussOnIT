@@ -6,6 +6,7 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
       t.string :text
       t.integer :view, default: 0
       t.integer :right_answer_id
+      t.integer :score, default: 0
 
       t.timestamps
     end

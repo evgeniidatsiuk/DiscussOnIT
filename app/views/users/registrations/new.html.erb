@@ -4,6 +4,10 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <p><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" ,  class: "input-sign", placeholder:"Введіть ваш nickname" %>
+  </div>
+
+  <div class="field">
     <p><%= f.email_field :email, autofocus: true, autocomplete: "email" ,  class: "input-sign", placeholder:"Введіть ваш емейл" %>
   </div>
 

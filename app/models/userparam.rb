@@ -4,8 +4,11 @@ class Userparam < ApplicationRecord
 
   belongs_to :user
 
-  has_one :education, dependent: :destroy
+  # has_one :education, dependent: :destroy
   has_many :votes, as: :object, dependent: :destroy
 
-  validates :nickname,:firstname,:lastname,:age, presence: true
+  def username
+    username = user.nickname
+    username ||= user.email.split('@').first
+  end
 end

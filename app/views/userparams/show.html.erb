@@ -6,7 +6,7 @@
     </div>
     <div class="nick">
       <h3>
-        <b><%=@userparam.nickname%></b><br/>
+        <b><%=@userparam.username%></b><br/>
         <%=link_to positiv_vote_path(@userparam.class.name,@userparam.id) do %>
         <span class="fa fa-plus" style="color:#28a745;"></span>
       <%end%>
@@ -56,12 +56,6 @@
                     <label for="lastname" class="col-4 col-form-label">LastName</label>
                     <div class="col-4">
                       <%=@userparam.lastname%>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="text" class="col-4 col-form-label">NickName</label>
-                    <div class="col-4">
-                      <%=@userparam.nickname%>
                     </div>
                   </div>
 

@@ -1,5 +1,5 @@
 <h3>Профіль користувача
-  <b><%=@userparam.user.email.split('@').first%></b>
+  <b><%=@userparam.username%></b>
 </h3>
 <%=form_for @userparam, url:userparam_path(current_user.id) do |f|%>
 <%=render 'userparams/form', f:f%>

@@ -51,7 +51,7 @@
         </div>
         <div class="col-12 col-md-8" style="text-align:right;">
           <%= link_to userparam_path(@question.user.userparam.id) do %>
-            <%= @question.user.userparam.nickname %>
+            <%= @question.user.userparam.username %>
             <%= image_tag @question.user.userparam.avatar.url, size: "36x36" %>
           <%end%>
         </div>

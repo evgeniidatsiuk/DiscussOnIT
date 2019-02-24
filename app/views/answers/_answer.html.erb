@@ -1,4 +1,4 @@
-<div class="row answer answer_<%=answer.id%>">
+username<div class="row answer answer_<%=answer.id%>">
   <div class="col-1">
     <div class="col-12">
 
@@ -31,7 +31,7 @@
   <div class="col-12" style="text-align:right;">
     Відповів
     <%= link_to userparam_path(answer.user.userparam.id) do %>
-      <%= answer.user.userparam.nickname %>
+      <%= answer.user.userparam.username %>
       <%= image_tag answer.user.userparam.avatar.url, size: "24x24" %>
     <%end%>
   </div>
