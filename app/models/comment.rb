@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
   belongs_to :object, polymorphic: true
   belongs_to :user
   has_many :comments, as: :object, dependent: :destroy
-
+#  validates :text, presence: true
   def url
     root.url + '/#comment_' + id.to_s
   end

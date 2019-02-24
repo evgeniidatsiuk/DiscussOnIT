@@ -1,8 +1,6 @@
-username<div class="row answer answer_<%=answer.id%>">
+<div class="row answer answer_<%=answer.id%>">
   <div class="col-1">
     <div class="col-12">
-
-
     <%=link_to positiv_vote_path(answer.class.name,answer.id) do%>
       <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
       <%end%>
@@ -12,8 +10,6 @@ username<div class="row answer answer_<%=answer.id%>">
     <%end%>
     </div>
     <div class="col-12">
-
-
     <%if @question.right_answer_id == answer.id %>
       <i class="fa fa-check" style="color:#28a745; font-size:30px"></i>
     <%else%>
@@ -25,7 +21,7 @@ username<div class="row answer answer_<%=answer.id%>">
   <%end%>
   </div>
 </div>
-<div class="col-11">
+<div class="col col-md-11">
 
     <%=answer.text%>
   <div class="col-12" style="text-align:right;">
@@ -36,7 +32,9 @@ username<div class="row answer answer_<%=answer.id%>">
     <%end%>
   </div>
   <div class="col-12">
-      <%= render 'comments/form', object:answer%>Коменти:<%=render answer.comments %>
+      <%= render 'comments/form', object:answer%>
+      <%=render answer.comments %>
     </div>
   </div>
 </div>
+<hr>

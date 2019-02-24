@@ -1,16 +1,18 @@
+<div class="row">
+  <div class="col-sm-6">
 <li id="comment_<%=comment.id%>" class="content-list__item content-list__item_comment js-comment ">
-  <div class="panel">
-    <div class="panel-body">
+  <div class="card">
+    <div class="card-body">
      <div class="media-block">
        <%= link_to comment.user.userparam do %>
        <%=image_tag comment.user.userparam.avatar.url, height:36%>
         <div class="media-body">
-         <div class="mar-btm">
-           <%=comment.user.userparam.username%>
+         <div class="card-btm">
+           <%=comment.user.nickname%>
            <% end %>
-          <p class="text-muted text-sm"><%=distance_of_time_in_words(comment.created_at,Time.now) %></p>
          </div>
-        <p><%=comment.text%></p>
+        <p class="card-text"><%=comment.text%></p>
+        <p class="text-muted text-sm"><%=distance_of_time_in_words(comment.created_at,Time.now) %></p>
             <div class="pad-ver">
                <%= render 'comments/form', object:comment%>
                 <%if user_signed_in? && comment.user.id==current_user.id%>
@@ -19,7 +21,8 @@
                   <%end%>
               <%end%>
            </div>
-
+ </div>
+  </div>
        </div>
      </div>
    </div>

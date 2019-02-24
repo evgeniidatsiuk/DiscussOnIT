@@ -44,8 +44,8 @@
       <div class="row" style="margin-top:15px;margin-bottom:15px">
         <div class="col-12 col-md-4">
           <div style="text-align: center;">
-            <button type="button" class="btn btn-outline-success btn-lg btn-block" data-toggle="collapse" data-target="#new_answer">
-              <span class="fa fa-plus"></span> Відповісти
+            <button type="button" class="btn btn-dark btn-lg btn-block" data-toggle="collapse" data-target="#new_answer">
+            Відповісти
             </button>
           </div>
         </div>
@@ -67,13 +67,7 @@
         <div class="col-12 col-md-4">
           Відповідей: <%=@question.answers.count%>
         </div>
-        <div class="col-12 col-md-8" style="text-align: right;">
-          <%= render 'comments/form',object:@question%>
-          Коменти:
-          <ul>
-          <%=render @comments %>
-          </ul>
-        </div>
+        
         <div class="сol-12">
           риска
           <hr style="weight:100%">
