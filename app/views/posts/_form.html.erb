@@ -1,23 +1,24 @@
 <% if @post.errors.any? %>
- <div class="alert alert-danger" role="alert">
-     <h2>У нас <%= pluralize(@post.errors.count, "error") %>(проблєми), Джоні</h2>
- 
+  <div class="alert alert-danger" role="alert">
+    <h2>У нас
+      <%= pluralize(@post.errors.count, "error") %>(проблєми), Джоні</h2>
+
     <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
 <div class="form-group">
-<h3>Назва</h3>
-<%= f.text_field :name ,  class: "form-control", placeholder:"Введіть назву поста"%>
+  <h3>Назва</h3>
+  <%= f.text_field :name , class: "form-control", placeholder:"Введіть назву поста"%>
 </div>
 <div class="form-group">
-<h3>Текст</h3>
-<%= f.text_area :text, size: "60x12",  class: "form-control",placeholder:"Введіть текст поста"%>
+  <h3>Текст</h3>
+  <%= f.text_area :text, size: "60x12", class: "form-control",placeholder:"Введіть текст поста"%>
 </div>
 <div class="form-group">
-<h3>Теги</h3>
-<%= f.text_field :all_tags, class: "form-control", placeholder:"Введіть теги через кому" %>
+  <h3>Теги</h3>
+  <%= f.text_field :all_tags, class: "form-control", placeholder:"Введіть теги через кому" %>
 </div>

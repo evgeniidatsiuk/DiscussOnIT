@@ -1,37 +1,45 @@
 <nav class="navbar fixed-top navbar-expand-lg">
 
-  <%= link_to "DoIT", root_path, class:"navbar-brand"%>
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <div class="dropdown">
-          <a name="add-button" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-plus" style="font-size: 1.5em;"></i>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <%=link_to "Питання", new_question_path, class:"dropdown-item" %>
-            <%=link_to "Запис", new_post_path, class:"dropdown-item" %>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-            <a role="button" href="#reportModal" data-toggle="modal" data-target="#reportModal" style="color:#FFF">
-              <i class="fa fa-2x fa-file" style="font-size: 1.5em;"></i>
-            </a>
-      </li>
-
-      <li class="nav-item">
-        <div class="search">
-          <a id="collapsebtn-search" role="button" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false" aria-controls="collapse-search">
-            <i class="fa fa-2x fa-search" style="font-size: 1.5em;"></i>
-          </a>
-
-        </div>
-      </li>
+  <%= link_to root_path, class:"navbar-brand" do%><img style="height: 50px"  src="/assets/DoIT.svg" alt="DoIT"> <%end%>
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <div class="dropdown">
+        <a name="add-button" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-plus" style="font-size: 1.5em;"></i>
+        </a>
+          <ul class="dropdown-menu" id="userSubmenu" style="padding-left:10px;">
+            <li>
+          <%=link_to new_question_path, class:"dropdown-item" do %>
+            <i class="fa fa-question"></i>
+            <span>Питання</span><%end%>
+            </li>
+            <li>
+        <%=link_to new_post_path, class:"dropdown-item" do %>
+        <i class="fa fa-exclamation"></i>
+        <span>Запис</span><%end%>
+        </li>
     </ul>
-    <span id="collapse-search" class="collapse" style="weight:100%">
-      <input class="form-control" type="text" id="search" placeholder="Enter your query...">
-    </span>
+  </div>
+</li>
+
+<li class="nav-item">
+  <a role="button" href="#reportModal" data-toggle="modal" data-target="#reportModal" style="color:#FFF">
+    <i class="fa fa-2x fa-file" style="font-size: 1.5em;"></i>
+  </a>
+</li>
+
+<li class="nav-item">
+  <div class="search">
+    <a id="collapsebtn-search" role="button" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false" aria-controls="collapse-search">
+      <i class="fa fa-2x fa-search" style="font-size: 1.5em;"></i>
+    </a>
+
+  </div>
+</li>
+</ul>
+<span id="collapse-search" class="collapse" style="weight:100%">
+<input class="form-control" type="text" id="search" placeholder="Enter your query...">
+</span>
 </nav>
 
 <%= render 'reports/new'%>

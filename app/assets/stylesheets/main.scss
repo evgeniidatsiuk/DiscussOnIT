@@ -11,11 +11,10 @@ a:hover {
   color: #FFF;
   height: 50px;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15)!important;
-
-  a {
-    color: #666FB0;
+  .dropdown-item{
+    padding: 0;
+    padding-left: 10px;
   }
-
   .navbar-brand {
     text-align: center;
     color: #FFF;
@@ -96,7 +95,9 @@ a:hover {
 
   .active:hover {
     background: #FFF;
-
+    .fa{
+      color: #212529;
+    }
     a {
       color: #212529;
     }
@@ -266,6 +267,7 @@ li {
 
   .post {
     height: 80px;
+    box-shadow: 1px 0 1rem 2px rgba(0, 0, 0, 0.15);
   }
 
   .post-count {
@@ -438,13 +440,7 @@ li {
 }
 
 .info {
-  font-size: 14px;
   display: none;
-  padding: 10px;
-  background: #f3f3f3;
-  height: 50px;
-  -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.3);
-  -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.3);
   box-shadow: 0 5px 5px rgba(0,0,0,0.3);
   z-index: 9999;
 }
@@ -453,7 +449,6 @@ li {
   display: block;
   position: absolute;
   z-index: 9999;
-  width: 400px;
 }
 
 .times {
@@ -527,6 +522,38 @@ li {
 .card{
   border: none;
 }
-  .list-group{
-    padding-top : 40px;
+.list-group{
+  padding-top : 40px;
+}
+.dropdown-menu{
+  font-size: 18px;
+  .fa{
+    color:#474747;
   }
+  li:hover .fa{
+    color: #fff
+  }
+}
+nav .fa{
+  color: #FFF;
+}
+.fa{
+  text-decoration: none;
+  color:#474747;
+}
+.fa-trash:hover{
+    color: #ff0000
+}
+.fa-question:hover{
+  color:  #28a745
+}
+.fa-comment{
+  color: #666FB0;
+
+}
+.fa-comment:hover{
+  color:#474747;
+}
+.fa-plus:hover{
+  color:  #28a745;
+}
