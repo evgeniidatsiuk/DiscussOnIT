@@ -2,32 +2,24 @@
   <ul class="list-unstyled components">
 
       <%if user_signed_in?%>
-        <li style="height:50px">
-        <button name="user-button" class="btn dropdown-toggle" style="color: #fff; height:50px; width:calc(100% + 15px); margin-left:-15px; background: #595959; text-align:left; padding: 0px 20px;" type="button" id="dropdownMenuButton" data-toggle="dropdown">
 
-            <%if current_user.userparam %>
-              <%=image_tag current_user.userparam.avatar.url, style:"height:30px; width:30px;"%>
-              <span><%= current_user.userparam.nickname %></span>
-            <%else%>
-              <span><%= current_user.email %></span>
-            <%end%>
-              <span class="caret"></span>
-
-      </button>
+        <li style="height:50px;">
+          <div class="btn-group" style="width:100%; height:50px">
+            <%= link_to userparam_path(current_user), style:"padding: 0px" do %>
+  <button class="btn btn-sm" href="<%link_to userparam_path(current_user)%>" style="color: #fff; text-align:left; height: 50px;  width:100%;  background: #595959;" type="button">
+    <%if current_user.userparam %>
+      <%=image_tag current_user.userparam.avatar.url, style:"height:30px; width:30px;"%>
+      <span><%= current_user.userparam.nickname %></span>
     <%else%>
-      <li>
-      <%= link_to new_user_session_path do%>
-      <i class="fa fa-sign-in"></i>
-      Вхід<%end%>
+      <span><%= current_user.email %></span>
+    <%end%>
+  </button>
   <%end%>
+  <button type="button" class="btn btn-sm dropdown-toggle dropdown-toggle-split" style="color: #fff; width:20%; background: #595959;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
   <%if user_signed_in?%>
       <ul class="dropdown-menu" id="userSubmenu" style="padding-left:10px;">
-        <li>
-          <%= link_to userparam_path(current_user) ,class:"dropdown-item" do %>
-          <i class="fa fa-user"></i>
-          Профіль
-          <%end%>
-        </li>
         <li>
           <%= link_to notifications_path, class:"dropdown-item" do%>
           <i class="fa fa-envelope "></i>
@@ -53,6 +45,14 @@
         </li>
       </ul>
       <%end%>
+</div>
+    <%else%>
+      <li>
+      <%= link_to new_user_session_path do%>
+      <i class="fa fa-sign-in"></i>
+      Вхід<%end%>
+  <%end%>
+
     </li>
 
   <%if @questions %>
