@@ -7,7 +7,7 @@ class Userparam < ApplicationRecord
   # has_one :education, dependent: :destroy
   has_many :votes, as: :object, dependent: :destroy
 
-  validates :firstname, :lastname, :age, presence: { message: "Майже, введіть ще раз дані" }
+  # validates :firstname, :lastname, :age, presence: { message: "Майже, введіть ще раз дані" }
 
   def username
     username = user.nickname
