@@ -9,14 +9,60 @@
     </ul>
   </div>
 <% end %>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-3 ">
+        <div class="list-group">
 
-<p><%= f.text_field :firstname, class: "input-sign", placeholder:"Введіть Bашe ім'я:" %><br>
+          <a href="#" class="list-group-item list-group-item-action">Опис</a>
+          <a href="#" class="list-group-item list-group-item-action">Статистика</a>
+          <a href="#" class="list-group-item list-group-item-action">Інше</a>
 
-<p><%= f.text_field :lastname, class: "input-sign", placeholder:"Введіть вашe прізвище" %><br>
+          <%if user_signed_in? && current_user.id == @user.id%>
+            <%=link_to "Редагувати профіль", edit_userparam_path(@userparam.id),class:"list-group-item list-group-item-action"%>
+            <%=link_to "Змінити дані для входу", edit_user_registration_path,class:"list-group-item list-group-item-action"%>
+          <%end%>
 
-<p><%= f.text_field :age, class: "input-sign", placeholder:"Введіть Bаш вік" %><br>
-
+        </div>
+      </div>
+      <div class="col col-md-">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col col-md-12">
+                <h4>Your Profile</h4>
+                <hr>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <form>
+<div class="form-group row">
+ <div class="col col-md-8">
+ <p><%= f.text_field :firstname, class: "form-control", placeholder:"Введіть Bашe ім'я:" %>
+ </div>
+</div>
+<div class="form-group row">
+ <div class="col col-md-8">
+ <p><%= f.text_field :lastname, class: "form-control", placeholder:"Введіть Bашe ім'я:" %>
+ </div>
+</div>
+<div class="form-group row">
+ <div class="col col-md-8">
+ <p><%= f.text_field :age, class: "form-control", placeholder:"Введіть Bашe ім'я:" %>
+ </div>
+</div>
 <p>Аватар: <%= f.file_field :avatar %><br>
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  </div>
+  </div>
 <% if false %>
 <%= render 'educations/form' %>
 <%end%>
