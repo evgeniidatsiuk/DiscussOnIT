@@ -31,10 +31,10 @@ class PagesController < ApplicationController
 
   def order
     order_name = params[:name]
-    pp session['order_type'] = if session['order_name'] == order_name && session['order_type'] != 'ASC'
-                                 'ASC'
-                               else
-                                 'DESC'
+    session['order_type'] = if session['order_name'] == order_name && session['order_type'] != 'ASC'
+                              'ASC'
+                            else
+                              'DESC'
                             end
     session['order_name'] = order_name if %w[name score created_at view].include?(order_name)
     redirect_back(fallback_location: root_path)

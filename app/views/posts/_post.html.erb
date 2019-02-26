@@ -2,7 +2,7 @@
   <div class="col">
     <div class="row">
 
-      <div class="col-12 col-md-5 post-count">
+      <div class="col-12 col-md-6 post-count">
         <div class="row">
 
           <div class="col-12">
@@ -14,16 +14,16 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-7 post-content">
+      <div class="col-12 col-md-6 post-content text-second">
         <div class="row">
 
-          <div class="col-12 col-md-9">
+          <div class="col-12 col-md-10">
             <%=strip_tags(post.text)[0..120]%>...
           </div>
-          <div class="col-12 col-md-3" style="text-align:center">
+          <div class="col-12 col-md-2" style="text-align:center">
             <div class="row">
 
-              <div class="col-8 col-md-12">
+              <div class="col-8 col-md-12 text-second">
 
                 автор <%=render "userparams/user",object:post %>
               </div>

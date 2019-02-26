@@ -23,9 +23,9 @@
       <div class="col col-md-3 ">
         <div class="list-group">
 
-          <a href="#" class="list-group-item list-group-item-action">Опис</a>
-          <a href="#" class="list-group-item list-group-item-action">Статистика</a>
-          <a href="#" class="list-group-item list-group-item-action">Інше</a>
+          <a href="#desc" class="list-group-item list-group-item-action">Опис</a>
+          <a href="#stat" class="list-group-item list-group-item-action">Статистика</a>
+          <a href="#other" class="list-group-item list-group-item-action">Інше</a>
 
           <%if user_signed_in? && current_user.id == @userparam.user.id%>
             <%=link_to "Редагувати профіль", edit_userparam_path(@userparam.id),class:"list-group-item list-group-item-action"%>
