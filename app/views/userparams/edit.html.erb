@@ -1,63 +1,35 @@
 <div class="wrapper">
   <div class="container">
-<h3>Профіль користувача
-  <b><%=@userparam.username%></b>
-</h3>
-<%=form_for @userparam, url:userparam_path(current_user.id) do |f|%>
-<div class="row">
-  <div class="col col-md-3 ">
-    <div class="list-group">
+    <%=form_for @userparam, url:userparam_path(current_user.id) do |f|%>
+    <div class="row">
+      <%= render "userparams/alex"%>
+      <div class="col col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col col-md-12">
+                <h4>Профіль:
+                  <%= @userparam.username%></h4>
+                <hr>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <form>
+                  <%=render "userparams/form", f:f%>
 
-      <a href="#" class="list-group-item list-group-item-action">Опис</a>
-      <a href="#" class="list-group-item list-group-item-action">Статистика</a>
-      <a href="#" class="list-group-item list-group-item-action">Інше</a>
+                  <%=f.submit "Update",class:"btn btn-dark"%>
 
-      <%if user_signed_in? && current_user.id == @userparam.user.id%>
-        <%=link_to "Редагувати профіль", edit_userparam_path(@userparam.id),class:"list-group-item list-group-item-action actove"%>
-        <%=link_to "Змінити дані для входу", edit_user_registration_path,class:"list-group-item list-group-item-action"%>
-      <%end%>
-
-    </div>
-  </div>
-  <div class="col col-md-">
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col col-md-12">
-            <h4>Your Profile</h4>
-            <hr>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <form>
-<div class="form-group row">
-<div class="col col-md-8">
-<p><%= f.text_field :firstname, class: "form-control", placeholder:"Введіть Bашe ім'я:" %>
-</div>
-</div>
-<div class="form-group row">
-<div class="col col-md-8">
-<p><%= f.text_field :lastname, class: "form-control", placeholder:"Введіть Bашe ім'я:" %>
-</div>
-</div>
-<div class="form-group row">
-<div class="col col-md-8">
-<p><%= f.text_field :age, class: "form-control", placeholder:"Введіть Bашe ім'я:" %>
-</div>
-</div>
-<p>Аватар: <%= f.file_field :avatar %><br>
-  <%=f.submit "Update",class:"btn btn-dark"%>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
+      </div>
 
-</div>
+    </div>
 
-<%end%>
+  <%end%>
 
 </div>
 </div>

@@ -1,78 +1,71 @@
 <div class="profile">
   <div class="row">
     <div class="cover">
-    <div class="crop">
-      <%=image_tag @userparam.avatar.url(:ser) %>
-    </div>
-    <div class="nick">
-      <h3>
-        <b><%=@userparam.username%></b><br/>
-        <%=link_to positiv_vote_path(@userparam.class.name,@userparam.id) do %>
-        <span class="fa fa-plus" style="color:#28a745;"></span>
-      <%end%>
-      <%=@userparam.score%>
-      <%=link_to negativ_vote_path(@userparam.class.name,@userparam.id) do %>
-      <span class="fa fa-minus" style="color:#dc3545;"></span>
-    <%end%>
-  </div>
-</div>
-
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col col-md-3 ">
-        <div class="list-group">
-
-          <a href="#" class="list-group-item list-group-item-action">Опис</a>
-          <a href="#" class="list-group-item list-group-item-action">Статистика</a>
-          <a href="#" class="list-group-item list-group-item-action">Інше</a>
-
-          <%if user_signed_in? && current_user.id == @userparam.user.id%>
-            <%=link_to "Редагувати профіль", edit_userparam_path(@userparam.id),class:"list-group-item list-group-item-action"%>
-            <%=link_to "Змінити дані для входу", edit_user_registration_path,class:"list-group-item list-group-item-action"%>
-          <%end%>
-
-        </div>
+      <div class="crop">
+        <%=image_tag @userparam.avatar.url(:ser) %>
       </div>
-      <div class="col col-md-">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col col-md-12">
-                <h4>Your Profile</h4>
-                <hr>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <form>
-                  <div class="form-group row">
-                    <label for="email" class="col-4 col-form-label">Email</label>
-                    <div class="col-4">
-                      <%=@userparam.user.email%>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="name" class="col-4 col-form-label">FirstName</label>
-                    <div class="col-4">
-                      <%=@userparam.firstname%>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="lastname" class="col-4 col-form-label">LastName</label>
-                    <div class="col-4">
-                      <%=@userparam.lastname%>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+      <div class="nick">
+        <h3>
+          <b><%=@userparam.username%></b><br/>
+          <%=link_to positiv_vote_path(@userparam.class.name,@userparam.id) do %>
+          <span class="fa fa-plus" style="color:#28a745;"></span>
+        <%end%>
+        <%=@userparam.score%>
+        <%=link_to negativ_vote_path(@userparam.class.name,@userparam.id) do %>
+        <span class="fa fa-minus" style="color:#dc3545;"></span>
+      <%end%>
+    </div>
+  </div>
 
+  <div class="wrapper">
+    <div class="container">
+      <div class="row">
+        <%= render "userparams/alex"%>
+        <div class="col col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col col-md-12">
+                  <h4>Your Profile</h4>
+                  <hr>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <form>
+                    <div class="form-group row">
+                      <label for="email" class="col-4 col-form-label">Email</label>
+                      <div class="col-4">
+                        <%=@userparam.user.email%>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="firstname" class="col-4 col-form-label">FirstName</label>
+                      <div class="col-4">
+                        <%=@userparam.firstname%>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="lastname" class="col-4 col-form-label">LastName</label>
+                      <div class="col-4">
+                        <%=@userparam.lastname%>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="age" class="col-4 col-form-label">Age</label>
+                      <div class="col-4">
+                        <%=@userparam.age%>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 </div>
