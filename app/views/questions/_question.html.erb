@@ -46,10 +46,10 @@
       <%=link_to question_path(question.id) ,class:"question-title" do %><%=question.name%>
     <%end%>
   <div class="row">
-    <div class="col-12 col-md-8 tags">
+    <div class="col-12 col-md-10 tags">
       <%=render "categories/tags", object:question %>
     </div>
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-2 text-second">
         Задав
         <%=render "userparams/user", object:question %>
 
