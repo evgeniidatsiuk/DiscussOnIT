@@ -1,35 +1,34 @@
 <div class="wrapper">
-  <div class="container">
-    <%=form_for @userparam, url:userparam_path(current_user.id) do |f|%>
-    <div class="row">
-      <%= render "userparams/alex"%>
-      <div class="col col-md-8">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col col-md-12">
-                <h4>Профіль:
-                  <%= @userparam.username%></h4>
-                <hr>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <form>
-                  <%=render "userparams/form", f:f%>
-
-                  <%=f.submit "Update",class:"btn btn-dark"%>
-
-                </form>
-              </div>
-            </div>
+ <div class="container">
+   <%=form_for @userparam, url:userparam_path(current_user.id) do |f|%>
+  <div class="row">
+    <%= render "userparams/alex"%>
+    <div class="col col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col col-md-12">
+            <h4>Профіль: <%= @userparam.username%></h4>
+            <hr>
           </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <form>
+            <%=render "userparams/form", f:f%>
 
-    </div>
+            <%=f.submit "Update",class:"btn btn-dark"%>
 
-  <%end%>
+            </form>
+        </div>
+       </div>
+     </div>
+   </div>
+  </div>
+
+  </div>
+
+ <%end%>
 
 </div>
 </div>
