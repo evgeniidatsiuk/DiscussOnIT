@@ -1,0 +1,96 @@
+<%= render 'search/form' %>
+<% if @posts.present? %>
+  <table class="table table-striped table-dark">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Text</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @posts.each do |article| %>
+      <tr>
+        <th scope="row">
+          <% if article.try(:highlight).try(:id) %>
+            <% article.highlight.id.each do |snippet| %>
+              <p><%= snippet.html_safe %>...</p>
+            <% end %>
+          <% else %>
+            <%= article.id %>
+          <% end %>
+        </th>
+        <td>
+          <% if article.try(:highlight).try(:name) %>
+            <% article.highlight.name.each do |snippet| %>
+              <p><%= snippet.html_safe %>...</p>
+            <% end %>
+          <% else %>
+            <%= article.name %>
+          <% end %>
+        </td>
+
+        <td>
+          <% if article.try(:highlight).try(:text) %>
+            <% article.highlight.text.each do |snippet| %>
+              <p><%= snippet.html_safe %>...</p>
+            <% end %>
+          <% else %>
+            <%= article.text %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h1>No posts found</h1>
+<% end %>
+<% if @questions.present? %>
+  <table class="table table-striped table-dark">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+
+      <th scope="col">Body</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @questions.each do |article| %>
+      <tr>
+        <th scope="row">
+          <% if article.try(:highlight).try(:id) %>
+            <% article.highlight.id.each do |snippet| %>
+              <p><%= snippet.html_safe %>...</p>
+            <% end %>
+          <% else %>
+            <%= article.id %>
+          <% end %>
+        </th>
+        <td>
+          <% if article.try(:highlight).try(:title) %>
+            <% article.highlight.name.each do |snippet| %>
+              <p><%= snippet.html_safe %>...</p>
+            <% end %>
+          <% else %>
+            <%= article.name %>
+          <% end %>
+        </td>
+
+        <td>
+          <% if article.try(:highlight).try(:content) %>
+            <% article.highlight.content.each do |snippet| %>
+              <p><%= snippet.html_safe %>...</p>
+            <% end %>
+          <% else %>
+            <%= article.text %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h1>No questions found</h1>
+<% end %>

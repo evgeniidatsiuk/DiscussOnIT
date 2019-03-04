@@ -53,6 +53,8 @@ gem 'will_paginate-bootstrap4'
 # вивід об'єктів відновідно до знаходження в масиві пошуку
 gem 'order_as_specified'
 
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 # search gem думаю напишу сам
 # gem 'ransack'
 

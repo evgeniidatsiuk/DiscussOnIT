@@ -1,4 +1,10 @@
+
+
+require 'elasticsearch/model'
+
 class Question < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   belongs_to :user
 
   has_many :comments, as: :object, dependent: :destroy
@@ -20,4 +26,38 @@ class Question < ApplicationRecord
   def all_tags
     tags.map { |tag| Category.find(tag.category_id) }.map(&:name).join(', ')
   end
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'false' do
+      indexes :name, analyzer: 'english'
+      indexes :text,  analyzer: 'english'
+    end
+  end
+  def self.search(query)
+    __elasticsearch__.search(
+        {
+            query: {
+                multi_match: {
+                    query: query,
+                    fields: ['name', 'text']
+                }
+            },
+            highlight: {
+                pre_tags: ['<em>'],
+                post_tags: ['</em>'],
+                fields: {
+                    name: {},
+                    text: {}
+                }
+            }
+        }
+    )
+  end
+
+
+
 end
+
+
+
+# Index all article records from the DB to Elasticsearch
+Question.import force: true
