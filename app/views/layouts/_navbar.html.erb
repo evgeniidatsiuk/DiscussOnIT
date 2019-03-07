@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg">
+<nav class="navbar fixed-top navbar-expand-md">
 
   <%= link_to root_path, class:"navbar-brand" do%><img style="height: 40px"  src="/assets/DoIT_H.svg" alt="DoIT"> <%end%>
   <ul class="nav nav-pills">
@@ -37,9 +37,12 @@
   </div>
 </li>
 </ul>
+
+<%= form_for root_path, method: :get do |f| %>
 <span id="collapse-search" class="collapse" style="weight:100%">
-<input class="form-control" type="text" id="search" placeholder="Enter your query...">
+<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter your query..." %>
 </span>
+<% end %>
 </nav>
 
 <%= render 'reports/new'%>

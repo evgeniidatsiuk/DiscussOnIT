@@ -1,9 +1,0 @@
-
-<%= form_for search_path, method: :get do |f| %>
-  <div class="form-row align-items-center">
-    <div class="form-group col-md-3 mx-auto d-inline-flex">
-      <%= text_field_tag :q, params[:find], class: "form-control", placeholder: "Search" %>
-      <%= submit_tag "Go", name: nil, class: "btn btn-primary" %>
-    </div>
-  </div>
-<% end %>

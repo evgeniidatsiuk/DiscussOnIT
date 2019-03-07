@@ -3,7 +3,11 @@ class QuestionsController < ApplicationController
   before_action :find_question, only: %i[show edit update destroy]
 
   def index
-    @questions = orders(Question.all).page(params[:page]).per(10)
+    @questions = orders(if params[:search].nil?
+                          Question.all
+                        else
+                          Question.search(params[:search]).records
+                 end).page(params[:page]).per(10)
   end
 
   def new

@@ -3,7 +3,11 @@ class PostsController < ApplicationController
   before_action :find_post, only: %i[show edit update destroy]
 
   def index
-    @posts = orders(Post.all).page(params[:page]).per(10)
+    @posts = orders(if params[:search].nil?
+                      Post.all
+                    else
+                      Post.search(params[:search]).records
+             end).page(params[:page]).per(10)
   end
 
   def new
@@ -19,7 +23,6 @@ class PostsController < ApplicationController
     else
       render 'new'
     end
-    
   end
 
   def show
