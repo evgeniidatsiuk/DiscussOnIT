@@ -1,22 +1,10 @@
 <div class="row">
   <div class="col">
+    <%=render "questions/index" %>
     <div class="row">
-      <div class="col">
-        <ul class="nav">
-          <span class="navbar-text font-weight-bold">
-            Питання:
-          </span>
-        </ul>
-      </div>
+      <nav aria-label="Page navigation">
+          <%= will_paginate @questions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+      </nav>
     </div>
-    <% if @questions == [] %>
-      <p>Не знайдено жодних питань</p>
-    <% else %>
-      <%=render "pages/order"%>
-      <%=render @questions%>
-      <div class="digg_pagination">
-        <%= will_paginate @questions%>
-      </div>
-    <% end %>
   </div>
 </div>

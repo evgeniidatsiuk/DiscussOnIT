@@ -1,14 +1,18 @@
-<div class="col  col-md-3 ">
+<style >
+  .content{
+    padding:10px 0px
+  }
+</style>
+<% if @userparam.nil? %><% @userparam = current_user.userparam%> <%end%>
+<div class="col col-md-3 ">
   <div class="list-group">
-    <div class="card-header">
-      <%=link_to "Profile", userparam_path(current_user.id),class:"list-group-item-action"%>
-    </div>
-    <a href="#" class="list-group-item list-group-item-action">Опис</a>
-    <a href="#" class="list-group-item list-group-item-action">Статистика</a>
-    <a href="#" class="list-group-item list-group-item-action">Інше</a>
+
+      <%=link_to "Профіль", userparam_path(@userparam.id),class:"list-group-item list-group-item-action"%>
+    <%=link_to "Опис", userparam_path(@userparam.id)+"#info",class:"list-group-item list-group-item-action"%>
+    <%=link_to "Статистика", userparam_path(@userparam.id)+"#stat",class:"list-group-item list-group-item-action"%>
 
     <%if user_signed_in? && current_user.id == @userparam.user.id%>
-      <%=link_to "Редагувати профіль", edit_userparam_path(@userparam.id),class:"list-group-item list-group-item-action"%>
+      <%=link_to "Редагувати профіль", edit_userparam_path(current_user.userparam.id),class:"list-group-item list-group-item-action"%>
       <%=link_to "Змінити дані для входу", edit_user_registration_path,class:"list-group-item list-group-item-action"%>
     <%end%>
 

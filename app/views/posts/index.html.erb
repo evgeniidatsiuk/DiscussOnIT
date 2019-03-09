@@ -1,23 +1,11 @@
+
 <div class="row">
   <div class="col">
+    <%=render "posts/index"%>
     <div class="row">
-      <div class="col">
-        <ul class="nav">
-          <span class="navbar-text font-weight-bold">
-            Записи:
-          </span>
-        </ul>
-      </div>
+      <nav aria-label="Page navigation">
+          <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+      </nav>
     </div>
-
-    <% if @posts == [] %>
-      <p>НЕ знайдено жодного запису</p>
-    <% else %>
-    <%=render "pages/order"%>
-      <%=render @posts%>
-      <div class="digg_pagination">
-        <%= will_paginate @posts%>
-      </div>
-    <% end %>
   </div>
 </div>

@@ -43,10 +43,14 @@
   </div>
 
   <div class="col-sm-8 question-content">
-      <%=link_to question_path(question.id) ,class:"question-title" do %><%=question.name%>
-    <%end%>
   <div class="row">
     <div class="col-12 col-md-10 tags">
+      <div class="row">
+        <%=link_to question_path(question.id) ,class:"question-title" do %>
+          <%=question.name%>
+        <%end%>
+      </div>
+
       <%=render "categories/tags", object:question %>
     </div>
     <div class="col-12 col-md-2 text-second">
