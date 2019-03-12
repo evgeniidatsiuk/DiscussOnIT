@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  # before_action :authenticate_user!
 
   def index
     @questions = orders(if params[:search].nil?

@@ -10,20 +10,7 @@
       <%= form_for :report, url:reports_path do |f| %>
       <div class="modal-body">
 
-       <%= f.text_field :subject ,  class: "form-control", placeholder:"Введіть вашy subject" %>
-
-        <% if !user_signed_in? %>
-
-        <p><%= f.text_field :user_email ,  class: "input", placeholder:"Введіть ваш емейл" %></p>
-
-        <% else %>
-
-        <%= f.text_field :user_email, class: "input" ,value: current_user.email, readonly: true %>
-
-        <% end %>
-        <p><%= f.text_area :text, size: "60x4",  class: "input", placeholder:"Введіть ваш відгук" %></p>
-
-        <%= f.file_field :photos, multiple: true %>
+        <%= render 'reports/form', f:f%>
 
 
       </div>

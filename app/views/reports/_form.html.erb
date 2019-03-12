@@ -1,17 +1,7 @@
-
-<% if @report.errors.any? %>
- <div class="alert alert-danger" role="alert">
-     <h2>У нас <%= pluralize(@report.errors.count, "error") %>(проблєми), Джоні</h2>
-
-    <ul>
-    <% @report.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-       <%= f.text_field :subject ,  class: "form-control", placeholder:"Введіть вашy subject" %>
-<br>
+  <div class="form-group">
+      <%=f.label "Тема" %>
+       <%= f.select :subject ,["Проблема","Пропозиція","Запитання","Інше"],{},  class: "form-control" %>
+ </div>
         <% if !user_signed_in? %>
 
         <%= f.text_field :user_email ,  class: "form-control", placeholder:"Введіть ваш емейл" %>
@@ -22,6 +12,6 @@
 
         <% end %>
 
-        <%= f.text_area :text, size: "40x7",  class: "form-control", placeholder:"Enter your report"%>
+        <%= f.text_area :text, size: "40x7",  class: "form-control", placeholder:"Повідомлення..."%>
 <br>
         <%= f.file_field :photos, multiple: true %>
