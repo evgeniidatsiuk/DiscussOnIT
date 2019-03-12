@@ -134,8 +134,8 @@ a:hover {
   height: auto;
   box-shadow: 1px 0 1rem 2px rgba(0, 0, 0, 0.15);
 
-  .tags {
-    padding-top: 10px;
+  .question-tags {
+    padding-top: 5px;
   }
 
   .question-count {
@@ -144,7 +144,7 @@ a:hover {
   }
 
   .question-content {
-    padding-top: 15px;
+    padding-top: 10px;
     font-size: 12px;
   }
 
@@ -230,17 +230,28 @@ li {
   box-shadow: 1px 0 1rem 2px rgba(0, 0, 0, 0.15);
 }
 
-.post-count {}
+.post-count {
 
-.post-title {
-  font-style: normal;
-  font-weight: bold;
-  line-height: normal;
-  font-size: 18px;
-  color: #474747;
+}
+.post-tags {
+  padding-top: 5px;
+}
+.post-content{
+  padding-top: 10px;
 }
 
-.post-title:hover {
+.post-title {
+  padding-top: 10px;
+  a{
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 18px;
+    color: #474747;
+  }
+}
+
+.post-title a:hover {
   color: grey;
   text-decoration: none;
 }
@@ -498,8 +509,14 @@ nav .fa {
 }
 
 .category {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
+  margin-bottom: -120px;
+  z-index: 1000;
   box-shadow: 1px 0 1rem 2px rgba(0, 0, 0, 0.15);
+}
+.category:hover{
+  //margin-bottom: 0px;
+  z-index: 1001;
 }
 
 .text-second {

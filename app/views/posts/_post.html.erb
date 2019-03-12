@@ -5,10 +5,10 @@
       <div class="col-12 col-md-6 post-count">
         <div class="row">
 
-          <div class="col-12">
-            <%= link_to post.name, post_path(post.id), class:"post-title" %>
+          <div class="col-12 post-title">
+            <%= link_to post.name, post_path(post.id) %>
           </div>
-          <div class="col-12">
+          <div class="col-12 post-tags">
             <%=render "categories/tags", object:post%>
           </div>
         </div>

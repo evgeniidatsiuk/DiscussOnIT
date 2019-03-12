@@ -2,9 +2,9 @@
   <div class="category card">
       <div class="card-body">
         <%=link_to category.name, category_path(category.name), class:"btn btn-light card-title", style:"width:100%; color:#666FB0,overflow:auto"%></p>
-        <p class="card-text"><%=category.desc%></p>
-        <p class="card-text">Публікацій: <%=Post.where(@category).count%></p>
-        <p class="card-text">Запитання: <%=Question.where(@category).count%></p>
+        <p class="card-text">--<%=category.desc%>Тут буде якийсь опис--</p>
+        <p class="card-text">Публікацій: <%=Tag.where(category_id: category.id, object_type: "Post").count%></p>
+        <p class="card-text">Запитань: <%=Tag.where(category_id: category.id, object_type: "Question").count%></p>
       </div>
     </div>
 
