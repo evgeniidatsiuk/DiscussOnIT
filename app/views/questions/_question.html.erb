@@ -32,7 +32,7 @@
       <div class="col-3">
         <div class="view">
           <div class="">
-          <%= question.view %>
+            <%= question.view %>
           </div>
           <div style="font-size:10px">
             Переглядів
@@ -43,24 +43,29 @@
   </div>
 
   <div class="col-sm-8 question-content">
-  <div class="row">
-    <div class="col-12 col-md-10 tags">
-      <div class="row">
-        <%=link_to question_path(question.id) ,class:"question-title" do %>
-          <%=question.name%>
-        <%end%>
+    <div class="row">
+      <div class="col-12 col-md-10 tags">
+        <div class="row">
+          <div class="col-12">
+            <%=link_to question_path(question.id) ,class:"question-title" do %>
+            <%=question.name%>
+          <%end%>
+        </div>
+        <div class="col-12">
+          <%=render "categories/tags", object:question %>
+        </div>
       </div>
 
-      <%=render "categories/tags", object:question %>
     </div>
     <div class="col-12 col-md-2 text-second">
-        Задав
-        <%=render "userparams/user", object:question %>
+      Задав
+      <%=render "userparams/user", object:question %>
 
       <span class="times">
-        <%=distance_of_time_in_words(question.created_at,Time.now) %> ago
+        <%=distance_of_time_in_words(question.created_at,Time.now) %>
+        ago
       </span>
+    </div>
   </div>
-</div>
 </div>
 </div>

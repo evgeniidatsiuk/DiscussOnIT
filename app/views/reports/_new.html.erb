@@ -18,7 +18,7 @@
 
         <% else %>
 
-        <%= f.hidden_field :user_email, class: "input" ,value: current_user.email, readonly: true %>
+        <%= f.text_field :user_email, class: "input" ,value: current_user.email, readonly: true %>
 
         <% end %>
         <p><%= f.text_area :text, size: "60x4",  class: "input", placeholder:"Введіть ваш відгук" %></p>

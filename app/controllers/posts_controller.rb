@@ -49,6 +49,10 @@ class PostsController < ApplicationController
 
   private
 
+  def title
+    @title = 'Публікації'
+  end
+
   def post_params
     params.require(:post).permit(:user_id, :name, :text)
   end

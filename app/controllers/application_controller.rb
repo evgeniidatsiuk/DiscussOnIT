@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
-  # respond_to :html, :js
+  before_action :title
+  respond_to :html, :js
 
   def orders(dates)
     return dates.order("#{session['order_name']} #{session['order_type']}") unless session['order_name'].nil?
@@ -10,6 +11,8 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def title; end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[nickname email password password_confirmation])

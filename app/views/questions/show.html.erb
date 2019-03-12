@@ -63,25 +63,21 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12 col-md-4">
+
+        <div class="col-12">
           Відповідей: <%=@question.answers.count%>
         </div>
 
-        <div class="сol-12">
-          риска
-          <hr style="weight:100%">
-        </div>
-      </div>
+      <hr>
     </div>
     <div class="col-12">
       <% if @question.right_answer_id %>
-        <h4>Рекомендована відповідь:</h4>
+        <h5>Рекомендована відповідь:</h5>
         <%=render Answer.find(@question.right_answer_id) %>
         <hr>
       <%end%>
       <% if @question.answers.count>1 || (@question.answers.count==1 && !@question.right_answer_id)%>
-        <h4>Відповіді:</h4>
+        <h5>Відповіді:</h5>
         <%= render @answers%>
       <%end%>
     </div>

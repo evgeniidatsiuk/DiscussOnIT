@@ -17,6 +17,7 @@ a:hover {
   }
 
   .navbar-brand {
+        width: 120px;
     text-align: center;
     color: #FFF;
     font-style: normal;
@@ -226,6 +227,7 @@ li {
   border: 0.25px solid rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   border-radius: 5px;
+  box-shadow: 1px 0 1rem 2px rgba(0, 0, 0, 0.15);
 }
 
 .post-count {}
@@ -236,7 +238,6 @@ li {
   line-height: normal;
   font-size: 18px;
   color: #474747;
-  margin-left: 10px;
 }
 
 .post-title:hover {
@@ -373,8 +374,8 @@ li {
 }
 
 .times {
-  display: inherit;
-  font-size: 11px;
+  font-size: 10px;
+  color: grey;
 }
 
 .input {
@@ -512,9 +513,6 @@ nav .fa {
     padding: 10px 20px;
   }
 
-  .navbar .nav-pills{
-    margin-left: 60%;
-  }
   .fixed-bottom{
     padding: 0px;
   }

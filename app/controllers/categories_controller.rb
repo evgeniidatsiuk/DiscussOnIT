@@ -12,4 +12,10 @@ class CategoriesController < ApplicationController
       redirect_to question_path(@questions.first.id) if @questions.count == 1
     end
   end
+
+  private
+
+  def title
+    @title = 'Категорії'
+  end
 end

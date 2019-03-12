@@ -1,35 +1,8 @@
 <h2>Обране</h2>
 <hr>
-<div class="row">
-  <div class="col">
-    <ul class="nav">
-      <span class="navbar-text font-weight-bold">
-        Записи:
-      </span>
-    </ul>
-  </div>
-</div>
-<hr style="margin-top:0px;">
-<% if @posts == [] %>
-  <p>НЕ знайдено жодного запису</p>
-<% else %>
-  <%=render @posts%>
-<% end %>
-<div class="row">
-  <div class="col">
-    <ul class="nav">
-      <span class="navbar-text font-weight-bold">
-        Питання:
-      </span>
-    </ul>
-  </div>
-</div>
-<hr style="margin-top:0px;">
-<% if @questions == [] %>
-  <p>Не знайдено жодних питань</p>
-<% else %>
-  <%=render @questions%>
-<% end %>
+<%=render "posts/index"%>
+
+<%=render "questions/index" %>
 <div class="row">
   <nav aria-label="Page navigation">
     <% if @posts.count> @questions.count %>

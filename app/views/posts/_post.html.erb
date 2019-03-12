@@ -17,23 +17,17 @@
       <div class="col-12 col-md-6 post-content text-second">
         <div class="row">
 
-          <div class="col-12 col-md-10">
+          <div class="col-12 col-md-9">
             <%=strip_tags(post.text)[0..120]%>...
           </div>
-          <div class="col-12 col-md-2" style="text-align:center">
-            <div class="row">
+          <div class="col-12 col-md-3 text-second">
 
-              <div class="col-8 col-md-12 text-second">
 
-                автор <%=render "userparams/user",object:post %>
-              </div>
-              <div class="col-4 col-md-12" style="font-size:8px">
+                Написав <%=render "userparams/user",object:post %>
                 <span class="times">
-                    Створено
+
                   <%=distance_of_time_in_words(post.created_at,Time.now) %> ago
                 </span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

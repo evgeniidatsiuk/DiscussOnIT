@@ -56,6 +56,10 @@ class QuestionsController < ApplicationController
 
   private
 
+  def title
+    @title = 'Запитання'
+  end
+
   def question_params
     params.require(:question).permit(:user_id, :name, :text)
   end
