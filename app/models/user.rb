@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # викликається після створення користувача
   after_create :create_userparam
+
   attr_accessor :login
 
   # Include default devise modules. Others available are:

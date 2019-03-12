@@ -511,16 +511,19 @@ nav .fa {
 .category {
   padding-bottom: 20px;
   margin-bottom: -120px;
-  z-index: 1000;
+  z-index: 98;
   box-shadow: 1px 0 1rem 2px rgba(0, 0, 0, 0.15);
 }
 .category:hover{
   //margin-bottom: 0px;
-  z-index: 1001;
+  z-index: 99;
 }
 
 .text-second {
   font-size: 12px;
+}
+.show{
+  z-index: 9999;
 }
 
 
