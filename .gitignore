@@ -25,4 +25,5 @@
 .byebug_history
 
 /public/uploads/
-/.idea
+.idea
+.idea
