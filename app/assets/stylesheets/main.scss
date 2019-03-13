@@ -10,6 +10,7 @@ a:hover {
   background: #474747;
   color: #FFF;
   height: 50px;
+  flex-wrap: nowrap;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15)!important;
 
   .dropdown-item {
@@ -525,7 +526,9 @@ nav .fa {
 
 
 @media(max-width: 768px) {
-
+  .nav {
+    flex-wrap: nowrap;
+  }
   .content{
     padding: 10px 20px;
   }
@@ -563,6 +566,7 @@ nav .fa {
   }
 }
 @media(min-width: 768px) and (max-width: 1920px) {
+
   .humburger {
     display: none;
     width: 0;
