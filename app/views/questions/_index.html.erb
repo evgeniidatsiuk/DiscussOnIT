@@ -1,4 +1,4 @@
-<% if @questions == [] %>
+<% if questions == [] %>
   <p>Не знайдено жодних запитань</p>
 <% else %>
   <div class="row">
@@ -11,5 +11,5 @@
     </div>
   </div>
   <%=render "pages/order"%>
-  <%=render @questions%>
+  <%=render questions%>
 <% end %>

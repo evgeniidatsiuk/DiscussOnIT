@@ -7,5 +7,7 @@ class CreateTags < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :tags, :category_id
+    add_index :tags, %i[object_type object_id]
   end
 end

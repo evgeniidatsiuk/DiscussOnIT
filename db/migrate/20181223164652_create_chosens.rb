@@ -7,5 +7,7 @@ class CreateChosens < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :chosens, :user_id
+    add_index :chosens, %i[object_id object_type]
   end
 end

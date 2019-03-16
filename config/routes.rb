@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :users, controllers: { registrations: 'registrations' }
-  resources :userparams, except: [:index]
+  resources :userparams, except: %i[destroy index]
   resources :comments, except: %i[new edit show index]
   resources :questions
   resources :answers, except: %i[index show] do
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
   resources :chosens, only: [:index]
-  resources :reports, except: %i[edit update]
+  resources :reports, except: %i[edit update destroy]
 
   get '/:type/:id/chose', to: 'chosens#chose', as: 'chose'
 

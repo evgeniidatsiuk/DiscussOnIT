@@ -8,6 +8,7 @@ class Userparam < ApplicationRecord
   has_many :votes, as: :object, dependent: :destroy
 
   # validates :firstname, :lastname, :age, presence: { message: "Майже, введіть ще раз дані" }
+  validates :age, numericality: { only_integer: true }, allow_nil: true
 
   def username
     username = user.nickname

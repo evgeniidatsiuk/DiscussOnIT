@@ -1,6 +1,6 @@
-<%=render "posts/index"%>
+<%=render "posts/index", posts:@posts%>
 
-<%=render "questions/index" %>
+<%=render "questions/index", questions:@questions %>
 <div class="row">
   <nav aria-label="Page navigation">
     <% if @posts.count> @questions.count %>

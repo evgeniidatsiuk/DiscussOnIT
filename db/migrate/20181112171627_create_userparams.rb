@@ -9,5 +9,6 @@ class CreateUserparams < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :userparams, :user_id
   end
 end

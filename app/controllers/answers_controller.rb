@@ -34,21 +34,17 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    redirect_to root_path
+    @answer.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   def right
     # тільки власник питання може обрати правильне
-    if @answer.question.user.id == current_user.id
-      @answer.question.update(right_answer_id: @answer.id)
-      @answer.question.chosens.each do |chosen|
-        Notification.generate(chosen.user, @answer, 'select right answer', current_user)
-      end
-      redirect_to question_path(@answer.question.id)
-    else
-      render 'show'
+    @answer.question.update(right_answer_id: @answer.id)
+    @answer.question.chosens.each do |chosen|
+      Notification.generate(chosen.user, @answer, 'select right answer', current_user)
     end
+    redirect_to question_path(@answer.question.id)
   end
 
   private
@@ -58,6 +54,6 @@ class AnswersController < ApplicationController
   end
 
   def find_answer
-    @answer = Answer.find(params[:id])
+    @answer = current_user.answers.find(params[:id])
   end
 end

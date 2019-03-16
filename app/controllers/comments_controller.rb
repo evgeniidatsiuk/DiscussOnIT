@@ -8,16 +8,13 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if current_user.id == @comment.user.id
-      unless @post.update(comment_params)
-        # прописати повторний рендер елемента, для виводу помилки ... якщо поставив користувацьку валідацію буде не потрібним
-      end
-    end
+    @post.update(comment_params)
+    # прописати повторний рендер елемента, для виводу помилки ... якщо поставив користувацьку валідацію буде не потрібним
     redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    @comment.destroy if current_user.id == @comment.user.id
+    @comment.destroy
     redirect_back(fallback_location: root_path)
   end
 
@@ -28,6 +25,6 @@ class CommentsController < ApplicationController
   end
 
   def find_comment
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
   end
 end

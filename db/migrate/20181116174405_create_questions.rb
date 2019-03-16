@@ -10,5 +10,7 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :questions, :user_id
+    add_index :questions, :right_answer_id
   end
 end

@@ -73,10 +73,10 @@
     <div class="col-12">
       <% if @question.right_answer_id %>
         <h5>Рекомендована відповідь:</h5>
-        <%=render Answer.find(@question.right_answer_id) %>
+        <%=render @question.right_answer %>
         <hr>
       <%end%>
-      <% if @question.answers.count>1 || (@question.answers.count==1 && !@question.right_answer_id)%>
+      <% if @question.answers.count>1 || (@question.answers.count==1 && !@question.right_answer)%>
         <h5>Відповіді:</h5>
         <%= render @answers%>
       <%end%>

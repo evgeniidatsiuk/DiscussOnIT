@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20190214195238) do
     t.integer "score", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -60,6 +62,8 @@ ActiveRecord::Schema.define(version: 20190214195238) do
     t.integer "object_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["object_id", "object_type"], name: "index_chosens_on_object_id_and_object_type"
+    t.index ["user_id"], name: "index_chosens_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -69,6 +73,8 @@ ActiveRecord::Schema.define(version: 20190214195238) do
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["object_type", "object_id"], name: "index_comments_on_object_type_and_object_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "educations", force: :cascade do |t|
@@ -90,6 +96,9 @@ ActiveRecord::Schema.define(version: 20190214195238) do
     t.datetime "read_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["activeuser_id"], name: "index_notifications_on_activeuser_id"
+    t.index ["object_id", "object_type"], name: "index_notifications_on_object_id_and_object_type"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -100,6 +109,7 @@ ActiveRecord::Schema.define(version: 20190214195238) do
     t.integer "score", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -111,6 +121,8 @@ ActiveRecord::Schema.define(version: 20190214195238) do
     t.integer "score", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["right_answer_id"], name: "index_questions_on_right_answer_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -135,6 +147,8 @@ ActiveRecord::Schema.define(version: 20190214195238) do
     t.integer "object_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_tags_on_category_id"
+    t.index ["object_type", "object_id"], name: "index_tags_on_object_type_and_object_id"
   end
 
   create_table "universities", force: :cascade do |t|
@@ -164,6 +178,7 @@ ActiveRecord::Schema.define(version: 20190214195238) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.index ["user_id"], name: "index_userparams_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -187,6 +202,8 @@ ActiveRecord::Schema.define(version: 20190214195238) do
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["object_id", "object_type"], name: "index_votes_on_object_id_and_object_type"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end

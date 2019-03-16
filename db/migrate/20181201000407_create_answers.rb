@@ -8,5 +8,7 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :answers, :user_id
+    add_index :answers, :question_id
   end
 end

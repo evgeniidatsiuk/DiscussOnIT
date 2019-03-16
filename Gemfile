@@ -43,6 +43,7 @@ gem 'jquery-rails'
 # для оптимізаціїї і обробки коду ... то для атома але не потрібне якщо є встроєні
 # gem 'rubocop', require: false
 # gem 'rbeautify'
+gem 'rails_best_practices'
 
 # Вибір країни
 # gem 'country_select'

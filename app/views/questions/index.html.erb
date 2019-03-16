@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col">
-    <%=render "questions/index" %>
+    <%=render "questions/index",questions:@questions %>
     <div class="row">
       <nav aria-label="Page navigation">
           <%= will_paginate @questions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>

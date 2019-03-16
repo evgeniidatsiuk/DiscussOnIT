@@ -5,18 +5,14 @@ class NotificationsController < ApplicationController
   end
 
   def read
-    @notification = Notification.find(params[:id])
-    if current_user.id == @notification.user.id && !@notification.read_at
-      @notification.update(read_at: Time.now)
-    end
+    @notification = current_user.notifications.find(params[:id])
+    @notification.update(read_at: Time.now) if @notification && !@notification.read_at
     redirect_back(fallback_location: root_path)
   end
 
   def unread
-    @notification = Notification.find(params[:id])
-    if current_user.id == @notification.user.id && @notification.read_at
-      @notification.update(read_at: nil)
-    end
+    @notification = current_user.notifications.find(params[:id])
+    @notification.update(read_at: nil) if @notification && @notification.read_at
     redirect_back(fallback_location: root_path)
   end
 end
