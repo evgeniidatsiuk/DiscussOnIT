@@ -1,20 +1,19 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_answer, only: %i[edit update destroy right]
 
   def new
-    @answer = Answer.new
+    answer
   end
 
   def create
-    @answer = current_user.answers.build(answer_params)
-    if @answer.save
+    answer = current_user.answers.build(answer_params)
+    if answer.save
       # сповіщення про створення нової відповіді
-      @answer.question.chosens.each do |chosen|
-        Notification.generate(chosen.user, @answer, 'create', current_user)
+      question.chosens.each do |chosen|
+        Notification.generate(chosen.user, answer, 'додана', current_user)
       end
 
-      redirect_to question_path(@answer.question.id)
+      redirect_to question_path(question.id)
     else
       render 'new'
     end
@@ -23,28 +22,29 @@ class AnswersController < ApplicationController
   def edit; end
 
   def update
-    if @answer.update(answer_params)
-      @answer.question.chosens.each do |chosen|
-        Notification.generate(chosen.user, @answer, 'update', current_user)
+    if answer.update(answer_params)
+      question.chosens.each do |chosen|
+        Notification.generate(chosen.user, answer, 'оновлена', current_user)
       end
-      redirect_to question_path(@answer.question.id)
+      redirect_to question_path(question.id)
     else
       render 'edit'
     end
   end
 
   def destroy
-    @answer.destroy
+    answer.destroy
     redirect_back(fallback_location: root_path)
   end
 
   def right
+    answer = current_user.questions.find(question.id).answers.find(params[:id])
     # тільки власник питання може обрати правильне
-    @answer.question.update(right_answer_id: @answer.id)
-    @answer.question.chosens.each do |chosen|
-      Notification.generate(chosen.user, @answer, 'select right answer', current_user)
+    question.update(right_answer_id: answer.id)
+    question.chosens.each do |chosen|
+      Notification.generate(chosen.user, answer, 'обрана правильна відпоідь', current_user)
     end
-    redirect_to question_path(@answer.question.id)
+    redirect_to question_path(question.id)
   end
 
   private
@@ -53,7 +53,12 @@ class AnswersController < ApplicationController
     params.require(:answer).permit(:user_id, :question_id, :text)
   end
 
-  def find_answer
-    @answer = current_user.answers.find(params[:id])
+  def answer
+    @answer ||= current_user.answers.find_by(id: params[:id])
+    @answer ||= Answer.new
+  end
+
+  def question
+    @question ||= @answer.question
   end
 end

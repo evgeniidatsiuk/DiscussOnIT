@@ -44,6 +44,7 @@ gem 'jquery-rails'
 # gem 'rubocop', require: false
 # gem 'rbeautify'
 gem 'rails_best_practices'
+gem 'rubycritic', require: false
 
 # Вибір країни
 # gem 'country_select'

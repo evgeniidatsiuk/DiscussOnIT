@@ -1,8 +1,9 @@
 require 'elasticsearch/model'
-
+# Основний елемент взаємодії з сайтом, дає змогу користувачам задавати питання і в подальшому надавати відповідь
 class Question < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+
   belongs_to :user
 
   has_many :comments, as: :object, dependent: :destroy

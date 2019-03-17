@@ -2,16 +2,8 @@ class PagesController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    @questions = orders(if params[:search].nil?
-                          Question.all
-                        else
-                          Question.search(params[:search]).records
-                 end).page(params[:page]).per(10)
-    @posts = orders(if params[:search].nil?
-                      Post.all
-                    else
-                      Post.search(params[:search]).records
-             end).page(params[:page]).per(10)
+    posts
+    questions
   end
 
   def order

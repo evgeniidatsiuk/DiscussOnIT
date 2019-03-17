@@ -2,7 +2,7 @@
   <div class="container">
     <%=form_for @userparam, url:userparam_path(current_user.id) do |f|%>
     <div class="row">
-      <%= render "userparams/alex"%>
+      <%= render "userparams/alex",userparam:@userparam%>
       <div class="col col-md-9">
         <div class="card">
           <div class="card-body">

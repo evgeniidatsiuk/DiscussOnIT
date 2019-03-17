@@ -1,49 +1,43 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :find_post, only: %i[show edit update destroy]
+  before_action :all_tags, only: %i[create update]
 
   def index
-    @posts = orders(if params[:search].nil?
-                      Post.all
-                    else
-                      Post.search(params[:search]).records
-             end).page(params[:page]).per(10)
+    posts
   end
 
   def new
-    @post = Post.new
+    post
   end
 
   def create
-    @all_tags = params[:post][:all_tags]
-    @post = current_user.posts.build(post_params)
-    if @post.save
-      Tag.all_tags(@post, @all_tags)
-      redirect_to post_path(@post.id)
+    post = current_user.posts.build(post_params)
+    if post.save
+      Tag.all_tags(post, all_tags)
+      redirect_to post_path(post.id)
     else
       render 'new'
     end
   end
 
   def show
-    @post.view += 1
-    @post.save
+    post.view += 1
+    post.save
   end
 
   def edit; end
 
   def update
-    @all_tags = params[:post][:all_tags]
-    if @post.save
-      Tag.all_tags(@post, @all_tags)
-      redirect_to post_path(@post.id)
+    if post.save
+      Tag.all_tags(post, all_tags)
+      redirect_to post_path(post.id)
     else
       render 'edit'
     end
   end
 
   def destroy
-    @post.destroy
+    post.destroy
     redirect_to posts_path
   end
 
@@ -57,7 +51,12 @@ class PostsController < ApplicationController
     params.require(:post).permit(:user_id, :name, :text)
   end
 
-  def find_post
-    @post = Post.find(params[:id])
+  def post
+    @post ||= Post.find(params[:id]) unless params[:id].nil?
+    @post ||= Post.new
+  end
+
+  def all_tags
+    @all_tags ||= params[:post][:all_tags]
   end
 end

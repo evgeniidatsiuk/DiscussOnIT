@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%if !@title.nil? %> <%=@title%> / <%end%>DoIT</title>
+    <title>
+      <%if !@title.nil? %>
+        <%=@title%>
+        /
+      <%end%>DoIT</title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,18 +16,20 @@
 
   <body>
     <%= render "layouts/navbar" %>
-    <%= render "layouts/mobile" %>
+
+    <%=render "layouts/mobile"%>
+
     <div class="container-fluid">
       <div class="row" style="padding-top:50px;">
         <%= render "layouts/left-sidebar" %>
         <div class="col-md-10 ml-sm-auto">
-            <div class="row">
-          <div class="col-sm-10 content">
-            <%= yield %>
-          </div>
-          <div class="col-sm-2">
-          <%= render "layouts/right-sidebar" %>
-          </div>
+          <div class="row">
+            <div class="col-sm-10 content">
+              <%= yield %>
+            </div>
+            <div class="col-sm-2">
+              <%= render "layouts/right-sidebar" %>
+            </div>
           </div>
         </div>
       </div>

@@ -1,46 +1,53 @@
 class UserparamsController < ApplicationController
   before_action :authenticate_user!, except: :show
-  before_action :find_userparam, except: %i[new create]
-  # def index; end
 
   def new
-    if current_user.userparam
-      redirect_to userparam_path(current_user.userparam.id)
+    if current_userparam
+      redirect_to userparam_path(current_userparam.id)
     else
-      @userparam = Userparam.new
+      userparam
     end
   end
 
   def create
-    unless current_user.userparam
-      @userparam = current_user.build_userparam(profile_params)
-      if @userparam.save
-        redirect_to userparam_path(@userparam.id)
+    unless current_userparam
+      userparam = current_user.build_userparam(profile_params)
+      if userparam.save
+        redirect_to userparam_path(userparam.id)
       else
         render 'new'
       end
     end
   end
 
-  def show; end
+  def show
+    userparam
+  end
 
   def edit
-    unless @userparam.id == current_user.userparam.id
-      redirect_to edit_userparam_path(current_user.userparam.id)
-    end
+    redirect_to edit_userparam_path(current_userparam.id) unless isCurrent?
   end
 
   def update
-    if @userparam.id == current_user.userparam.id && @userparam.update(profile_params)
-      redirect_to userparam_path(current_user.id)
+    if isCurrent? && userparam.update(profile_params)
+      redirect_to userparam_path(current_userparam.id)
     else render 'edit'
     end
   end
 
   private
 
-  def find_userparam
-    @userparam = Userparam.find(params[:id])
+  def userparam
+    @userparam ||= Userparam.find_by(id: params[:id])
+    @userparam ||= Userparam.new
+  end
+
+  def current_userparam
+    @current_userparam ||= current_user.userparam
+  end
+
+  def isCurrent?
+    @stat ||= (userparam.id == current_userparam.id)
   end
 
   def profile_params

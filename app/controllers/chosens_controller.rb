@@ -1,21 +1,23 @@
 class ChosensController < ApplicationController
-
   before_action :authenticate_user!
-  before_action :get_object, only: [:chose]
 
   def chose
-    Chosen.chose(current_user, @object)
+    Chosen.chose(current_user, object)
     redirect_back(fallback_location: root_path)
   end
 
   def index
-    @posts = Post.where(id: current_user.chosens.where(object_type: 'Post').collect(&:object_id)).order(created_at: :DESC).page(params[:page]).per(10)
-    @questions = Question.where(id: current_user.chosens.where(object_type: 'Question').collect(&:object_id)).order(created_at: :DESC).page(params[:page]).per(10)
+    posts.where(id: chosens('Post'))
+    questions.where(id: chosens('Question'))
   end
 
   private
 
-  def get_object
-    @object = params[:type].constantize.find(params[:id])
+  def object
+    @object ||= params[:type].constantize.find(params[:id])
+  end
+
+  def chosens(name)
+    current_user.chosens.where(object_type: name).collect(&:object_id)
   end
 end

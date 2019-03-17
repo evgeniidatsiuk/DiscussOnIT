@@ -1,4 +1,5 @@
 require 'elasticsearch/model'
+# Моедь постів, дає змогу користувачам поділитьсь інформацією з спільнотою.
 class Post < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks

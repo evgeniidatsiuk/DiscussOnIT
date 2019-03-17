@@ -10,7 +10,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: :true, uniqueness: { case_sensitive: false }
-  validates_format_of :nickname, with: /^[a-zA-Z0-9_\.]*$/, multiline: true
+  validates_format_of :nickname, with: /\A\w+ +\w+\z/, multiline: true
 
   has_one :userparam, dependent: :destroy
   has_many :posts, dependent: :destroy

@@ -1,20 +1,28 @@
 class VotesController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_object
+  after_action :object_update
 
   def positiv_vote
-    Vote.positiv(current_user, @object)
+    vote.update(score: 1)
     redirect_back(fallback_location: root_path)
   end
 
   def negativ_vote
-    Vote.negativ(current_user, @object)
+    vote.update(score: -1)
     redirect_back(fallback_location: root_path)
   end
 
   private
 
-  def get_object
+  def object
     @object = params[:type].constantize.find(params[:id])
+  end
+
+  def object_update
+    object.update(score: object.votes.sum(:score))
+  end
+
+  def vote
+    @vote ||= Vote.where(user_id: current_user.id, object_type: object.class.name, object_id: object.id).first_or_create!
   end
 end
