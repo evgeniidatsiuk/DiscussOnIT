@@ -1,20 +1,19 @@
-<li class="notification" <% if !notification.read_at %> style="background-color: #d9edf7;border-color: #bce8f1;color: #31708f;" <%end%>>
-  <div class="media">
-        <div class="media-left">
-          <div class="media-object">
-            <%if notification.action = "create" %>
-            <i class="fa fa-3x fa-plus"></i>
-            <%else%>
-            <%end%>
-          </div>
-        </div>
-        <div class="media-body">
-          <strong class="notification-title"><%=title(notification)%></strong>
 
-          <div class="notification-meta">
-            <small class="timestamp"><%=notification.created_at%> <%=watch_read_stat(notification)%></small>
-          </div>
-        </div>
-      </div>
+<li class="notification" <% if !notification.read_at %> style="background-color: #d9edf7;border-color: #bce8f1;color: #31708f;"<%else%> style="background-color: #FFF;" <%end%>>
 
- </li>
+  <div class="toast__icon">
+     <%if notification.action = "create" %>
+     <i class="fa fa-plus-circle"></i>
+     <%else%>
+     <i class="fa fa-info-circle"></i>
+     <%end%>
+   </div>
+
+
+ <div class="toast__content">
+
+    <p class="toast__type"><strong class="class="toast__type""><%=title(notification)%></strong></p>
+    <p class="toast__message"><%=distance_of_time_in_words(notification.created_at,Time.now)%> ago <%=watch_read_stat(notification)%></p>
+  </div>
+
+</li><br />

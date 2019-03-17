@@ -1,5 +1,6 @@
 body {
   height: 100%;
+  background-color:#efefef;
 }
 
 a:hover {
@@ -127,7 +128,7 @@ a:hover {
 }
 
 .question {
-  background: rgba(71, 71, 71, 0.02);
+  background-color:#fff;
   border: 0.25px solid #474747;
   box-sizing: border-box;
   border-radius: 10px;
@@ -218,13 +219,15 @@ li {
 }
 
 .answer {
+  background-color:#fff;
+  border-radius: 25px;
   margin-top: 10px;
 }
 
 
 .post {
   margin-bottom: 15px;
-  background: rgba(71, 71, 71, 0.02);
+  background-color:#fff;
   border: 0.25px solid rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   border-radius: 5px;
@@ -512,21 +515,57 @@ nav .fa {
 .category {
   padding-bottom: 20px;
   margin-bottom: -120px;
-  z-index: 98;
+  z-index: 1000;
   box-shadow: 1px 0 1rem 2px rgba(0, 0, 0, 0.15);
 }
 .category:hover{
   //margin-bottom: 0px;
-  z-index: 99;
+  z-index: 1001;
 }
 
 .text-second {
   font-size: 12px;
 }
-.ul{
-  z-index: 9999;
+
+
+.toast__icon{
+  position:absolute;
+  transform:translateY(30%);
+  font: normal normal normal 50px/1 FontAwesome;
+  width:14px;
+  height:14px;
+  padding: 7px;
+  border-radius:50%;
+  display:inline-block;
 }
 
+.toast__type {
+  color: #3e3e3e;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.toast__message {
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #878787;
+}
+
+.toast__content{
+  border-radius:4px;
+  padding-left:70px;
+  padding-right:60px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 1px 7px 14px -5px rgba(0,0,0,0.2);
+}
+
+.toast--green{
+  background-color:#2BDE3F;
+  width: 4px;
+}
 
 @media(max-width: 768px) {
   .nav {
@@ -564,6 +603,7 @@ nav .fa {
     border-radius: 1px;
   }
 }
+
 @media(min-width: 768px) and (max-width: 1920px) {
 
   .humburger {
