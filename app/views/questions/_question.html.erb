@@ -14,7 +14,7 @@
       <div class="col-4">
         <div class="view">
           <div>
-            <%if question.right_answer_id %>
+            <%if question.right_answer %>
               <div style="color:green;">
                 <%=question.answers.count%>
               </div>
@@ -52,7 +52,7 @@
           <%end%>
         </div>
         <div class="col-12 question-tags">
-          <%=render "categories/tags", object:question %>
+          <%=tags(question) %>
         </div>
       </div>
 

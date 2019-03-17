@@ -9,7 +9,7 @@
             <%= link_to post.name, post_path(post.id) %>
           </div>
           <div class="col-12 post-tags">
-            <%=render "categories/tags", object:post%>
+            <%=tags(post) %>
           </div>
         </div>
       </div>
