@@ -76,10 +76,16 @@
         <%=render @question.right_answer %>
         <hr>
       <%end%>
-      <% if @question.answers.count>1 || (@question.answers.count==1 && !@question.right_answer)%>
+      <% if @question.answers.count>1 || (@question.answers.count==1 && @question.right_answer)%>
         <h5>Відповіді:</h5>
         <%= render @answers%>
       <%end%>
     </div>
   </div>
+  <%= render 'comments/form', object:@question%>
+  <ul class="content-list content-list_comments">
+    <% Comment.where(object: @question).each do |comment| %>
+      <%=render 'comments/comment', comment:comment %>
+    <%end%>
+  </ul>
 </div>

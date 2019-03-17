@@ -6,8 +6,9 @@ class AnswersController < ApplicationController
   end
 
   def create
-    answer = current_user.answers.build(answer_params)
+    @answer = current_user.answers.build(answer_params)
     if answer.save
+
       # сповіщення про створення нової відповіді
       question.chosens.each do |chosen|
         Notification.generate(chosen.user, answer, 'додана', current_user)
@@ -19,7 +20,9 @@ class AnswersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    answer
+  end
 
   def update
     if answer.update(answer_params)
@@ -59,6 +62,6 @@ class AnswersController < ApplicationController
   end
 
   def question
-    @question ||= @answer.question
+    pp @question ||= answer.question
   end
 end
