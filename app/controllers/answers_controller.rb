@@ -8,7 +8,6 @@ class AnswersController < ApplicationController
   def create
     @answer = current_user.answers.build(answer_params)
     if answer.save
-
       # сповіщення про створення нової відповіді
       question.chosens.each do |chosen|
         Notification.generate(chosen.user, answer, 'додана', current_user)
@@ -41,11 +40,13 @@ class AnswersController < ApplicationController
   end
 
   def right
-    answer = current_user.questions.find(question.id).answers.find(params[:id])
-    # тільки власник питання може обрати правильне
-    question.update(right_answer_id: answer.id)
-    question.chosens.each do |chosen|
-      Notification.generate(chosen.user, answer, 'обрана правильна відпоідь', current_user)
+    @answer = Answer.find(params[:id])
+    if current_user.questions.find(answer.question_id)
+      # тільки власник питання може обрати правильне
+      question.update(right_answer_id: answer.id)
+      question.chosens.each do |chosen|
+        Notification.generate(chosen.user, answer, 'обрана правильна відпоідь', current_user)
+      end
     end
     redirect_to question_path(question.id)
   end
@@ -56,12 +57,12 @@ class AnswersController < ApplicationController
     params.require(:answer).permit(:user_id, :question_id, :text)
   end
 
+  def question
+    @question ||= Question.find(answer.question_id)
+  end
+
   def answer
     @answer ||= current_user.answers.find_by(id: params[:id])
     @answer ||= Answer.new
-  end
-
-  def question
-    pp @question ||= answer.question
   end
 end

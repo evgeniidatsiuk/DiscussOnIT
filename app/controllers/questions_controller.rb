@@ -1,14 +1,13 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :all_tags, only: %i[create update]
+  before_action :question, only: %i[new edit]
 
   def index
     questions
   end
 
-  def new
-    question
-  end
+  def new; end
 
   def create
     question = current_user.questions.build(question_params)

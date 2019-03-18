@@ -1,14 +1,13 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :all_tags, only: %i[create update]
+  before_action :post, only: %i[new edit]
 
   def index
     posts
   end
 
-  def new
-    post
-  end
+  def new; end
 
   def create
     post = current_user.posts.build(post_params)

@@ -127,6 +127,10 @@ a:hover {
   padding: 10px 50px;
 }
 
+hr.quet {
+    border-top: 1px dashed #aaa;
+}
+
 .question {
   background-color:#fff;
   border: 0.25px solid #474747;
@@ -216,6 +220,51 @@ li {
   text-align: justify;
   color: #474747;
   margin-bottom: 10px;
+}
+
+.qtex{
+  padding-top: 15px;
+  font-size: 18px;
+}
+//  Відповіді
+
+.comment-count {
+    font-size: 24px;
+    line-height: 60px;
+    width: 60px;
+    display: block;
+    text-align: center;
+    border-radius: 200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 100;
+    border: 1px solid;
+    border-color: #aaa;
+    color: #343a40;
+}
+
+.side-container-comment-inner {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.center-border {
+    position: absolute;
+    top: 39%;
+    width: 42%;
+    border-top-style: solid;
+    border-top-width: 1px;
+    z-index: 1;
+    border-color: #aaa;
+    .center-border-left {
+    left: 0;
+}
+}
+
+.center-border-right {
+    right: 0;
 }
 
 .answer {
@@ -324,7 +373,7 @@ li {
   }
 
   .crop img {
-    margin-left: -15px;
+    margin-left: -16px;
   }
 
   .nick {
@@ -515,12 +564,12 @@ nav .fa {
 .category {
   padding-bottom: 20px;
   margin-bottom: -120px;
-  z-index: 1000;
+  z-index: 99;
   box-shadow: 1px 0 1rem 2px rgba(0, 0, 0, 0.15);
 }
 .category:hover{
   //margin-bottom: 0px;
-  z-index: 1001;
+  z-index: 100;
 }
 
 .text-second {
@@ -566,6 +615,8 @@ nav .fa {
   background-color:#2BDE3F;
   width: 4px;
 }
+
+
 
 @media(max-width: 768px) {
   .nav {

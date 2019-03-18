@@ -40,32 +40,35 @@ gem 'tinymce-rails'
 gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave', '~> 1.0'
 gem 'jquery-rails'
-# для оптимізаціїї і обробки коду ... то для атома але не потрібне якщо є встроєні
-# gem 'rubocop', require: false
-# gem 'rbeautify'
-gem 'rails_best_practices'
-gem 'rubycritic', require: false
+
+# для оптимізаціїї і обробки коду
+# gem 'rubocop', require: false #для атома але не потрібне якщо є встроєні
+# gem 'rbeautify' #для атома але не потрібне якщо є встроєні
+# call 'brakeman' , in console, found secure problem
+gem 'brakeman', require: false, group: :development
+# call 'rails_best_practices . -c config/rails_best_practices.yml' in console, found best practices error
+gem 'rails_best_practices', group: :development
+# call 'rubycritic' or last version for url "//home/rik/sites/Project/tmp/rubycritic/overview.html"
+gem 'rubycritic', require: false, group: :development
 
 # Вибір країни
 # gem 'country_select'
-
 # По-сторінковий вивід
 gem 'will_paginate', '~> 3.1.0'
-gem 'will_paginate-bootstrap4'
+gem 'will_paginate-bootstrap4' # шаблон під bootstrap
 # вивід об'єктів відновідно до знаходження в масиві пошуку
-gem 'order_as_specified'
+# gem 'order_as_specified'
 
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
 # search gem думаю напишу сам
 # gem 'ransack'
-
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 # tests show
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-rcov'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # gem 'byebug', platforms: %i[mri mingw x64_mingw] #потрібно ознайомитись якщо плануєм використовувати
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'

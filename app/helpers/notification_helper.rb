@@ -1,6 +1,6 @@
 module NotificationHelper
   def title(notification)
-    link_to(notification.activeuser.userparam.username, userparam_path(notification.activeuser.id)) + ' ' + notification.write + ' to ' + link_to(notification.root.name, notification.object.url)
+    render('userparams/user', object: notification.object) + ' ' + notification.write + ' to ' + link_to(notification.root.name, notification.object.url)
   end
 
   def watch_read_stat(notification)

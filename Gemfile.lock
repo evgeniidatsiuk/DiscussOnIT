@@ -68,6 +68,7 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
+    brakeman (4.5.0)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (2.18.0)
@@ -205,8 +206,6 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
-    order_as_specified (1.5)
-      activerecord (>= 5.0.0)
     orm_adapter (0.5.0)
     paperclip (6.0.0)
       activemodel (>= 4.2.0)
@@ -405,6 +404,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   bootstrap (~> 4.3.1)
+  brakeman
   byebug
   capybara (~> 2.13)
   carrierwave (~> 1.0)
@@ -416,7 +416,6 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
-  order_as_specified
   paperclip (~> 6.0.0)
   pg
   puma (~> 3.7)

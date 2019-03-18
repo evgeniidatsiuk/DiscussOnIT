@@ -7,7 +7,7 @@
         <div class="btn-group" style="width:100%; height:50px">
           <%= link_to userparam_path(current_user), style:"padding: 0px" do %>
           <button class="btn btn-sm" style="color: #fff; text-align:left; height: 50px;  width:100%;  background: #595959;" type="button">
-            <%=image_tag current_user.userparam.avatar.url, style:"height:30px; width:30px;"%>
+            <%=image_tag current_user.userparam.avatar.url, style:"width:40px;"%>
             <span><%= current_user.userparam.username %></span>
           </button>
         <%end%>
@@ -20,9 +20,9 @@
               <%= link_to notifications_path, class:"dropdown-item" do%>
               <i class="fa fa-envelope "></i>
               Сповіщення
-              <% if Notification.where(user_id: current_user.id).count > 0%>
-                <span class="badge badge-primary" data-toggle="tooltip" title="Кількість непрочитаних">
-                  <%= Notification.where(user_id: current_user.id).count%>
+              <% if Notification.where(user_id: current_user.id).unread.count > 0%>
+                <span class="badge badge-dark" data-toggle="tooltip" title="Кількість непрочитаних">
+                  <%= Notification.where(user_id: current_user.id).unread.count%>
                 </span>
               <%end%>
             <%end%>

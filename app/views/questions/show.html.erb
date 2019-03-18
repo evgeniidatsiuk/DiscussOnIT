@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="background-color:#fff; padding-top:15px;">
   <div class="row">
     <div class="col-1">
       <%=link_to positiv_vote_path(@question.class.name,@question.id) do%>
@@ -36,11 +36,12 @@
           <%=tags(@question) %>
         </div>
       </div>
-      <div class="row">
+      <div class="row qtex">
         <div class="col">
           <%= @question.text.html_safe %>
         </div>
       </div>
+
       <div class="row" style="margin-top:15px;margin-bottom:15px">
         <div class="col-12 col-md-4">
           <div style="text-align: center;">
@@ -63,29 +64,34 @@
           </div>
         </div>
       </div>
-
-        <div class="col-12">
-          Відповідей: <%=@question.answers.count%>
-        </div>
-
-      <hr>
+      <%= render 'comments/form', object:@question%>
+      <ul class="content-list content-list_comments">
+        <% Comment.where(object: @question).each do |comment| %>
+          <%=render 'comments/comment', comment:comment %>
+        <%end%>
+      </ul>
+    </div>
+    <div class="col-12">
+    <div class="side-container-comment">
+      <div class="side-container-comment-inner">
+        <span class="comment-count"><b><%=@question.answers.count%></b></span>
+        <span class="comment-text"  >Відповіді</span>
+        <div class="center-border center-border-left"></div>
+        <div class="center-border center-border-right"></div>
+      </div>
+    </div>
     </div>
     <div class="col-12">
       <% if @question.right_answer_id %>
         <h5>Рекомендована відповідь:</h5>
         <%=render @question.right_answer %>
-        <hr>
+        <hr class="quet">
       <%end%>
       <% if @question.answers.count>1 || (@question.answers.count==1 && @question.right_answer)%>
-        <h5>Відповіді:</h5>
         <%= render @answers%>
       <%end%>
     </div>
   </div>
-  <%= render 'comments/form', object:@question%>
-  <ul class="content-list content-list_comments">
-    <% Comment.where(object: @question).each do |comment| %>
-      <%=render 'comments/comment', comment:comment %>
-    <%end%>
-  </ul>
+
+
 </div>

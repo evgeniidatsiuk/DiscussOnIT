@@ -1,6 +1,6 @@
 <div class="row answer answer_<%=answer.id%>">
   <div class="col-1">
-    <div class="col-12">
+    <div class="col-11">
     <%=link_to positiv_vote_path(answer.class.name,answer.id) do%>
       <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
       <%end%>
@@ -24,7 +24,7 @@
 <div class="col col-md-11">
 
     <%=answer.text%>
-  <div class="col-12" style="text-align:right;">
+  <div class="col-11" style="text-align:right;">
     Відповів
     <%= link_to userparam_path(answer.user.userparam.id) do %>
       <%= answer.user.userparam.username %>
@@ -37,4 +37,4 @@
     </div>
   </div>
 </div>
-<hr>
+<hr class="quet">
