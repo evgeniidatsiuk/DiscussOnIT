@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DiscussOnIT</title>
+    <title>
+      <%if !@title.nil? %>
+        <%=@title%>
+        /
+      <%end%>DoIT</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
   </head>
 
   <body>
-    <%if !@navbar_off %>
-      <%= render "layouts/navbar" %>
-    <%end%>
-    <div class="container">
-      <%= yield %>
+    <%= render "layouts/navbar" %>
+
+    <%=render "layouts/mobile"%>
+
+    <div class="container-fluid">
+      <div class="row" style="padding-top:50px;">
+        <%= render "layouts/left-sidebar" %>
+        <div class="col-md-10 ml-sm-auto">
+          <div class="row">
+            <div class="col-sm-10 content">
+              <%= yield %>
+            </div>
+            <div class="col-sm-2">
+              <%= render "layouts/right-sidebar" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <%= render 'reports/new'%>
   </body>
 </html>

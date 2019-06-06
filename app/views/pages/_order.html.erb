@@ -1,0 +1,17 @@
+<div class="order">
+
+<ul class="nav nav-tabs justify-content-end">
+  <li class="nav-item <%if session[:order_name]=="name"%>active<%end%> ">
+    <%=link_to order_path("name"), method: :put, class:"nav-link" do %>Назва <%if session[:order_name]=="name"%><i class="<%if session[:order_type]=="DESC"%>fa fa-angle-up<%else%>fa fa-angle-down <%end%>"></i><%end%> <%end%>
+  </li>
+  <li class="nav-item <%if session[:order_name]=="score"%>active<%end%>">
+    <%=link_to order_path("score"), method: :put, class:"nav-link" do%>Голосів <%if session[:order_name]=="score"%><i class="<%if session[:order_type]=="DESC"%>fa fa-angle-up<%else%>fa fa-angle-down <%end%>"></i><%end%> <%end%>
+  </li>
+  <li class="nav-item <%if session[:order_name]=="created_at"%>active<%end%>">
+    <%=link_to order_path("created_at"), method: :put, class:"nav-link" do %>Дата створення <%if session[:order_name]=="created_at"%><i class="<%if session[:order_type]=="DESC"%>fa fa-angle-up<%else%>fa fa-angle-down <%end%>"></i><%end%> <%end%>
+  </li>
+  <li class="nav-item <%if session[:order_name]=="view"%>active<%end%>">
+    <%=link_to order_path("view"), method: :put, class:"nav-link" do %>Переглядів <%if session[:order_name]=="view"%><i class="<%if session[:order_type]=="DESC"%>fa fa-angle-up<%else%>fa fa-angle-down <%end%>"></i><%end%> <%end%>
+  </li>
+</ul>
+</div>

@@ -1,0 +1,6 @@
+Тема: <%=report.subject%><br>
+Користувач: <%=report.user_email%><br>
+<br>
+<%= link_to "Більше", report_path(report.id)%>
+Дата: <%=report.created_at%>
+<hr>

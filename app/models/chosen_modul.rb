@@ -12,4 +12,10 @@ module ChosenModul
   def author_chose
     Chosen.chose(User.find(user_id), self)
   end
+
+  def notificate(activeuser, action)
+    chosens.each do |chosen|
+      Notification.generate(chosen.user, self, action, activeuser)
+    end
+  end
 end

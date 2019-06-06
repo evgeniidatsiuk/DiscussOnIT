@@ -1,0 +1,17 @@
+<div class="user">
+  <%= link_to userparam_path(object.user.userparam) do %>
+  <%= object.user.userparam.username%>
+<%end%>
+<div class="info card bg-light mb-3" style="max-width: 18rem;">
+  <div class="card-header">
+    <%= link_to userparam_path(object.user.userparam) do%>
+    <%=image_tag object.user.userparam.avatar.url, height:24%>
+    <%= object.user.userparam.username%>
+  <%end%>
+</div>
+<div class="card-body">
+  Тут мають бути інші навігаційні елементи та інша інформація
+
+</div>
+</div>
+</div>

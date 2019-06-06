@@ -1,29 +1,10 @@
 <div class="row">
   <div class="col">
+    <%=render "questions/index",questions:@questions %>
     <div class="row">
-      <div class="col">
-        <ul class="nav">
-          <span class="navbar-text font-weight-bold">
-            Питання:
-          </span>
-        </ul>
-      </div>
-      <div class="col">
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <%=link_to "Задати нове питання", new_question_path, class:"btn btn-primary" %>
-          </li>
-        </ul>
-      </div>
+      <nav aria-label="Page navigation">
+          <%= will_paginate @questions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+      </nav>
     </div>
-    <hr>
-    <% if @questions == [] %>
-      <p>Не знайдено жодних питань</p>
-    <% else %>
-      <%=render @questions%>
-      <div class="digg_pagination">
-        <%= will_paginate @questions%>
-      </div>
-    <% end %>
   </div>
 </div>

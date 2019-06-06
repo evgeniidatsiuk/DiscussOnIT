@@ -1,65 +1,97 @@
+<div class="container" style="background-color:#fff; padding-top:15px;">
   <div class="row">
-    <div class="col col-lg-6">
+    <div class="col-1">
+      <%=link_to positiv_vote_path(@question.class.name,@question.id) do%>
+      <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
+    <%end%>
+    <h3 style="margin: 0px"><%=@question.score%></h3>
+    <%=link_to negativ_vote_path(@question.class.name,@question.id) do%>
+    <span class="fa fa-chevron-down" title="Голосувати ПРОТИ"></span>
+  <%end%>
+    </div>
+    <div class="col-11">
       <div class="row">
-        <div class="col col-lg-4">
-          <div class="border border-secondary rounded-left" style="padding: 10px 0px 0px 10px">
-            <%= link_to userparam_path(@question.user.userparam.id) do %>
-              <p class="title"><%= image_tag @question.user.userparam.avatar.url, size: "48x48" %>
-                <%= @question.user.userparam.nickname %>
-              </p>
-            <%end%>
-            <p>Тут буде інша інформація про користувача</p>
-          </div>
-        </div>
-        <div class="col col-lg-8">
-        <p class="title"><%= @question.name %>
-          <% if @question.user_id == current_user.id %>
-            <%= link_to edit_question_path(@question.id) do%>
+        <div class="col title">
+          <%= @question.name %>
+          <% if user_signed_in? && @question.user_id == current_user.id %>
+            <%= link_to edit_question_path(@question.id) do %>
               <span class="fa fa-pencil"></span>
             <%end%>
             <%= link_to question_path(@question.id),data: {confirm: "Видалити?"}, method: :delete do %>
-              <span class="fa fa-times" style="color: red;"></span>
+              <span class="fa fa-trash"></span>
             <%end%>
           <% else %>
             <%= link_to chose_path(@question.class.name,@question.id) do %>
-              <%if Chosen.find_by(object_id: @question.id,object_type: @question.class.name, user_id: current_user.id) %>
+              <%if user_signed_in? && Chosen.find_by(object_id: @question.id,object_type: @question.class.name, user_id: current_user.id) %>
                 <span class="fa fa-star" style="color:gold"></span>
               <%else%>
                 <span class="fa fa-star-o"style="color:gold"></span>
               <%end%>
             <%end%>
-          <% end %>
-        </p>
-        <%=render "categories/tags", object:@question %>
+          <%end%>
+        </div>
       </div>
-      <%= @question.text %><br/>
+      <div class="row">
+        <div class="col">
+          <%=tags(@question) %>
+        </div>
+      </div>
+      <div class="row qtex">
+        <div class="col">
+          <%= @question.text.html_safe %>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:15px;margin-bottom:15px">
+        <div class="col-12 col-md-4">
+          <div style="text-align: center;">
+            <button type="button" class="btn btn-dark btn-lg btn-block" data-toggle="collapse" data-target="#new_answer">
+            Відповісти
+            </button>
+          </div>
+        </div>
+        <div class="col-12 col-md-8" style="text-align:right;">
+          <%= link_to userparam_path(@question.user.userparam.id) do %>
+            <%= @question.user.userparam.username %>
+            <%= image_tag @question.user.userparam.avatar.url, size: "36x36" %>
+          <%end%>
+        </div>
+        <div class="col-12">
+          <div id="new_answer" class="collapse">
+            <%= form_for :answer, url:answers_path do |f| %>
+            <%= render 'answers/form', f:f%>
+          <% end %>
+          </div>
+        </div>
+      </div>
+      <%= render 'comments/form', object:@question%>
+      <ul class="content-list content-list_comments">
+        <% Comment.where(object: @question).each do |comment| %>
+          <%=render 'comments/comment', comment:comment %>
+        <%end%>
+      </ul>
+    </div>
+    <div class="col-12">
+    <div class="side-container-comment">
+      <div class="side-container-comment-inner">
+        <span class="comment-count"><b><%=@question.answers.count%></b></span>
+        <span class="comment-text"  >Відповіді</span>
+        <div class="center-border center-border-left"></div>
+        <div class="center-border center-border-right"></div>
+      </div>
+    </div>
+    </div>
+    <div class="col-12">
+      <% if @question.right_answer_id %>
+        <h5>Рекомендована відповідь:</h5>
+        <%=render @question.right_answer %>
+        <hr class="quet">
+      <%end%>
+      <% if @question.answers.count>1 || (@question.answers.count==1 && @question.right_answer)%>
+        <%= render @answers%>
+      <%end%>
     </div>
   </div>
-<div class="col col-lg-6">
-<% if @question.right_answer_id %>
-  <h3>Рекомендована відповідь</h3>
-  <%=render Answer.find(@question.right_answer_id) %>
-<%end%>
-<h3>Відповіді:</h3>
-<%= render @answers%>
 
-<div style="text-align: center;">
-  <button type="button" class="btn btn-outline-success btn-lg btn-block" data-toggle="collapse" data-target="#new_answer">
-    <span class="fa fa-plus"></span> Відповісти
-  </button>
-</div>
-<div id="new_answer" class="collapse">
-  <%= form_for :answer, url:answers_path do |f| %>
-  <%= render 'answers/form', f:f%>
-<% end %>
-</div>
 
 </div>
-</div>
-<hr>
-<% @object= @question%>
-<%= render 'comments/form'%>
-Коменти:
-<ul>
-<%=render @comments %>
-</ul>

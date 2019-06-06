@@ -1,0 +1,7 @@
+<br>
+Тема: <%= @report.subject %><br>
+Користувач: <%= @report.user_email %><br>
+Зміст: <%= @report.text %><br>
+<% @report.photos.each do |p| %>
+<%= image_tag p.url, style:"width:300px;"%>
+<% end %>

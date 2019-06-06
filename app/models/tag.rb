@@ -1,6 +1,8 @@
+
 class Tag < ApplicationRecord
   belongs_to :object, polymorphic: true
   belongs_to :category
+  delegate :name, to: :category, prefix: true
 
   def self.all_tags(object, names)
     names = names.split(',').map { |name| name.strip.downcase }

@@ -1,42 +1,88 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 col-sm-3 col-md-2">
+      <div class="row">
+        <div class="col" style="text-align: -webkit-center;">
+          <%= link_to userparam_path(@post.user.userparam) do %>
+          <%= image_tag @post.user.userparam.avatar.url, size: "64x64" %>
+        <%end%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" style="text-align: -webkit-center;">
+        <%= link_to @post.user.nickname, userparam_path(@post.user.userparam)%>
+      </div>
+    </div>
 
-<h1 >
-  <%=image_tag @post.user.userparam.avatar.url, height:48%>
-  <small>
-    <b class="text-secondary">
-      <%= link_to @post.user.userparam.nickname, userparam_path(@post.user.userparam)%>
-    </b>
-  </small>
-  розповів:
-  <%= @post.name %>
-  <% if @post.user_id == current_user.id %>
-    <p>
-      <%= link_to "Редагувати", edit_post_path(@post.id) %>
-      <%= link_to "Видалити", post_path(@post.id), method: :delete %>
-    </p>
-  <% else %>
-    <%= link_to chose_path(@post.class.name,@post.id) do %>
-      <%if Chosen.find_by(object_id: @post.id,object_type: @post.class.name, user_id: current_user.id) %>
-        <span class="fa fa-star"style="color:gold"></span>
-      <%else%>
-        <span class="fa fa-star-o"style="color:gold"></span>
-      <%end%>
-    <%end%>
-  <% end %>
-  </h1>
+  </div>
 
-<hr>
-<p>
-  <%=render "categories/tags", object:@post %>
-<p>
-<%= @post.text %><br>
+  <div class="col-9 col-sm-5">
+    <div class="row">
+      <div class="col title">
+        <%= @post.name %>
+        <% if user_signed_in? && @post.user_id == current_user.id %>
+          <%= link_to post_path(@post.id), method: :delete, data: {confirm: "Видалити?"} do %>
+          <span class="fa fa-trash" title="Видалити">
+            <span>
+            <%end%>
+            <%= link_to edit_post_path(@post.id), style:"text-decoration: none;color:#474747" do %>
+            <span class="fa fa-pencil" title="Редагувати">
+              <span>
+              <%end%>
+            <% else %>
+              <%= link_to chose_path(@post.class.name,@post.id) do %>
+              <%if user_signed_in? && Chosen.find_by(object_id: @post.id,object_type: @post.class.name, user_id: current_user.id) %>
+                <span class="fa fa-star" style="color:gold"></span>
+              <%else%>
+                <span class="fa fa-star-o" style="color:gold"></span>
+              <%end%>
+            <%end%>
+          <%end%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col ">
+        <%=tags(@post) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" style="display: -webkit-inline-box;">
 
+        <li style="padding-right: 10px;">
+          <span class="fa fa-eye" title="Перегляди"></span>
+          <p style="font-size: 14px">
+            <b><%=@post.view%></b>
+          </p>
+        </li>
 
-<% @object= @post%>
-  <%= render 'comments/form'%>
-  Коменти:
-  <ul class="content-list content-list_comments">
-    <% Comment.where(object: @post).each do |comment| %>
-      <%=render 'comments/comment', comment:comment %>
-      <HR>
-    <%end%>
-  </ul>
+        <li>
+          <span class="fa fa-calendar" title="Опубліковано"></span>
+          <p style="font-size: 14px">
+            <b><%=@post.created_at.to_s.split(' ').first%></b>
+          </p>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-1" style="margin-right:10px;">
+    <%=link_to positiv_vote_path(@post.class.name,@post.id) do%>
+    <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
+  <%end%>
+  <h3 style="margin: 0px"><%=@post.score%></h3>
+  <%=link_to negativ_vote_path(@post.class.name,@post.id) do%>
+  <span class="fa fa-chevron-down" title="Голосувати ПРОТИ"></span>
+<%end%>
+</div>
+<div class="col">
+<%=@post.text%>
+</div>
+</div>
+<%= render 'comments/form', object:@post%>
+<ul class="content-list content-list_comments">
+  <% Comment.where(object: @post).each do |comment| %>
+    <%=render 'comments/comment', comment:comment %>
+  <%end%>
+</ul>
+</div>

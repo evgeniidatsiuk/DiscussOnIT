@@ -1,37 +1,54 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_answer, only: %i[edit update destroy right]
 
   def new
-    @answer = Answer.new
+    answer
   end
 
   def create
     @answer = current_user.answers.build(answer_params)
-    if @answer.save
-      redirect_to question_path(@answer.question.id)
+    if answer.save
+      # сповіщення про створення нової відповіді
+      question.chosens.each do |chosen|
+        Notification.generate(chosen.user, answer, 'додана', current_user)
+      end
+
+      redirect_to question_path(question.id)
     else
       render 'new'
     end
   end
 
-  def edit; end
+  def edit
+    answer
+  end
 
   def update
-    redirect_to question_path(@answer.question.id) if @answer.update(answer_params)
+    if answer.update(answer_params)
+      question.chosens.each do |chosen|
+        Notification.generate(chosen.user, answer, 'оновлена', current_user)
+      end
+      redirect_to question_path(question.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-    @post.destroy
-    redirect_to root_path
+    answer.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   def right
-    # тільки власник питання може обрати правильне
-    if @answer.question.user.id == current_user.id
-      @answer.question.update(right_answer_id: @answer.id)
+    @answer = Answer.find(params[:id])
+    if current_user.questions.find(answer.question_id)
+      # тільки власник питання може обрати правильне
+      question.update(right_answer_id: answer.id)
+      question.chosens.each do |chosen|
+        Notification.generate(chosen.user, answer, 'обрана правильна відпоідь', current_user)
+      end
     end
-    redirect_to question_path(@answer.question.id)
+    redirect_to question_path(question.id)
   end
 
   private
@@ -40,7 +57,12 @@ class AnswersController < ApplicationController
     params.require(:answer).permit(:user_id, :question_id, :text)
   end
 
-  def find_answer
-    @answer = Answer.find(params[:id])
+  def question
+    @question ||= Question.find(answer.question_id)
+  end
+
+  def answer
+    @answer ||= current_user.answers.find_by(id: params[:id])
+    @answer ||= Answer.new
   end
 end

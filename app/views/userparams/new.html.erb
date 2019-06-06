@@ -1,6 +1,6 @@
 <div class="col-md-6 col-md-offset-3 login-box">
   <%= form_for @userparam, url: userparams_path do |f| %>
   <%=render 'userparams/form', f:f%>
-  <%= f.submit "Створити" %>
+  <%= f.submit "Створити",class:"btn btn-dark" %>
 <% end %>
 </div>

@@ -1,0 +1,16 @@
+<% if @categories == [] %>
+  lol
+<% else %>
+  <div class="row">
+    <div class="col">
+      <ul class="nav">
+      <span class="navbar-text font-weight-bold">
+        Категорії:
+      </span>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <%= render @categories %>
+  </div>
+<% end %>

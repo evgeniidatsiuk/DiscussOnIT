@@ -1,4 +1,4 @@
 <%= form_for @post, url:posts_path do |f| %>
 <%= render 'posts/form', f:f%>
-<%= f.submit "Створити" %>
+<%= f.submit "Створити" , class:"btn btn-dark" ,data: { "disable-with": "Створення..." }%>
 <% end %>

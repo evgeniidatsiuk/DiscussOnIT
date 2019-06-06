@@ -1,0 +1,15 @@
+<% if questions == [] %>
+  <p>Не знайдено жодних запитань</p>
+<% else %>
+  <div class="row">
+    <div class="col">
+      <ul class="nav">
+        <span class="navbar-text font-weight-bold">
+          Запитання:
+        </span>
+      </ul>
+    </div>
+  </div>
+  <%=render "pages/order"%>
+  <%=render questions%>
+<% end %>

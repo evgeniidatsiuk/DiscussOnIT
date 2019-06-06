@@ -1,90 +1,44 @@
-  <% if notice %>
-<div id="notice_wrapper">
-<p class="notice"><%= notice %></p>
-</div>
+<nav class="navbar fixed-top navbar-expand">
 
-<% elsif alert%>
-<div id="notice_wrapper">
-<p class="alert"><%= alert %></p>
-</div>
+  <%= link_to root_path, class:"navbar-brand" ,style:"    width: 120px;" do%>
+  <img style="height: 40px" src="/assets/DoIT_H.svg" alt="DoIT">
+<%end%>
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <div class="dropdown">
+      <a name="add-button" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-2x fa-plus"></i>
+      </a>
+      <ul class="dropdown-menu" id="userSubmenu" style="padding-left:10px;">
+        <li>
+          <%=link_to new_question_path, class:"dropdown-item" do %>
+          <i class="fa fa-question"></i>
+          <span>Запитання</span><%end%>
+        </li>
+        <li>
+          <%=link_to new_post_path, class:"dropdown-item" do %>
+            <i class="fa fa-exclamation"></i>
+            <span>Публікація</span>
+          <%end%>
+        </li>
+      </ul>
+    </div>
+  </li>
+
+<li class="nav-item"> <a role="button" href="#reportModal" data-toggle="modal" data-target="#reportModal" style="color:#FFF"> <i class="fa fa-2x fa-file"></i> </a> </li>
+
+  <li class="nav-item">
+    <div class="search">
+      <a id="collapsebtn-search" role="button" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false" aria-controls="collapse-search">
+        <i class="fa fa-2x fa-search"></i>
+      </a>
+    </div>
+  </li>
+</ul>
+
+<%= form_for "", method: :get do |f| %>
+<span id="collapse-search" class="collapse" >
+<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Пошук..." %>
+</span>
 <% end %>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%=link_to "Головна сторінка" , root_path, class:"nav-link"%>
-      </li>
-      <li class="nav-item">
-        <%=link_to "Питання" , questions_path, class:"nav-link"%>
-      </li>
-      <li class="nav-item">
-        <%=link_to "Записи" , posts_path, class:"nav-link"%>
-      </li>
-      <li class="nac-item">
-        <%=link_to "Категорії", categories_path, class:"nav-link"%>
-      </li>
-    </ul>
-    <%= form_for :search, url: pages_search_path, html:{ class:"form-inline my-2 my-lg-0",style:"padding:0px 15px 0px"} do |f| %>
-      <%= f.text_field :text , class:"form-control mr-sm-2",prompt:"Search" %>
-      <%= f.submit "Search", class:"btn btn-outline-success my-2 my-sm-0" %>
-    <%end%>
-
-    <ul class="navbar-nav">
-      <%if user_signed_in?%>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            <%if current_user.userparam %>
-              <span class="navbar-text">
-                <%= current_user.userparam.nickname %>
-              </span>
-              <img class="img-circle" style="margin-top: -4px; margin-bottom: -4px;" height="30px" src="<%=current_user.userparam.avatar.url%>">
-            <%else%>
-              <%= current_user.email %>
-            <%end%>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right">
-            <%if current_user.userparam %>
-              <p class="dropdown-item">
-                <span class="fa fa-user" style="color: lightgray;"></span> <%= link_to "Профіль", userparam_path(current_user.userparam.id)%>
-              </p>
-            <%end%>
-            <p class="dropdown-item">
-              <span class="fa fa-envelope " style="color: lightgray;"></span> <%= link_to "Сповіщення", notifications_path%>
-              <% if Notification.where(user_id: current_user.id).count > 0%>
-                <span class="badge badge-primary" data-toggle="tooltip" title="Кількість непрочитаних">
-                  <%= Notification.where(user_id: current_user.id).count%>
-                </span>
-              <%end%>
-            </p>
-            <hr>
-            <p class="dropdown-item">
-              <span class="fa fa-sign-out" style="color: lightgray;"></span>&nbsp;<%= link_to "Вихід", destroy_user_session_path,method: :delete%></p>
-
-          </div>
-        </li>
-        <li class="nav-item"></li>
-      <%else%>
-      <li class="nav-item">
-          <%= link_to "Реєстрація", new_user_registration_path, class:'nav-link'%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Вхід", new_user_session_path, class:'nav-link'%>
-        </li>
-      <%end%>
-    </ul>
-  </div>
 </nav>
-<script>
-$(document).ready(function(){ 
- setTimeout(function(){ 
- $('#notice_wrapper').fadeOut("slow", function() {  
- $(this).remove();  
-  })  
-  }, 4500);
-  });
-</script>

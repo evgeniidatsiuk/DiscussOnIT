@@ -1,0 +1,39 @@
+<svg id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 415.54443 545.9082">
+  <defs>
+    <style>
+      .cls-1, .cls-5 {
+        fill: #6558a0;
+      }
+
+      .cls-2 {
+        fill: #4d59a1;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #4d5b9d;
+      }
+
+      .cls-4, .cls-5 {
+        font-size: 165px;
+        font-family: Segoe UI;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <title>DoIT</title>
+  <g>
+    <polygon class="cls-1" points="326.006 37.516 304.355 75.016 375.711 75.016 375.711 300.016 174.451 300.016 152.801 337.516 413.211 337.516 413.211 37.516 326.006 37.516"/>
+    <polygon class="cls-2" points="50.711 300.016 50.711 75.016 254.927 75.016 276.578 37.516 13.211 37.516 13.211 337.516 103.373 337.516 125.023 300.016 50.711 300.016"/>
+    <rect class="cls-1" x="115.36984" y="162.51563" width="50" height="50"/>
+    <rect class="cls-1" x="188.21143" y="162.51563" width="50" height="50"/>
+    <rect class="cls-1" x="261.05301" y="162.51563" width="50" height="50"/>
+    <path class="cls-1" d="M298.875,397.97916L217.83923,435.625l43.30127-75Q280.00774,379.30208,298.875,397.97916Z" transform="translate(-86.78857 -60.48437)"/>
+    <path class="cls-3" d="M304.04207,98.13022l81.03577-37.64584-43.30127,75Q322.90934,116.8073,304.04207,98.13022Z" transform="translate(-86.78857 -60.48437)"/>
+  </g>
+  <g>
+    <text class="cls-4" transform="translate(-0.00003 474.84896)">D</text>
+    <text class="cls-4" transform="translate(136.33964 474.84896)">o</text>
+    <text class="cls-5" transform="translate(251.89316 474.84896)">I</text>
+    <text class="cls-5" transform="translate(318.8649 474.84896)">T</text>
+  </g>
+</svg>

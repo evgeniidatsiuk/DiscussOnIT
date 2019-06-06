@@ -1,22 +1,30 @@
-<il id="comment_<%=comment.id%>" class="content-list__item content-list__item_comment js-comment ">
-  <div
-    class="bg-light forms-b>
-    <b><%=image_tag comment.user.userparam.avatar.url, height:22%></span>
-    <%=comment.user.userparam.nickname%>:</b>
-  <%=comment.text%>
+<div class="row">
+  <div class="col">
+    <li id="comment_<%=comment.id%>" class="content-list__item content-list__item_comment js-comment ">
+      <div class="card">
+        <div class="card-body">
+          <div class="media-block">
+            <div class="media-body">
+              <div class="card-btm"><%=render "userparams/user", object:comment%></div>
+              <p class="card-text"><%=comment.text%></p>
+              <p class="text-muted text-sm"><%=distance_of_time_in_words(comment.created_at,Time.now) %></p>
+              <div class="pad-ver">
+                <%if user_signed_in? && comment.user.id==current_user.id%>
+                  <%=link_to comment_path(comment.id),data: {confirm: "Видалити?"}, method: :delete do%>
+                  <i class="fa fa-trash"></i>
+                <%end%>
+              <%end%>
+              <%= render 'comments/form', object:comment%>
 
-  <%if comment.user.id==current_user.id%>
-    <%=link_to comment_path(comment.id),data: {confirm: "Видалити?"}, method: :delete do%>
-      <span class="fa fa-times" style="color:lightgray;"></span>
-    <%end%>
-      <%else%>
-<% @object= comment%>
-  <%= render 'comments/form'%>
-<%end%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+<ul>
+  <%=render comment.comments %>
+</ul>
+</li>
 </div>
-<!--Юлік на це знизу увагу не звиртати то хня!--!>
-  <ul>
-    <%=render comment.comments %>
-  </ul>
-</il>
+</div>

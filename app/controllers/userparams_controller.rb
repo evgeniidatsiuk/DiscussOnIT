@@ -1,53 +1,56 @@
 class UserparamsController < ApplicationController
-  before_action :authenticate_user!
-
-  def index; end
+  before_action :authenticate_user!, except: :show
 
   def new
-    @userparam = Userparam.new
-    @education = Education.new
+    if current_userparam
+      redirect_to userparam_path(current_userparam.id)
+    else
+      userparam
+    end
   end
 
   def create
-    @userparam = current_user.build_userparam(profile_params)
-    @education = @userparam.build_education(education_params)
-    if @userparam.save
-      redirect_to userparam_path(@userparam.id)
-      @education.save
+    unless current_userparam
+      userparam = current_user.build_userparam(profile_params)
+      if userparam.save
+        redirect_to userparam_path(userparam.id)
+      else
+        render 'new'
+      end
     end
   end
 
   def show
-    @userparam = Userparam.find_by(user_id: current_user.id)
+    userparam
   end
 
   def edit
-    @userparam = current_user.userparam
-    @education = @userparam.education || Education.new
+    redirect_to edit_userparam_path(current_userparam.id) unless isCurrent?
   end
 
   def update
-    @userparam = Userparam.find_by(user_id: current_user.id)
-    if @userparam.update(profile_params)
-      if @userparam.education
-        @userparam.education.update(education_params)
-      else
-        @education = @userparam.build_education(education_params)
-        @education.save
-      end
-      redirect_to userparam_path(@userparam.id)
+    if isCurrent? && userparam.update(profile_params)
+      redirect_to userparam_path(current_userparam.id)
+    else render 'edit'
     end
   end
 
   private
 
+  def userparam
+    @userparam ||= Userparam.find_by(id: params[:id])
+    @userparam ||= Userparam.new
+  end
+
+  def current_userparam
+    @current_userparam ||= current_user.userparam
+  end
+
+  def isCurrent?
+    @stat ||= (userparam.id == current_userparam.id)
+  end
+
   def profile_params
-    params.require(:userparam).permit(:user_id, :avatar, :nickname, :firstname, :lastname, :age)
+    params.require(:userparam).permit(:user_id, :avatar, :firstname, :lastname, :age)
   end
-
-  def education_params
-    params.require(:education).permit(:userparam_id, :university_id, :specialty_id, :begin_year, :end_year)
-  end
-
-  def userparam_create; end
 end

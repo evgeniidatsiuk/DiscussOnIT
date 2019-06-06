@@ -1,38 +1,36 @@
-<div class="row">
-  <div class="col-1" align="center">
-		 <span class="fa fa-eye" title="Перегляди"><span>
-		<p style="font-size: 32px" align="center"><b><%=post.view%></b></p>
-		<hr>
-    <%=link_to positiv_vote_path(post.class.name,post.id) do%>
-    <span class="fa fa-chevron-up" title="Голосувати ЗА"></span>
-  <%end%>
-  <h3 class="text-center text-dark" style="margin: 0px"><%=post.votes.sum(:score)%></h3>
-  <%=link_to negativ_vote_path(post.class.name,post.id) do%>
-  <span class="fa fa-chevron-down" title="Голосувати ПРОТИ"></span>
-<%end%>
-</div>
-<div class="col">
-<h5><%= link_to post.name, post_path(post.id) %>
+<div class="row post">
+  <div class="col">
+    <div class="row">
 
-  -
-  <%= link_to  userparam_path(post.user.userparam) do %>
-    <%=image_tag post.user.userparam.avatar.url, height:24%>
-    <small>
-      <b class="text-secondary">
-        <%= post.user.userparam.nickname%>
-      </b>
-    </small>
-  <%end%>
+      <div class="col-12 col-md-6 post-count">
+        <div class="row">
 
-</h5>
-<p>
-  <%=strip_tags(post.text)[0..255]%>...
-  <div>
-    <%=render "categories/tags", object:post %>
+          <div class="col-12 post-title">
+            <%= link_to post.name, post_path(post.id) %>
+          </div>
+          <div class="col-12 post-tags">
+            <%=tags(post) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 post-content text-second">
+        <div class="row">
+
+          <div class="col-12 col-md-9">
+            <%=strip_tags(post.text)[0..120]%>...
+          </div>
+          <div class="col-12 col-md-3 text-second">
+
+
+                Написав <%=render "userparams/user",object:post %>
+                <span class="times">
+
+                  <%=distance_of_time_in_words(post.created_at,Time.now) %> ago
+                </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</p>
-<br>
-
 </div>
-</div>
-<hr>

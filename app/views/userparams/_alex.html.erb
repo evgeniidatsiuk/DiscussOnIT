@@ -1,0 +1,20 @@
+<style >
+  .content{
+    padding:10px 0px
+  }
+</style>
+<% if userparam.nil? %><% userparam = current_user.userparam%> <%end%>
+<div class="col col-md-3 ">
+  <div class="list-group">
+
+      <%=link_to "Профіль", userparam_path(userparam.id),class:"list-group-item list-group-item-action"%>
+    <%=link_to "Опис", userparam_path(userparam.id)+"#info",class:"list-group-item list-group-item-action"%>
+    <%=link_to "Статистика", userparam_path(userparam.id)+"#stat",class:"list-group-item list-group-item-action"%>
+
+    <%if user_signed_in? && current_user.id == userparam.user.id%>
+      <%=link_to "Редагувати профіль", edit_userparam_path(current_user.userparam.id),class:"list-group-item list-group-item-action"%>
+      <%=link_to "Змінити дані для входу", edit_user_registration_path,class:"list-group-item list-group-item-action"%>
+    <%end%>
+
+  </div>
+</div>

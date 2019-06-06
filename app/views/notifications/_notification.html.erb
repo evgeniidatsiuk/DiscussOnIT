@@ -1,3 +1,19 @@
-<li>
-<%= notification.write %> and <%= link_to "URL" , notification.object.url%>
- </li>
+
+<li class="notification" <% if !notification.read_at %> style="background-color: #d9edf7;border-color: #bce8f1;color: #31708f;"<%else%> style="background-color: #FFF;" <%end%>>
+
+  <div class="toast__icon">
+     <%if notification.action = "create" %>
+     <i class="fa fa-plus-circle"></i>
+     <%else%>
+     <i class="fa fa-info-circle"></i>
+     <%end%>
+   </div>
+
+
+ <div class="toast__content">
+
+    <p class="toast__type"><strong class="class="toast__type""><%=title(notification)%></strong></p>
+    <p class="toast__message"><%=distance_of_time_in_words(notification.created_at,Time.now)%> ago <%=watch_read_stat(notification)%></p>
+  </div>
+
+</li><br />

@@ -17,9 +17,12 @@
 !/log/.keep
 !/tmp/.keep
 
-/public/system/userparam
+/public/system/userparams
 
 /node_modules
 /yarn-error.log
 
 .byebug_history
+
+/public/uploads/
+.idea
