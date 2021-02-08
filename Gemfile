@@ -38,7 +38,7 @@ gem 'paperclip', '~> 6.0.0'
 gem 'tinymce-rails'
 # css
 gem 'bootstrap', '~> 4.3.1'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'jquery-rails'
 
 # для оптимізаціїї і обробки коду
